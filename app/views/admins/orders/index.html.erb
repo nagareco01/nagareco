@@ -1,2 +1,29 @@
-<h1>Admins::Orders#index</h1>
-<p>Find me in app/views/admins/orders/index.html.erb</p>
+<h1>購入履歴一覧(全顧客)</h1>
+
+<table>
+
+	<tr>
+		<th>購入者</th>
+		<th>購入日</th>
+		<th>CD名</th>
+		<th>購入枚数</th>
+		<th>小計</th>
+		<th>購入価格総計</th>
+		<th>送付先</th>
+		<th>ステータス</th>
+	</tr>
+
+	<% @orders.each do |order| %>
+
+	<tr>
+		<th>
+			<%= link_to order.client.last_name + order.client.first_name, admins_client_path(order.client.id) %>
+		</th>
+		<th><%= order.created_at %></th>
+		<th><%= order.order_item.cd.name %></th>
+		<th><%= order.order_item.quantity %></th>
+		<th><%= order.order_item.cd.price * order.order_item.quantity %></th>
+	</tr>
+
+	<% end %>
+
