@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
     resources :clients, only: [:show, :edit, :update]
 
-    get 'orders/:id/buy' => 'orders#buy'
-    post 'orders/:id/purchase' => 'orders#purchase'
+    get 'orders/:id/buy' => 'orders#buy', as: 'order_buy'
+    post 'orders/:id/purchase' => 'orders#purchase', as: 'order_purchase'
 
     resources :items, only: [:edit, :update, :destroy]
     post 'items/:id/add_item' => 'items#add_item'
