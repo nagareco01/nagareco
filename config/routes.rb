@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
     resources :clients, only: [:show, :edit, :update]
 
-    root 'clients/cds#index'
-
     get 'orders/:id/buy' => 'orders#buy'
     post 'orders/:id/purchase' => 'orders#purchase'
 
@@ -21,8 +19,6 @@ Rails.application.routes.draw do
     resources :clients, except: [:new, :create]
     resources :cds
     resources :orders, only: [:index, :update]
-
-    root 'admins/cds#index'
   end
 
   devise_for :clients, controllers: {
