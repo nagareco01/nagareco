@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
     resources :clients, only: [:show, :edit, :update]
 
+    root 'clients/cds#index'
+
     get 'orders/:id/buy' => 'orders#buy'
     post 'orders/:id/purchase' => 'orders#purchase'
 
@@ -19,9 +21,16 @@ Rails.application.routes.draw do
     resources :clients, except: [:new, :create]
     resources :cds
     resources :orders, only: [:index, :update]
+
+    root 'admins/cds#index'
   end
 
-  devise_for :clients
-  devise_for :admins
+  devise_for :clients, controllers: {
+    registrations: 'clients/registrations',
+    sessions: 'clients/sessions'
+  }
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
