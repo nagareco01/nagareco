@@ -1,11 +1,9 @@
 class Clients::OrdersController < ApplicationController
   def buy
-  	@client = Client.find(current_user.id)
+  	@client = Client.find(current_client.id)
   	@order = Order.new
-  	default_code = @client.post_code
-  	@code = @client.address.sub_post_code || default_code
-  	default_name = @client.last_name + @client.first_name
-  	@name = @client.address.last_name + @client.address.first_name || default_name
+  	@code = @client.address.sub_post_code || @client.post_code
+  	@name = @client.address.last_name + @client.address.first_name || @client.last_name + @client.first_name
   end
 
   def purchase

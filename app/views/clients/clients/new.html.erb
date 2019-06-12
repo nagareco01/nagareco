@@ -1,0 +1,13 @@
+<h1>住所新規登録</h1>
+
+<% form_for(@address) do |f| %>
+<h2>氏名</h2>
+<%= f.text_area :last_name %><%= f.text_area :first_name %>
+<h2>郵便番号</h2>
+<%= f.text_area :sub_post_code %>
+<h2>住所</h2>
+<%= f.text_field :sub_address %>
+
+<%= f.submit "追加" %>
+
+<% end %>
