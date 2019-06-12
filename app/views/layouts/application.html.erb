@@ -10,6 +10,66 @@
   </head>
 
   <body>
+    <header>
+      <nav>ながれこ</nav>
+        <ul>
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to "商品一覧", admins_cds_path %>
+            </li>
+            <li>
+              <%= link_to "商品追加", new_admins_cd_path %>
+            </li>
+            <li>
+              <%= link_to "顧客一覧", admins_clients_path %>
+            </li>
+            <li>
+              <%= link_to "顧客購入履歴", admins_orders_path %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+
+          <% elsif client_signed_in? %>
+            <li>
+              [検索BOX] search
+            </li>
+            <li>
+              <%= current_client.last_name + current_client.first_name %>
+            </li>
+            <li>
+              <%= link_to "商品一覧", clients_cds_path %>
+            </li>
+            <li>
+              <%= link_to "マイページ", clients_client_path(current_client.id) %>
+            </li>
+            <li>
+              <%= link_to "カート編集", edit_clients_item_path(current_client.id) %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_client_session_path, method: :delete %>
+            </li>
+
+            <% else %>
+              <li>
+                [検索BOX] search
+              </li>
+              <li>
+                <%= link_to "商品一覧", clients_cds_path %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_client_session_path %>
+              </li>
+              <li>
+                <%= link_to "サインアップ", new_client_registration_path %>
+              </li>
+
+              <% end %>
+            </ul>
+          </header>
+
     <%= yield %>
+
   </body>
+
 </html>
