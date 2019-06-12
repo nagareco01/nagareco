@@ -80,11 +80,16 @@ Song.create(:song_name => 'love call', :song_number => '3', :disc_id => '11')
 Song.create(:song_name => '餡子', :song_number => '1', :disc_id => '12')
 Song.create(:song_name => 'お酒', :song_number => '2', :disc_id => '12')
 
-Client.create(:last_name => '相葉', :first_name => '雅紀', :last_name_kana => 'アイバ', :first_name_kana => 'マサキ', :email => 'aiba@gmail.com', :address => '千葉県船橋市', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
-Client.create(:last_name => '松本', :first_name => '潤也', :last_name_kana => 'マツモト', :first_name_kana => 'ジュンヤ', :email => 'matsu@gmail.com', :address => '東京都練馬区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
-Client.create(:last_name => '二宮', :first_name => '和也', :last_name_kana => 'ニノミヤ', :first_name_kana => 'カズヤ', :email => 'nino@gmail.com', :address => '東京都江戸川区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
-Client.create(:last_name => '大野', :first_name => '智史', :last_name_kana => 'オオノ', :first_name_kana => 'サトシ', :email => 'oono@gmail.com', :address => '東京都渋谷区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
-Client.create(:last_name => '櫻井', :first_name => '翔也', :last_name_kana => 'サクライ', :first_name_kana => 'ショウヤ', :email => 'saku@gmail.com', :address => '東京都中央区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
+client = Client.new(:last_name => '相葉', :first_name => '雅紀', :last_name_kana => 'アイバ', :first_name_kana => 'マサキ', :email => 'aiba@gmail.com', :address => '千葉県船橋市', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
+client.save!
+client = Client.new(:last_name => '松本', :first_name => '潤也', :last_name_kana => 'マツモト', :first_name_kana => 'ジュンヤ', :email => 'matsu@gmail.com', :address => '東京都練馬区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
+client.save!
+client = Client.new(:last_name => '二宮', :first_name => '和也', :last_name_kana => 'ニノミヤ', :first_name_kana => 'カズヤ', :email => 'nino@gmail.com', :address => '東京都江戸川区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
+client.save!
+client = Client.new(:last_name => '大野', :first_name => '智史', :last_name_kana => 'オオノ', :first_name_kana => 'サトシ', :email => 'oono@gmail.com', :address => '東京都渋谷区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
+client.save!
+client = Client.new(:last_name => '櫻井', :first_name => '翔也', :last_name_kana => 'サクライ', :first_name_kana => 'ショウヤ', :email => 'saku@gmail.com', :address => '東京都中央区', :post_code => '100-1000', :telephone => '100-1000-1000', :password => 'arashi', :delete_flag => '0')
+client.save!
 
 Address.create(:last_name => '相葉', :first_name => '雅紀', :sub_post_code => '100-1000', :sub_address => '東京都八王子市', :client_id => '1')
 Address.create(:last_name => 'wents', :first_name => 'eji', :sub_post_code => '100-1000', :sub_address => '沖縄県沖縄市', :client_id => '3')
