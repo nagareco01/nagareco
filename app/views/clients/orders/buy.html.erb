@@ -1,2 +1,8 @@
-<h1>Clients::Orders#buy</h1>
-<p>Find me in app/views/clients/orders/buy.html.erb</p>
+<h1>注文内容の確認・編集</h1>
+
+<div>
+	<% form_for(@order) do |f| %>
+	<h2>お届け先住所</h2>
+	<p>送付先住所</p>
+	<%= f.select :shipping_address, @client.map{|t| [t.address.sub_address, t.id, :selected => @client.address]}  %>
+	<% end %>
