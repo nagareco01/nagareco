@@ -5,4 +5,5 @@
 	<p>送付先住所</p>
 	<% form_for(@order) do |f| %>
 	<%= f.select :shipping_address, @client.address.map{|t| [t.sub_address, t.sub_address, :selected => @client.address]} %>
+	<%= f.submit "注文を確定する" %>
 	<% end %>
