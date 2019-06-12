@@ -4,7 +4,7 @@
 <h2>氏名</h2>
 <%= f.text_area :last_name %><%= f.text_area :first_name %>
 <h2>郵便番号</h2>
-<%= f.text_area :sub_post_code %>
+<%= f.text_field :post_code, autofocus: true%> - <%= f.text_field :post_code, autofocus: true%>
 <h2>住所</h2>
 <%= f.text_field :sub_address %>
 
