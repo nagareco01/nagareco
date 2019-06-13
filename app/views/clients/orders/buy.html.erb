@@ -4,10 +4,17 @@
 	<h2>お届け先住所</h2>
 	<p>送付先住所</p>
 	<% form_for(@order) do |f| %>
-	<%= f.select :shipping_address, @client.address.map{|t| [t.sub_address, t.sub_address, :selected => @client.address]} %>
-	<%= @code %>
-	<%= @name %>
+		<label>
+			<%= f.radio_button :shipping_address, @client.id, {:checked => true} %>
+			<%= @client.last_name + @client.first_name, @client.post_code, @client.address %>
+		</label>
+		<% @client.address.each do |t| %>
+			<label>
+				<%= f.radio_button :shipping_address, t.id %>
+				<%= t.last_name + t.first_name, t.sub_post_name, t.sub_address %>
+			</label>
+		<% end %>
 </div>
 
-	<%= f.submit "注文を確定する" %>
+		<%= f.submit "注文を確定する" %>
 	<% end %>
