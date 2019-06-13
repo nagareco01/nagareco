@@ -1,5 +1,5 @@
 class Label < ApplicationRecord
 
-	has_many :cds
+has_many :cds
 
 end
