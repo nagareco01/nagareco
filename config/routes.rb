@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   namespace :clients do
 
-    resources :clients, only: [:show, :edit, :update]
+    resources :clients, only: [:new, :create, :show, :edit, :update]
 
     get 'orders/:id/buy' => 'orders#buy', as: 'order_buy'
     post 'orders/:id/purchase' => 'orders#purchase', as: 'order_purchase'
