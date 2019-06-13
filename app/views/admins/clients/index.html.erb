@@ -2,6 +2,6 @@
 
 <% @clients.each do |client| %>
 
-<%= client.id %> . <%= link_to (clinet.last_name+client.first_name), admins_client_path(client.id) %>
+<%= client.id %> . <%= link_to (client.last_name + client.first_name), admins_client_path(client.id) %>
 
 <% end %>
