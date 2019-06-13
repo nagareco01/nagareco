@@ -23,7 +23,9 @@
 		<th><%= order.order_item.cd.name %></th>
 		<th><%= order.order_item.quantity %></th>
 		<th><%= order.order_item.cd.price * order.order_item.quantity %></th>
+		<th><%= order.total_price %></th>
+		<th><%= order.shipping_address %></th>
+		<th><%= order.select :shipment_status, Order.shipment_statuses.keys.to_a, {} %></th>
 	</tr>
-
 	<% end %>
 
