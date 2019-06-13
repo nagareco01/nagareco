@@ -2,19 +2,13 @@
 
 <div>
 	<h2>お届け先住所</h2>
-	<p>送付先住所</p>
-	<% form_for(@order) do |f| %>
+
 		<label>
-			<%= f.radio_button :shipping_address, @client.id, {:checked => true} %>
-			<%= @client.last_name + @client.first_name, @client.post_code, @client.address %>
+			<%= radio_button_tag (:@client.last_name + @client.first_name, @client.post_code, @client.address, "@client.id" ) {:checked => true} %>
 		</label>
 		<% @client.address.each do |t| %>
 			<label>
-				<%= f.radio_button :shipping_address, t.id %>
-				<%= t.last_name + t.first_name, t.sub_post_name, t.sub_address %>
+				<%= radio_button_tag (:t.last_name + t.first_name, t.sub_post_name, t.sub_address, "t.id") %>
 			</label>
 		<% end %>
 </div>
-
-		<%= f.submit "注文を確定する" %>
-	<% end %>
