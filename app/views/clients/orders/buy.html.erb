@@ -1,9 +1,14 @@
 <h1>注文内容の確認・編集</h1>
 
 <div>
-
-	<% form_for(@order) do |f| %>
 	<h2>お届け先住所</h2>
-	<p>送付先住所</p>
-	<%= f.select :shipping_address, @client.map{|t| [t.address.sub_address, t.id, :selected => @client.address]}  %>
-	<% end %>
+
+		<label>
+			<%= radio_button_tag (:@client.last_name + @client.first_name, @client.post_code, @client.address, "@client.id" ) {:checked => true} %>
+		</label>
+		<% @client.address.each do |t| %>
+			<label>
+				<%= radio_button_tag (:t.last_name + t.first_name, t.sub_post_name, t.sub_address, "t.id") %>
+			</label>
+		<% end %>
+</div>
