@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :clients do
 
     resources :clients, only: [:show, :edit, :update]

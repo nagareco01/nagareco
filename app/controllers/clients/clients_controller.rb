@@ -9,17 +9,23 @@ class Clients::ClientsController < ApplicationController
   end
 
   def edit
-  	#@client = Client.find(params[:id])
+  	@client = Client.find(params[:id])
   end
 
   def update
-  	#@client = Client.find(client_params)
+  	@client = Client.find(params[:id])
+  	if @client.update(client_params)
+      redirect_to clients_client_path(params[:id])
+      flash[:success] = "Mypageを更新しました"
+    else
+      render 'edit'
+    end
   end
 
   private
 
   def client_params
-  	params.require(:client).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :address, :post_code, :telephone)
+  	params.require(:client).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :post_code, :telephone)
   end
 
   def correct_client
