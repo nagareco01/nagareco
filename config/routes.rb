@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   namespace :clients do
 
     resources :clients, only: [:show, :edit, :update]
@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     get 'orders/:id/buy' => 'orders#buy', as: 'order_buy'
     post 'orders/:id/purchase' => 'orders#purchase', as: 'order_purchase'
 
-    resources :items, only: [:edit, :update, :destroy]
-    post 'items/:id/add_item' => 'items#add_item'
+    resources :items, only: [:index, :update, :destroy]
+    post 'items/add_item' => 'items#add_item'
 
+    get 'cds/search' => 'cds#search'
     resources :cds, only: [:show, :index]
-    post 'cds/search' => 'cds#search'
 
   end
 
