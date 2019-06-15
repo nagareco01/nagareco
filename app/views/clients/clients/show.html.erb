@@ -3,9 +3,12 @@
 <h3>電話番号　<%= @client.telephone%></h3>
 <h3>自宅郵便番号　<%= @client.post_code%></h3>
 <h3>自宅住所　<%= @client.address%></h3>
-<h3>登録郵便番号1</h3>
-<h3>登録住所</h3>
 <h3>メールアドレス　<%= @client.email%></h3>
+
+<!-- ワイヤーフレーム参照 -->
+<h2>登録住所</h2>
+<%= link_to"削除"%> 
+<!-- 変更あり　-->
 
 <%= link_to"注文履歴一覧",clients_cds_path%>
 

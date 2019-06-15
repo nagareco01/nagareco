@@ -16,7 +16,6 @@ class Clients::ClientsController < ApplicationController
   	@client = Client.find(params[:id])
   	if @client.update(client_params)
       redirect_to clients_client_path(params[:id])
-      flash[:success] = "Mypageを更新しました"
     else
       render 'edit'
     end
