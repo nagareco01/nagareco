@@ -5,7 +5,6 @@ class Clients::CdsController < ApplicationController
   end
 
   def search
-  	@cds = Cd.all
   end
 
   def show

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
 	def set_search
 		@search = Cd.ransack(params[:q])
-		@search_cds = @search.result.includes(:artist)
+		@search_cds = @search.result.includes(:artist).page(params[:page]).per(3)
 	end
 
 	protected

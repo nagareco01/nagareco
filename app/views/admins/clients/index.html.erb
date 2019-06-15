@@ -5,3 +5,5 @@
 <%= client.id %> . <%= link_to (client.last_name + client.first_name), admins_client_path(client.id) %>
 
 <% end %>
+
+<%= paginate @clients %>
