@@ -2,39 +2,58 @@
 
 <div>
 	<h2>お届け先住所</h2>
-<!-- <input type="radio" name="test" value="<%= @client.id %>">  -->
-<%= form_for Order.new, url: clients_order_purchase_path do |f| %>
 
+	<%= form_for Order.new, url: clients_order_purchase_path do |f| %>
+	<label>
 		<%= f.radio_button :client_id,@client.id, id: "one" %>
 			<% zyusyo1 = @client.last_name + @client.first_name + @client.post_code + @client.address %>
-
-				<label for="">
 					<%= zyusyo1 %>
-				</label>
+	</label>
 		<% @client.addresses.each do |t| %>
-
+			<div>
+				<label>
 				<%= f.radio_button :shipping_address, t.id, class: "two" %>
 				<% zyusyo = t.last_name + t.first_name + t.sub_post_code + t.sub_address %>
-				<label for="">
 					<%= zyusyo %>
+
 				</label>
+			</div>
 		<% end %>
+
+		<label>
+			<%= f.radio_button :payment, 0 %>クレジット
+		</label>
+		<label>
+			<%= f.radio_button :payment, 1 %>銀行振込
+		</label>
+		<label>
+			<%= f.radio_button :payment, 2 %>代引き
+		</label>
 		<%= f.submit %>
 		<% end %>
+</div>
+
+<div>
+	<p>注文内容</p>
+	<p>商品の小計</p>
 </div>
 
 
 
 <script>
-	let radio1 = document.getElementById("one");
-      let radio2 = document.querySelector(".two");
-      radio1.addEventListener("click", () => {
-        if (radio2.checked === true) {
-          radio2.checked = false;
-        }
-      });
-      radio2.addEventListener("click", () => {
-        if (radio1.checked === true) {
-          radio1.checked = false;
-        }
-      });</script>
+//idがoneの要素をradio1に代入
+var radio1 = document.getElementById("one");
+
+//radio1がクリックされたときにclass名twoのcheckedをfalseにしている
+radio1.addEventListener("click", () => {
+	$('.two').prop('checked',false);
+});
+
+//class名twoがクリックされたとき、もしradio1がチェックされていたらチェックを外す
+$('.two').on('click', function(){
+  if (radio1.checked === true) {
+  radio1.checked = false;
+	}
+});
+
+</script>
