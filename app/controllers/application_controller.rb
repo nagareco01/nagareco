@@ -7,8 +7,9 @@ class ApplicationController < ActionController::Base
 		clients_cds_path
 	end
 
-	#def after_sign_out_path_for(resource)
-	#end
+	def after_sign_out_path_for(resource)
+		clients_cds_path
+	end
 
 	def set_search
 		@search = Cd.ransack(params[:q])

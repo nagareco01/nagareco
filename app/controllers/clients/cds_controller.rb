@@ -13,4 +13,9 @@ class Clients::CdsController < ApplicationController
   	@item = Item.new
   end
 
+  private
+    def cd_params
+      params.require(:cd).permit(:image_id)
+    end
+
 end
