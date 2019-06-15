@@ -2,6 +2,7 @@ class Clients::OrdersController < ApplicationController
   def buy 
     @client = Client.find(current_client.id)
     @order = Order.new
+    @items = Item.where(client_id = current_client.id)
   end
 
   def purchase
@@ -24,6 +25,8 @@ class Clients::OrdersController < ApplicationController
       post.shipping_name = last_name + first_name
 
     end
+
+    post.total_price = Item.where(current_client.id).quantity * Item.where(current_client.id).cd.price + 500
 
     post.save
 

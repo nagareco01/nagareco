@@ -29,14 +29,19 @@
 		<label>
 			<%= f.radio_button :payment, 2 %>代引き
 		</label>
-		<%= f.submit %>
-		<% end %>
 </div>
 
 <div>
 	<p>注文内容</p>
-	<p>商品の小計</p>
+	<p>商品の小計:<%= "￥" + @items.quantity * @items.cd.price %></p>
+	<p>配送料・手数料:￥500</p>
+	<p>注文合計:<%= "￥" + @items.quantity * @items.cd.price + 500 %></p>
+	<p>ご請求額:<%= "￥" + @items.quantity * @items.cd.price + 500 %></p>
 </div>
+		<%= f.submit %>
+		<% end %>
+
+
 
 
 
