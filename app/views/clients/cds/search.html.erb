@@ -1,2 +1,11 @@
-<h1>Clients::Cds#search</h1>
-<p>Find me in app/views/clients/cds/search.html.erb</p>
+<h1>検索結果</h1>
+
+<% @search_cds.each do |cd| %>
+
+<%= attachment_image_tag cd, :image %>
+
+<p><%= link_to cd.name, clients_cd_path(cd.id) %></p>
+<p><%= cd.artist.artist_name %></p>
+<p>¥<%= cd.price %></p>
+
+<% end %>

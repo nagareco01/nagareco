@@ -1,2 +1,29 @@
-<h1>Clients::Cds#show</h1>
-<p>Find me in app/views/clients/cds/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<p>画像：<%= attachment_image_tag @cd, :image %></p>
+<p>説明文：<%= @cd.description %></p>
+
+<p>アーティスト名：<%= @cd.artist.artist_name %></p>
+<p>CD名：<%= @cd.name %></p>
+<p>曲名：
+	<% @cd.discs.each do |disc| %>
+		 Disc.<%= disc.disc_number %>
+		<% disc.songs.each do |song| %>
+				<%= song.song_name %>
+		<% end %>
+	<% end %>
+</p>
+<p>ジャンル：<%= @cd.genre.genre_name %></p>
+<p>レーベル名；<%= @cd.label.label_name %></p>
+<p>在庫：<%= @cd.stock %></p>
+<p>ステータス：<%= @cd.sale_status %></p>
+<p>価格(税込)：<%= @cd.price %></p>
+
+<p>購入枚数</p>
+	
+	<%= form_for @item, url: clients_items_add_item_path do |f| %>
+	<%= f.hidden_field :cd_id, value: params[:id] %>
+	<%= f.number_field :quantity %>
+	<%= f.submit "追加" %>
+	<% end %>
+

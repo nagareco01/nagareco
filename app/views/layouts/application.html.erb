@@ -31,9 +31,12 @@
             </li>
 
           <% elsif client_signed_in? %>
-            <li>
-              [検索BOX] search
-            </li>
+            <dl>
+              <%= search_form_for @search, url: clients_cds_search_path do |f| %>
+              <dt><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dd><%= f.submit("検索") %></dd>
+              <% end %>
+            </dl>
             <li>
               <%= current_client.last_name + current_client.first_name %>
             </li>
@@ -44,16 +47,19 @@
               <%= link_to "マイページ", clients_client_path(current_client.id) %>
             </li>
             <li>
-              <%= link_to "カート編集", edit_clients_item_path(current_client.id) %>
+              <%= link_to "カート編集", clients_items_path %>
             </li>
             <li>
               <%= link_to "ログアウト", destroy_client_session_path, method: :delete %>
             </li>
 
             <% else %>
-              <li>
-                [検索BOX] search
-              </li>
+              <dl>
+              <%= search_form_for @search, url: clients_cds_search_path do |f| %>
+              <dt><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dd><%= f.submit("検索") %></dd>
+              <% end %>
+            </dl>
               <li>
                 <%= link_to "商品一覧", clients_cds_path %>
               </li>
