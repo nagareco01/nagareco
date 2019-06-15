@@ -5,31 +5,40 @@ class Clients::OrdersController < ApplicationController
   end
 
   def purchase
-    post = Order.new(order_params)
+    post = current_client.orders.new(order_params)
 
-    if post == current_client.id
+    if params[:client_id] = nil
+      address = Address.find(params:[shipping_address])
 
-      address = post.address
-      address.save
-      post_code = post.post_code
+      # address = post.address
+      # address.save
+      post.post_code = address.post_code
       post_code.save
       last_name = post.last_name
       first_name = post.first_name
       name = last_name + first_name
       name.save
 
+      post.save
     else
+   # binding.pry
+      address = Client.find(params[:order][:client_id]).address
 
-     address = post.sub_address
-     address.save
-     post_code = post.sub_post_code
-     post_code.save
-     last_name = post.last_name
-     first_name = post.first_name
-     name = last_name + first_name
-     name.save
+
     end
-    redirect_to clients_path
+
+    # else
+
+    #  address = post.sub_address
+    #  address.save
+    #  post_code = post.sub_post_code
+    #  post_code.save
+    #  last_name = post.last_name
+    #  first_name = post.first_name
+    #  name = last_name + first_name
+    #  name.save
+    # end
+    # redirect_to clients_path
   end
 
   private
