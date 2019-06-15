@@ -14,7 +14,7 @@ class Admins::CdsController < ApplicationController
 
   def create
     @cd = Cd.new
-    cd.save
+    @cd.save
   end
 
   def update
