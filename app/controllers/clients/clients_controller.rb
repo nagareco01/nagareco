@@ -1,9 +1,10 @@
 class Clients::ClientsController < ApplicationController
 	before_action :authenticate_client!
-	before_action :correct_client
+	before_action :correct_client,except: :create
 
   def show
   	@client = Client.find(params[:id])
+    @addresses = Address.where(client_id: current_client.id)
   end
 
   def edit
@@ -27,6 +28,12 @@ class Clients::ClientsController < ApplicationController
     post = Address.new
     post.save
     redirect_to clients_client_path(current_client.id)
+  end
+
+  def destroy
+    post = Address.find(params[:id])
+    post.destroy
+    redirect_to clients_client_path(@client.id)
   end
 
   private

@@ -8,6 +8,7 @@ class Admins::ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @address = Address.where(client_id: current_client.id)
   end
 
   def edit

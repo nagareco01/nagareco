@@ -6,13 +6,19 @@
 <h3>メールアドレス　<%= @client.email%></h3>
 
 <!-- ワイヤーフレーム参照 -->
-<h2>登録住所</h2>
-<%= link_to"削除"%> 
-<!-- 変更あり　-->
+<h3>登録住所</h3>
+<% if @addresses %>
+<% @addresses.each do |address| %>
+<%= address.last_name + address.first_name %>
+<%= address.sub_post_code %>
+<%= address.sub_address %>
+<%= link_to"削除", destroy_clients_client_path(@client.id), method: :delete,  "data-confirm" => "本当に削除しますか？"%>
+<% end %>
+<% end %>
 
 <%= link_to"注文履歴一覧",clients_cds_path%>
 
-<%= link_to"Mypage編集",edit_clients_client_path(@client)%>
-<%= link_to"住所新規登録"%>
+<%= link_to"Mypage編集",edit_clients_client_path(@client.id)%>
+<%= link_to"住所新規登録",new_clients_client_path(id: @client.id) %>
 
 <%= link_to"退会"%>
