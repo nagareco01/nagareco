@@ -1,4 +1,8 @@
 class Clients::OrdersController < ApplicationController
+
+  def index
+  end
+
   def buy 
     @client = Client.find(current_client.id)
     @order = Order.new

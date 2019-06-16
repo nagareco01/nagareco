@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     get 'orders/:id/buy' => 'orders#buy', as: 'order_buy'
     post 'orders/:id/purchase' => 'orders#purchase', as: 'order_purchase'
+    resources :orders, only: [:index]
 
     resources :items, only: [:index, :update, :destroy]
     post 'items/add_item' => 'items#add_item'
