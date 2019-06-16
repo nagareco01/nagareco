@@ -1,2 +1,14 @@
-<h1>Admins::Cds#edit</h1>
-<p>Find me in app/views/admins/cds/edit.html.erb</p>
+<%= form_for@cd,:url => {:action => :update}  do |f| %>
+	<div class="field">
+	    <%= f.text_field :name %>
+	    <%= f.text_field :price %>
+	    <%= f.text_field :stock %>
+	    <%= f.attachment_field :image %>
+	    <%= f.collection_select :label_id, Label.all, :id, :label_name %>
+	    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+	    <%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
+	    <%= f.text_area :description, class:"cd-description",  size: "80*80" %>
+    </div>
+<%= f.submit "更新", class:"btn btn-primary " %>
+<% end %>
+<%= link_to "削除", admins_cds_path, method: :delete, "data-confirm" => "本当に消しますか?" ,class: "btn btn-danger" %>

@@ -20,5 +20,5 @@
 		<%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
 	<h4>説明文</h4>
 		<%= f.text_area :description, class:"cd-description",  size: "80*80" %>
-	<%= f.submit "新規登録", class:"btn btn-primary btn-block" %>
+	<%= f.submit "新規登録", class:"btn btn-primary" %>
 <% end %>
