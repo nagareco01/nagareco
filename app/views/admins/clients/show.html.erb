@@ -1,2 +1,9 @@
-<h1>Admins::Clients#show</h1>
-<p>Find me in app/views/admins/clients/show.html.erb</p>
+<h1>顧客詳細</h1>
+<h3>氏名 <%= @client.last_name + @client.first_name%></h3>
+<h3>電話番号　<%= @client.telephone%></h3>
+<h3>自宅郵便番号　<%= @client.post_code%></h3>
+<h3>自宅住所　<%= @client.address%></h3>
+<h3>メールアドレス　<%= @client.email%></h3>
+
+<%= link_to"顧客編集",edit_admins_client_path(@client)%>
+<%= link_to"退会"%>
