@@ -8,20 +8,20 @@
 		<th>送付先</th>
 		<th>ステータス</th>
 	</tr>
-	<tr>
+	<tr align = "center">
 		<td><%= @item.created_at.strftime("%Y-%m-%d") %></td>
 		<td><%= @item.cd.name %></td>
-		<td><%= "￥" + @item.purchased_price * @item.quantity %></td>
-		<td><%= @item.shipping_address %></td>
-		<td><%= @item.shipment_status %>
+		<td><%= "￥" + (@item.purchased_price * @item.quantity).to_s %></td>
+		<td><%= @item.order.shipping_address %></td>
+		<td><%= @item.order.shipment_status %>
 	</tr>
 </table>
 
 <div>
-	<p>アーティスト名:</p><%= @item.cd.artist.artist_name %>
-	<p>シングル/アルバム名:</p><%= @item.cd.name %>
-	<p>レーベル名:</p><%= @item.cd.label.label_name %>
-	<p>ジャンル名:</p><%= @item.cd.genre.genre_name %>
-	<p>在庫:</p><%= @item.cd.stock %>
-	<p>ステータス(販売中・販売停止中):</p><%= @item.cd.sale_status %>
+	<p>アーティスト名:<%= @item.cd.artist.artist_name %></p>
+	<p>シングル/アルバム名:<%= @item.cd.name %></p>
+	<p>レーベル名:<%= @item.cd.label.label_name %></p>
+	<p>ジャンル名:<%= @item.cd.genre.genre_name %></p>
+	<p>在庫:<%= @item.cd.stock %></p>
+	<p>ステータス(販売中・販売停止中):<%= @item.cd.sale_status %></p>
 </div>

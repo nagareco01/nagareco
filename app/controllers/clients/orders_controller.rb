@@ -2,10 +2,15 @@ class Clients::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(client_id: current_client.id)
+    @total_price = 0
+    orders = Order.where(client_id: current_client.id)
+    orders.each do |order|
+      @total_price += order.total_price
+    end
   end
 
   def show
-    @item = Order_item.find(params[:id])
+    @item = OrderItem.find(params[:id])
   end
 
   def buy 
