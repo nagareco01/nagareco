@@ -1,11 +1,16 @@
 class Clients::OrdersController < ApplicationController
+
+  def index
+    @orders = Order.where(client_id: current_client.id)
+  end
+
   def buy 
     @client = Client.find(current_client.id)
     @order = Order.new
     items = Item.where(client_id: current_client.id)
     @total_price = 0
     items.each do |item|
-      @total_price += item.quantity * item.price
+      @total_price += item.quantity * item.cd.price
     end
 
   end
@@ -41,8 +46,8 @@ class Clients::OrdersController < ApplicationController
       order_item = post.order_items.new
       order_item.cd_id = item.cd_id
       order_item.quantity = item.quantity
-      order_item.puchased_price = item.price
-      @total_price += item.quantity * item.price
+      order_item.purchased_price = item.cd.price
+      @total_price += item.quantity * item.cd.price
     end
 
     post.payment = order_params[:payment].to_i
