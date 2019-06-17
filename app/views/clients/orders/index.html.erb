@@ -1,6 +1,6 @@
 <h1>注文履歴一覧</h1>
 
-<table>
+<table border="1">
 	<tr>
 		<th>購入日</th>
 		<th>購入品</th>
@@ -11,15 +11,15 @@
 	</tr>
 
 	<% @orders.each do |order| %>
-	<% order.order_items.each do |item| %>
+	<% order.order_items.each_with_index do |item, i| %>
 
 	<tr align="center">
-		<td><%= item.order.created_at %></td>
+		<td rowspan="i"><%= order.created_at.strftime("%Y-%m-%d") %></td>
 		<td><%= item.cd.name %></td>
 		<td><%= item.quantity %></td>
 		<td><%= item.purchased_price %></td>
-		<td rowspan="0">￥500</td>
-		<td rowspan="0"><%= item.order.payment %></td>
+		<td rowspan="i">￥500</td>
+		<td rowspan="i"><%= order.payment %></td>
 	</tr>
 
 	<% end %>
