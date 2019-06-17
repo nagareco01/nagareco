@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :clients do
 
-    resources :clients, only: [:new, :create, :show, :edit, :update]
+    resources :clients, only: [:new, :create, :show, :edit, :update, :destroy]
 
     get "orders/:id/index" => "orders#index", as: "order_index"
     get 'orders/:id/buy' => 'orders#buy', as: 'order_buy'

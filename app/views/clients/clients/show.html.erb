@@ -1,17 +1,37 @@
 <h1>My page</h1>
-<h3>氏名 <%= @client.last_name + @client.first_name%></h3>
+<h3>氏名 <%= @client.last_name %> <%= @client.first_name %></h3>
 <h3>電話番号　<%= @client.telephone%></h3>
 <h3>自宅郵便番号　<%= @client.post_code%></h3>
 <h3>自宅住所　<%= @client.address%></h3>
 <h3>メールアドレス　<%= @client.email%></h3>
 
-<!-- ワイヤーフレーム参照 -->
-<h2>登録住所</h2>
-<%= link_to"削除"%> 
-<!-- 変更あり　-->
+<h3>登録住所</h3>
+<div class="create-address">
+	<h4><!-- 文字の大きさのため、あとでcssで調整 -->
+		<table>
+			<thead>
+				<tr>
+					<th>氏名</th>
+				    <th>郵便番号</th>
+				    <th>住所</th>
+			    </tr>
+		    </thead>
+		    <% @address.each do |address| %>
+		    <tbody>
+		    	<tr>
+		    		<td><%= address.last_name %> <%= address.first_name %></td>
+				    <td><%= address.sub_post_code %></td>
+				    <td><%= address.sub_address %></td>
+				    <td><%= link_to"削除", clients_client_path(address.id), method: :delete,  "data-confirm" => "削除しますか？"%></td>
+			    </tr>
+		    </tbody>
+		    <% end %>
+	    </table>
+    </h4>
+</div>
+
 
 <%= link_to"注文履歴一覧",clients_cds_path%>
-
 <%= link_to"Mypage編集",edit_clients_client_path(@client)%>
 <%= link_to"住所新規登録",new_clients_client_path(id: @client.id)%>
 
