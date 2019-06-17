@@ -1,6 +1,7 @@
 class Clients::OrdersController < ApplicationController
 
   def index
+    @orders = Order.where(client_id: current_client.id)
   end
 
   def buy 

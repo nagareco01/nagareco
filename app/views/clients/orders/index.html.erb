@@ -1,0 +1,27 @@
+<h1>注文履歴一覧</h1>
+
+<table>
+	<tr>
+		<th>購入日</th>
+		<th>購入品</th>
+		<th>購入枚数</th>
+		<th>CD価格</th>
+		<th>送料</th>
+		<th>支払方法</th>
+	</tr>
+
+	<% @orders.each do |order| %>
+	<% order.order_items.each do |item| %>
+
+	<tr align="center">
+		<td><%= item.order.created_at %></td>
+		<td><%= item.cd.name %></td>
+		<td><%= item.quantity %></td>
+		<td><%= item.purchased_price %></td>
+		<td rowspan="0">￥500</td>
+		<td rowspan="0"><%= item.order.payment %></td>
+	</tr>
+
+	<% end %>
+	<% end %>
+</table>
