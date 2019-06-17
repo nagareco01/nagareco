@@ -8,7 +8,7 @@ class Admins::ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    @address = Address.where(client_id: current_client.id)
+    @address = Address.where(params[:id])
   end
 
   def edit
@@ -24,13 +24,14 @@ class Admins::ClientsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
 private
 
   def client_params
     params.require(:client).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :post_code, :telephone)
+  end
+
+  def address_params
+    params.require(:address).permit(:last_name, :first_name, :sub_post_code, :sub_address)
   end
 
 end
