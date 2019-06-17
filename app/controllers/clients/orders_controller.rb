@@ -4,6 +4,10 @@ class Clients::OrdersController < ApplicationController
     @orders = Order.where(client_id: current_client.id)
   end
 
+  def show
+    @item = Order_item.find(params[:id])
+  end
+
   def buy 
     @client = Client.find(current_client.id)
     @order = Order.new

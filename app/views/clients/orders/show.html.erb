@@ -1,0 +1,27 @@
+<h1>注文履歴詳細</h1>
+<%= attachment_image_tag @item.cd, :image %>
+<table>
+	<tr>
+		<th>購入日</th>
+		<th>購入内容</th>
+		<th>価格総計</th>
+		<th>送付先</th>
+		<th>ステータス</th>
+	</tr>
+	<tr>
+		<td><%= @item.created_at.strftime("%Y-%m-%d") %></td>
+		<td><%= @item.cd.name %></td>
+		<td><%= "￥" + @item.purchased_price * @item.quantity %></td>
+		<td><%= @item.shipping_address %></td>
+		<td><%= @item.shipment_status %>
+	</tr>
+</table>
+
+<div>
+	<p>アーティスト名:</p><%= @item.cd.artist.artist_name %>
+	<p>シングル/アルバム名:</p><%= @item.cd.name %>
+	<p>レーベル名:</p><%= @item.cd.label.label_name %>
+	<p>ジャンル名:</p><%= @item.cd.genre.genre_name %>
+	<p>在庫:</p><%= @item.cd.stock %>
+	<p>ステータス(販売中・販売停止中):</p><%= @item.cd.sale_status %>
+</div>
