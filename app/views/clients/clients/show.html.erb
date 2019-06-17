@@ -32,8 +32,7 @@
 
 
 <%= link_to"注文履歴一覧",clients_cds_path%>
-
-<%= link_to"Mypage編集",edit_clients_client_path(@client.id)%>
-<%= link_to"住所新規登録",new_clients_client_path(id: @client.id) %>
+<%= link_to"Mypage編集",edit_clients_client_path(@client)%>
+<%= link_to"住所新規登録",new_clients_client_path(id: @client.id)%>
 
 <%= link_to"退会"%>
