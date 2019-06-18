@@ -1,6 +1,5 @@
 class Admins::ClientsController < ApplicationController
-  #before_action :authenticate_admin!
-  #before_action :correct_admin
+  before_action :authenticate_admin!
 
   def index
     @clients = Client.page(params[:page]).per(3)
@@ -8,7 +7,6 @@ class Admins::ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
-    @address = Address.where(params[:id])
     @orders = Order.where(params[:id])
   end
 
@@ -23,6 +21,12 @@ class Admins::ClientsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    client = Client.find(params[:id])
+    client.destroy
+    redirect_to admins_cds_path
   end
 
 private

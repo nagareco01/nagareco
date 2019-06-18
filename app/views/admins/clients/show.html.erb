@@ -14,15 +14,15 @@
 				    <th>住所</th>
 			    </tr>
 		    </thead>
-		    <% @address.each do |address| %>
+		    <% @client.addresses.each do |address| %>
 		    <tbody>
 		    	<tr>
 		    		<td><%= address.last_name %> <%= address.first_name %></td>
 				    <td><%= address.sub_post_code %></td>
 				    <td><%= address.sub_address %></td>
 			    </tr>
+			<% end %>
 		    </tbody>
-		    <% end %>
 	    </table>
     </h4>
 </div>
