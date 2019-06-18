@@ -14,19 +14,19 @@
 				    <th>住所</th>
 			    </tr>
 		    </thead>
-		    <% @address.each do |address| %>
+		    <% @client.addresses.each do |address| %>
 		    <tbody>
 		    	<tr>
 		    		<td><%= address.last_name %> <%= address.first_name %></td>
 				    <td><%= address.sub_post_code %></td>
 				    <td><%= address.sub_address %></td>
 			    </tr>
+			<% end %>
 		    </tbody>
-		    <% end %>
 	    </table>
     </h4>
 </div>
 <h3>メールアドレス　<%= @client.email%></h3>
 
 <%= link_to"顧客編集",edit_admins_client_path(@client.id)%>
-<%= link_to"退会"%>
+<%= link_to"退会",admins_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？"%>

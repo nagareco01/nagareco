@@ -16,16 +16,16 @@
 				    <th>住所</th>
 			    </tr>
 		    </thead>
-		    <% @address.each do |address| %>
+		    <% @addresses.each do |address| %>
 		    <tbody>
 		    	<tr>
 		    		<td><%= address.last_name %> <%= address.first_name %></td>
 				    <td><%= address.sub_post_code %></td>
 				    <td><%= address.sub_address %></td>
-				    <td><%= link_to"削除", clients_client_path(address.id), method: :delete,  "data-confirm" => "削除しますか？"%></td>
+				    <td><%= link_to"削除", clients_remove_address_path(address.id), method: :delete,  "data-confirm" => "削除しますか？"%></td>
 			    </tr>
+			<% end %>
 		    </tbody>
-		    <% end %>
 	    </table>
     </h4>
 </div>
@@ -35,4 +35,4 @@
 <%= link_to"Mypage編集",edit_clients_client_path(@client)%>
 <%= link_to"住所新規登録",new_clients_client_path(id: @client.id)%>
 
-<%= link_to"退会"%>
+<%= link_to"退会",clients_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？"%>
