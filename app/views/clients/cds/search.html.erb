@@ -2,11 +2,13 @@
 
 <% @search_cds.each do |cd| %>
 
-<%= attachment_image_tag cd, :image %>
+  <%= link_to clients_cd_path(cd.id) do %>
+	<%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'40x40' %>
+  <% end %>
 
-<p><%= link_to cd.name, clients_cd_path(cd.id) %></p>
-<p><%= cd.artist.artist_name %></p>
-<p>¥<%= cd.price %></p>
+  <p><%= link_to cd.name, clients_cd_path(cd.id) %></p>
+  <p><%= cd.artist.artist_name %></p>
+  <p>¥<%= cd.price %></p>
 
 <% end %>
 

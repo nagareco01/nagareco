@@ -1,2 +1,20 @@
-<h1>Admins::Cds#show</h1>
-<p>Find me in app/views/admins/cds/show.html.erb</p>
+<h1>商品詳細</h1>
+
+<p>画像：</p><%= attachment_image_tag @cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'40x40' %>
+<p>説明文：<%= @cd.description %></p>
+
+<p>アーティスト名：<%= @cd.artist.artist_name %></p>
+<p>CD名：<%= @cd.name %></p>
+<p>曲名：
+	<% @cd.discs.each do |disc| %>
+		 Disc.<%= disc.disc_number %>
+		<% disc.songs.each do |song| %>
+				<%= song.song_name %>
+		<% end %>
+	<% end %>
+</p>
+<p>ジャンル：<%= @cd.genre.genre_name %></p>
+<p>レーベル名；<%= @cd.label.label_name %></p>
+<p>在庫：<%= @cd.stock %></p>
+<p>ステータス：<%= @cd.sale_status %></p>
+<p>価格(税込)：<%= @cd.price %></p>
