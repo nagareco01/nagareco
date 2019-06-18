@@ -1,9 +1,10 @@
 class Clients::ClientsController < ApplicationController
 	before_action :authenticate_client!
-	before_action :correct_client
+	before_action :correct_client,except: [:create, :remove_address]
 
   def show
   	@client = Client.find(params[:id])
+    @addresses = Address.where(client_id: current_client.id)
   end
 
   def edit
@@ -24,9 +25,23 @@ class Clients::ClientsController < ApplicationController
   end
 
   def create
-    post = Address.new
-    post.save
+    address = current_client.addresses.new(address_params)
+    address.client_id = current_client.id
+    address.save
     redirect_to clients_client_path(current_client.id)
+  end
+
+  def remove_address
+    #binding.pry
+    address = Address.find(params[:id])
+    address.destroy
+    redirect_to clients_client_path(current_client.id)
+  end
+
+  def destroy
+    client = Client.find(params[:id])
+    client.destroy
+    redirect_to clients_cds_path
   end
 
   private

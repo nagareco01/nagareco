@@ -2,6 +2,15 @@ class Clients::OrdersController < ApplicationController
 
   def index
     @orders = Order.where(client_id: current_client.id)
+    @total_price = 0
+    orders = Order.where(client_id: current_client.id)
+    orders.each do |order|
+      @total_price += order.total_price
+    end
+  end
+
+  def show
+    @item = OrderItem.find(params[:id])
   end
 
   def buy 
@@ -54,12 +63,26 @@ class Clients::OrdersController < ApplicationController
     post.shipment_status = 0
     post.total_price = @total_price
 
+    items.each do |i|
+      if i.quantity >= i.cd.stock
+        flash[:notice] = "在庫が#{i.cd.stock}枚なので、#{i.cd.stock}枚以下のご注文をお願いします"
+        redirect_to clients_items_path
+        return
+      end
+    end
+
     if post.save
 
+      post.order_items.each do |t|
+        cd = Cd.find_by(id: t.cd_id)
+        cd.stock -= t.quantity
+        cd.save
+      end
       items.destroy_all
 
     else
 
+      flash[:notice] = "購入に失敗しました。"
       @client = Client.find(current_client.id)
       @order = Order.new
       items = Item.where(client_id: current_client.id)

@@ -15,15 +15,27 @@
 </p>
 <p>ジャンル：<%= @cd.genre.genre_name %></p>
 <p>レーベル名；<%= @cd.label.label_name %></p>
-<p>在庫：<%= @cd.stock %></p>
-<p>ステータス：<%= @cd.sale_status %></p>
+<p>在庫：
+	<% if @cd.stock <= 0 %>
+	<%= "✖" %>
+	<% else %>
+	<%= @cd.stock %>
+	<% end %>
+</p>
+<p>ステータス：
+	<% if @cd.stock <= 0 %>
+	<%= "販売停止" %>
+	<% else %>
+	<%= @cd.sale_status %>
+	<% end %>
+</p>
 <p>価格(税込)：<%= @cd.price %></p>
 
 <p>購入枚数</p>
 	
 	<%= form_for @item, url: clients_items_add_item_path do |f| %>
 	<%= f.hidden_field :cd_id, value: params[:id] %>
-	<%= f.number_field :quantity %>
+	<%= f.number_field :quantity, required:true, min:"1" %>
 	<%= f.submit "追加" %>
 	<% end %>
 

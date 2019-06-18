@@ -21,4 +21,4 @@
 		<% end %>
 </table>
 
-<p>小計(<%= @total_quantity %>点の商品):¥ <%= total_price %> | レジへ進む </p>
+<p>小計(<%= @total_quantity %>点の商品):¥ <%= total_price %> | <%= link_to "購入手続きへ進む", clients_order_buy_path(current_client.id) %></p>
