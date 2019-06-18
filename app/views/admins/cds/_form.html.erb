@@ -1,0 +1,50 @@
+<%= form_for new_cd,:url => {:action => :create}  do |f| %>
+	<div>
+		<h4>CD名</h4>
+		<%= f.text_field :name, class:"cd-name" %>
+	</div>
+	<div>
+		<h4>アーティスト名</h4>
+		<%= f.text_field :artist, class:"cd-artist" %>
+	</div>
+	<div>
+		<h4>価格<br>税別価格</h4>
+		<%= f.text_field :price, class:"cd-price" %>
+	</div>
+	<div>
+		<h4>在庫数</h4>
+		<%= f.text_field :stock, class:"cd-stock" %>
+	</div>
+	<div>
+		<h4>ジャケットimage</h4>
+		<%= f.attachment_field :image %>
+	</div>
+	<div>
+		<h4>レーベル名</h4>
+		<%= f.collection_select :label_id, Label.all, :id, :label_name %>
+		<%= f.text_field :label_id, class:"label_name" %>
+	</div>
+	<div>
+		<h4>ジャンル</h4>
+		<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+		<%= f.text_field :genre_id, class:"genre_name" %>
+	</div>
+	<div>
+		<h4>ステータス</h4>
+		<%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
+	</div>
+	<div>
+		<h4>説明文</h4>
+		<%= f.text_area :description, class:"cd-description",  size: "80*80" %>
+	</div>
+	<div>
+		<h4>DISC</h4>
+			<%= f.fields_for :discs do |d| %>
+				<%= render 'disc_fields', f: d %>
+			<% end %>
+	</div>
+	<div>
+		<%= link_to_add_association 'DISC追加', f, :discs%>
+	</div>
+  	 <%= f.submit "新規登録", class:"btn btn-primary" %>
+<% end %>
