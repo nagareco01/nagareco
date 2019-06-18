@@ -28,8 +28,20 @@ Rails.application.routes.draw do
     registrations: 'clients/registrations',
     sessions: 'clients/sessions'
   }
+  devise_scope :client do
+      root :to => 'clients/cds#index'
+  end
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions'
   }
+  devise_scope :admin do
+    authenticated :admin do
+      root :to => 'admins/cds#index'
+    end
+    unauthenticated :admin do
+      root :to => 'admins/sessions#new'
+    end
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

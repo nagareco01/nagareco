@@ -4,9 +4,12 @@ class Admins::CdsController < ApplicationController
   end
 
   def show
+    @cd = Cd.find(params[:id])
+    @item = Item.new
   end
 
   def index
+    @cds = Cd.all
   end
 
   def edit
