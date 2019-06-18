@@ -1,6 +1,6 @@
 <h1>購入履歴一覧(全顧客)</h1>
 
-<table>
+<table border = "1">
 
 	<tr>
 		<th>購入者</th>
@@ -15,17 +15,35 @@
 
 	<% @orders.each do |order| %>
 
-	<tr>
-		<th>
+	<tr align = "center">
+		<td>
 			<%= link_to order.client.last_name + order.client.first_name, admins_client_path(order.client.id) %>
-		</th>
-		<th><%= order.created_at %></th>
-		<th><%= order.order_item.cd.name %></th>
-		<th><%= order.order_item.quantity %></th>
-		<th><%= order.order_item.cd.price * order.order_item.quantity %></th>
-		<th><%= order.total_price %></th>
-		<th><%= order.shipping_address %></th>
-		<th><%= order.select :shipment_status, Order.shipment_statuses.keys.to_a, {} %></th>
+		</td>
+		<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+		<td>
+			<% order.order_items.each do |item| %>
+				<div><%= item.cd.name %></div>
+			<% end %>
+		</td>
+		<td>
+			<% order.order_items.each do |item| %>
+				<div><%= item.quantity %></div>
+			<% end %>
+		</td>
+		<td>
+			<% order.order_items.each do |item| %>
+				<div><%= item.quantity * item.purchased_price %></div>
+			<% end %>
+		</td>
+		<td><%= order.total_price + 500 %></td>
+		<td><%= order.shipping_address %></td>
+		<%= form_for order, url: admins_order_path(order.id) do |f| %>
+		<td>
+			<%= f.select :shipment_status, Order.shipment_statuses.keys %>
+			<%= f.submit "変更" %>
+		</td>
+		<% end %>
 	</tr>
+
 	<% end %>
 

@@ -2,8 +2,17 @@ class Clients::ItemsController < ApplicationController
 
 
   def add_item
+
     if client_signed_in?
-      if Item.exists?(cd_id: params[:item][:cd_id], client_id: current_client.id)
+      cd = Cd.find(params[:item][:cd_id])
+      if cd.stock < params[:item][:quantity].to_i
+        flash[:notice] = "在庫が#{cd.stock}枚なので、#{cd.stock}枚以下のご注文をお願いします"
+        redirect_to clients_cd_path(cd.id)
+        return
+      end
+
+      if
+        Item.exists?(cd_id: params[:item][:cd_id], client_id: current_client.id)
         item = Item.find_by(cd_id: params[:item][:cd_id], client_id: current_client.id)
         item.quantity += params[:item][:quantity].to_i
         item.save
@@ -12,10 +21,12 @@ class Clients::ItemsController < ApplicationController
   	    item.client_id = current_client.id
   	    item.save
       end
-  	    redirect_to clients_items_path
+        redirect_to clients_items_path
+
     else
       redirect_to new_client_session_path
     end
+
   end
 
   def index

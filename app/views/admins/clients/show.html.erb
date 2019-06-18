@@ -29,4 +29,43 @@
 <h3>メールアドレス　<%= @client.email%></h3>
 
 <%= link_to"顧客編集",edit_admins_client_path(@client.id)%>
-<%= link_to"退会",admins_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？"%>
+<%= link_to"退会"%>
+
+<table border = "1">
+
+	<tr>
+		<th>購入日</th>
+		<th>CD名</th>
+		<th>購入枚数</th>
+		<th>CD価格</th>
+		<th>送料</th>
+		<th>支払方法</th>
+		<th>ステータス</th>
+	</tr>
+
+	<% @orders.each do |order| %>
+
+	<tr align = "center">
+		<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+		<td>
+			<% order.order_items.each do |item| %>
+				<div><%= link_to item.cd.name, clients_order_show_path %></div>
+			<% end %>
+		</td>
+		<td>
+			<% order.order_items.each do |item| %>
+				<div><%= link_to item.quantity, clients_order_show_path %></div>
+			<% end %>
+		</td>
+		<td>
+			<% order.order_items.each do |item| %>
+				<div><%= link_to "￥"+ item.cd.price.to_s, clients_order_show_path %></div>
+			<% end %>
+		</td>
+		<td>￥500</td>
+		<td><%= order.payment %></td>
+		<td><%= order.shipment_status %></td>
+	</tr>
+
+	<% end %>
+</table>
