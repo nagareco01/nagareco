@@ -15,8 +15,20 @@
 </p>
 <p>ジャンル：<%= @cd.genre.genre_name %></p>
 <p>レーベル名；<%= @cd.label.label_name %></p>
-<p>在庫：<%= @cd.stock %></p>
-<p>ステータス：<%= @cd.sale_status %></p>
+<p>在庫：
+	<% if @cd.stock <= 0 %>
+	<%= "✖" %>
+	<% else %>
+	<%= @cd.stock %>
+	<% end %>
+</p>
+<p>ステータス：
+	<% if @cd.stock <= 0 %>
+	<%= "販売停止" %>
+	<% else %>
+	<%= @cd.sale_status %>
+	<% end %>
+</p>
 <p>価格(税込)：<%= @cd.price %></p>
 
 <p>購入枚数</p>
