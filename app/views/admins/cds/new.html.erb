@@ -1,24 +1,2 @@
 <h2>CD新規登録</h2>
-<%= form_for @cd,:url => {:action => :create}  do |f| %>
-	<h4>CD名</h4>
-		<%= f.text_field :name, class:"cd-name" %>
-	<h4>アーティスト名</h4>
-		<%= f.text_field :artist, class:"cd-artist" %>
-	<h4>価格<br>税別価格</h4>
-		<%= f.text_field :price, class:"cd-price" %>
-	<h4>在庫数</h4>
-		<%= f.text_field :stock, class:"cd-stock" %>
-	<h4>ジャケットimage</h4>
-		<%= f.attachment_field :image %>
-	<h4>レーベル名</h4>
-		<%= f.collection_select :label_id, Label.all, :id, :label_name %>
-		<%= f.text_field :label_id, class:"label_name" %>
-	<h4>ジャンル</h4>
-		<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-		<%= f.text_field :genre_id, class:"genre_name" %>
-	<h4>ステータス</h4>
-		<%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
-	<h4>説明文</h4>
-		<%= f.text_area :description, class:"cd-description",  size: "80*80" %>
-	<%= f.submit "新規登録", class:"btn btn-primary" %>
-<% end %>
+<%= render 'form', new_cd: @cd  %>
