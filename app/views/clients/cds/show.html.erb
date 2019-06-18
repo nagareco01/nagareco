@@ -23,7 +23,7 @@
 	
 	<%= form_for @item, url: clients_items_add_item_path do |f| %>
 	<%= f.hidden_field :cd_id, value: params[:id] %>
-	<%= f.number_field :quantity %>
+	<%= f.number_field :quantity, required:true, min:"1" %>
 	<%= f.submit "追加" %>
 	<% end %>
 
