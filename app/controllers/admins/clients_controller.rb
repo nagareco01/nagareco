@@ -9,6 +9,7 @@ class Admins::ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @address = Address.where(params[:id])
+    @orders = Order.where(params[:id])
   end
 
   def edit
@@ -33,5 +34,5 @@ private
   def address_params
     params.require(:address).permit(:last_name, :first_name, :sub_post_code, :sub_address)
   end
-
+  
 end
