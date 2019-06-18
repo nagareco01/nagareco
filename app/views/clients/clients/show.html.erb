@@ -16,7 +16,7 @@
 				    <th>住所</th>
 			    </tr>
 		    </thead>
-		    <% @addresses.each do |address| %>
+		    <% @address.each do |address| %>
 		    <tbody>
 		    	<tr>
 		    		<td><%= address.last_name %> <%= address.first_name %></td>
@@ -31,7 +31,7 @@
 </div>
 
 
-<%= link_to"注文履歴一覧",clients_cds_path%>
+<%= link_to"注文履歴一覧",clients_order_index_path(@client)%>
 <%= link_to"Mypage編集",edit_clients_client_path(@client)%>
 <%= link_to"住所新規登録",new_clients_client_path(id: @client.id)%>
 

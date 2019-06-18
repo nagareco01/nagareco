@@ -26,7 +26,8 @@ Rails.application.routes.draw do
 
   devise_for :clients, controllers: {
     registrations: 'clients/registrations',
-    sessions: 'clients/sessions'
+    sessions: 'clients/sessions',
+    passwords: 'clients/passwords'
   }
   devise_scope :client do
       root :to => 'clients/cds#index'

@@ -4,7 +4,7 @@ class Clients::ClientsController < ApplicationController
 
   def show
   	@client = Client.find(params[:id])
-    @addresses = Address.where(client_id: current_client.id)
+    @address = Address.where(client_id: current_client.id)
   end
 
   def edit
@@ -12,6 +12,13 @@ class Clients::ClientsController < ApplicationController
   end
 
   def update
+    if params[:client][:password].blank?
+      params[:client].delete("password")
+      params[:client].delete("password_confirmation")
+      sign_in(current_client, :bypass => true)
+      redirect_to clients_client_path(params[:id])
+    end
+
   	@client = Client.find(params[:id])
   	if @client.update(client_params)
       redirect_to clients_client_path(params[:id])
@@ -47,7 +54,7 @@ class Clients::ClientsController < ApplicationController
   private
 
   def client_params
-  	params.require(:client).permit(:email, :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :post_code, :telephone)
+  	params.require(:client).permit(:email, :password, :password_confirmation, :last_name, :first_name, :last_name_kana, :first_name_kana, :address, :post_code, :telephone)
   end
 
   def address_params
