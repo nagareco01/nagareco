@@ -33,7 +33,7 @@
           <% elsif client_signed_in? %>
             <dl>
               <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-              <dt><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
+              <dt><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索...' %></dt>
               <dd><%= f.submit("検索") %></dd>
               <% end %>
             </dl>
@@ -73,6 +73,10 @@
               <% end %>
             </ul>
           </header>
+
+          <% if flash[:notice] %>
+            <p><%= flash[:notice] %></p>
+          <% end %>
 
     <%= yield %>
 
