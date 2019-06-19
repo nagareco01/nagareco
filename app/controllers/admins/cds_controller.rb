@@ -1,4 +1,6 @@
 class Admins::CdsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def new
     @cd = Cd.new
     @disc = @cd.discs.build
