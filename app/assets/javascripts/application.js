@@ -16,4 +16,18 @@
   //= require bootstrap-sprockets
   //= require_tree .
   //= require cocoon
+  //= require bxslider
+  //= require rails-ujs
 
+$(document).ready(function(){
+	$('.bxslider').bxSlider({
+		auto: true,
+		speed: 1000,
+		moveSlide: 1,
+		pause: 6000,
+		maxSlides: 8,
+		slideWidth: 250,
+		randomStart: true,
+		autoHover: true,
+	});
+});
