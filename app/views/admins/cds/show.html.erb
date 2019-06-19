@@ -9,7 +9,8 @@
 	<% @cd.discs.each do |disc| %>
 		 Disc.<%= disc.disc_number %>
 		<% disc.songs.each do |song| %>
-				<%= song.song_name %>
+			<%= song.song_number %>
+			<%= song.song_name %>
 		<% end %>
 	<% end %>
 </p>
