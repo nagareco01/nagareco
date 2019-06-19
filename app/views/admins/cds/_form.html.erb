@@ -5,10 +5,10 @@
 	</div>
 	<div>
 		<h4>アーティスト名</h4>
-		<%= f.text_field :artist, class:"cd-artist" %>
+		<%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
 	</div>
 	<div>
-		<h4>価格<br>税別価格</h4>
+		<h4>価格(税別価格)</span></h4>
 		<%= f.text_field :price, class:"cd-price" %>
 	</div>
 	<div>
@@ -22,12 +22,10 @@
 	<div>
 		<h4>レーベル名</h4>
 		<%= f.collection_select :label_id, Label.all, :id, :label_name %>
-		<%= f.text_field :label_id, class:"label_name" %>
 	</div>
 	<div>
 		<h4>ジャンル</h4>
 		<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
-		<%= f.text_field :genre_id, class:"genre_name" %>
 	</div>
 	<div>
 		<h4>ステータス</h4>

@@ -19,7 +19,7 @@ class Admins::CdsController < ApplicationController
   end
 
   def create
-    @cd = Cd.new
+    @cd = Cd.new(cd_params)
     @cd.save
     redirect_to admins_cds_path
   end
@@ -40,7 +40,7 @@ class Admins::CdsController < ApplicationController
 
   def cd_params
     params.require(:cd).permit(:name, :artist, :price, :stock, :image_id, :description, :sale_status, :delete_flag, :artist_id, :label_id, :genre_id,
-                        discs_attributes: [:disc_number, :cd_id, :_destroy,
-                        songs_attributes: [:song_name, :song_number, :_destroy]])
+                        discs_attributes: [:id, :disc_number, :cd_id, :_destroy,
+                        songs_attributes: [:id, :song_name, :song_number, :_destroy]])
   end
 end
