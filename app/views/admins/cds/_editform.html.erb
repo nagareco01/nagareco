@@ -1,0 +1,44 @@
+<%= form_for cds,:url => {:action => :update}  do |f| %>
+	<div class="field">
+	    <div>
+	    	<h3>CD名</h3>
+	    	<%= f.text_field :name %>
+	    </div>
+	    <div>
+	    	<h3>価格</h3>
+	    	<%= f.text_field :price %>
+		</div>
+		<div>
+			<h3>在庫</h3>
+	    	<%= f.text_field :stock %>
+		</div>
+		<div>
+			<h3>ジャケット画像</h3>
+		    <%= f.attachment_field :image %>
+		</div>
+		<div>
+			<h3>レーベル名</h3>
+		    <%= f.collection_select :label_id, Label.all, :id, :label_name %>
+		</div>
+		<div>
+			<h3>ジャンル名</h3>
+		    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+		</div>
+		<div>
+			<h3>ステータス</h3>
+		    <%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
+		</div>
+		<div>
+			<h3>説明文</h3>
+		    <%= f.text_area :description, class:"cd-description",  size: "80*80" %>
+		</div>
+		<div>
+		<h4>DISC</h4>
+			<%= f.fields_for :discs do |d| %>
+				<%= render 'disc_fields', f: d %>
+			<% end %>
+		</div>
+    </div>
+<%= f.submit "更新", class:"btn btn-primary " %>
+<% end %>
+<%= link_to "削除", admins_cds_path, method: :delete, "data-confirm" => "本当に消しますか?" ,class: "btn btn-danger" %>
