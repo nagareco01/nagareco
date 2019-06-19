@@ -6,7 +6,7 @@
 		<!-- sumに初期値の設定 -->
 		<% @items.each do |item| %>
 		<td rowspan="2"><%= attachment_image_tag item.cd, :image %></td>
-		<td><%= item.id %>.<%= item.cd.name %></td>
+		<td><%= link_to item.cd.name, clients_cd_path(item.cd.id) %></td>
 		<td><%= form_for item, url: clients_item_path(item.id) do |f| %>
 			<%= f.number_field :quantity, value: item.quantity %>
 			<%= f.submit "変更" %></td>
