@@ -3,9 +3,6 @@ class Admins::CdsController < ApplicationController
     @cd = Cd.new
     @disc = @cd.discs.build
     @song = @disc.songs.build
-    @artist = Artist.new
-    @labal = Label.new
-    @genre = Genre.new
   end
 
   def show
@@ -22,20 +19,7 @@ class Admins::CdsController < ApplicationController
   end
 
   def create
-    @cd = Cd.new(cd_params)
-    @cd.save
-    @artist = Artist.new
-    @artist.save
-    @label = Label.new
-    @label.save
-    @genre = Genre.new
-    @genre.save
-    @artist_last = Artist.last
-    @cd.artist_id = @artist_last.id
-    @label_last = Label.last
-    @cd.label_id = @label_last.id
-    @genre_last = Genre.last
-    @cd.genre_id = @genre_last.id
+    @cd = Cd.new
     @cd.save
     redirect_to admins_cds_path
   end

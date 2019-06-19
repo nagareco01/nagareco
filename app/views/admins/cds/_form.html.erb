@@ -5,10 +5,7 @@
 	</div>
 	<div>
 		<h4>アーティスト名</h4>
-		<%= f.hidden_field :artist_id, value: 1 %>
-		<%= f.collection_select :artist_id, Artist.all, :id, :artist_name, class:"cd-artist", :include_blank => true %>
-		<%= fields_for @artist, new_admins_cd_path do |artist| %>
-		<%= artist.text_field :artist_name %>
+		<%= f.text_field :artist, class:"cd-artist" %>
 	</div>
 	<div>
 		<h4>価格<br>税別価格</h4>
@@ -24,17 +21,13 @@
 	</div>
 	<div>
 		<h4>レーベル名</h4>
-		<%= f.hidden_field :label_id, value: 1 %>
-		<%= f.select :label_id, Label.all.map{ |t| [t.label_name, t.id]}, :include_blank => true %>
-		<%= fields_for @label, new_admins_cd_path do |label| %>
-		<%= label.text_field :label_name, class:"label_name" %>
+		<%= f.collection_select :label_id, Label.all, :id, :label_name %>
+		<%= f.text_field :label_id, class:"label_name" %>
 	</div>
 	<div>
 		<h4>ジャンル</h4>
-		<%= f.hidden_field :genre_id, value: 1 %>
-		<%= f.select :genre_id, Genre.all.map{ |p| [p.genre_name, p.id]}, :include_blank => true %>
-			<%= fields_for @genre, new_admins_cd_path do |genre| %>
-			<%= genre.text_field :genre_name, class:"genre_name" %>
+		<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+		<%= f.text_field :genre_id, class:"genre_name" %>
 	</div>
 	<div>
 		<h4>ステータス</h4>
@@ -54,7 +47,4 @@
 		<%= link_to_add_association 'DISC追加', f, :discs%>
 	</div>
   	 <%= f.submit "新規登録", class:"btn btn-primary" %>
-<% end %>
-<% end %>
-<% end %>
 <% end %>

@@ -8,9 +8,6 @@ class Cd < ApplicationRecord
 	has_many :order_items
 	has_many :discs, inverse_of: :cd
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
-	#accepts_nested_attributes_for :artist
-	#accepts_nested_attributes_for :label
-	#accepts_nested_attributes_for :genre
 	belongs_to :artist
 	belongs_to :label
 	belongs_to :genre
