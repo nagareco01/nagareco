@@ -81,3 +81,5 @@ gem 'jquery-rails'
 gem 'paranoia'
 
 gem 'cocoon'
+
+gem "bxslider-rails"

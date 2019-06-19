@@ -65,7 +65,7 @@ class Clients::OrdersController < ApplicationController
 
     items.each do |i|
       if i.quantity >= i.cd.stock
-        flash[:notice] = "在庫が#{i.cd.stock}枚なので、#{i.cd.stock}枚以下のご注文をお願いします"
+        flash[:notice] = "カート投入中、他のお客様による同一商品の購入があったため、購入の処理を完了することができませんでした。#{i.cd.name}の在庫数が#{i.cd.stock}枚となっております。お手数ですが#{i.cd.stock}枚以下にご変更の後、再度ご注文をお願いいたします。"
         redirect_to clients_items_path
         return
       end
