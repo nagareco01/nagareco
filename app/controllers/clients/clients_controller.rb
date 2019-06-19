@@ -15,12 +15,11 @@ class Clients::ClientsController < ApplicationController
     if params[:client][:password].blank?
       params[:client].delete("password")
       params[:client].delete("password_confirmation")
-      sign_in(current_client, :bypass => true)
-      redirect_to clients_client_path(params[:id])
     end
 
   	@client = Client.find(params[:id])
   	if @client.update(client_params)
+      sign_in(@client, :bypass => true)
       redirect_to clients_client_path(params[:id])
     else
       render 'edit'

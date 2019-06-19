@@ -38,5 +38,5 @@ private
   def address_params
     params.require(:address).permit(:last_name, :first_name, :sub_post_code, :sub_address)
   end
-  
+
 end

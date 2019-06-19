@@ -10,11 +10,18 @@
   </head>
 
   <body>
-    <header>
-      <nav>ながれこ</nav>
-        <ul>
+    <header class="navbar navbar-default">
+      <div class="container">
+        <nav class="nav navbar-nav navbar-left">
+          <div class="logo_name">ながれこ</div>
+          <% if client_signed_in? %>
+            <div class="login_status"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
+          <% elsif admin_signed_in? %>
+            <div class="login_status">管理者でログイン中</div>
+          <% end %>
+        </nav>
+        <ul class="nav navbar-nav navbar-right">
           <% if admin_signed_in? %>
-            <p>管理者でログイン中</p>
             <li>
               <%= link_to "商品一覧", admins_cds_path %>
             </li>
@@ -32,14 +39,11 @@
             </li>
 
           <% elsif client_signed_in? %>
-            <dl>
-              <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-              <dt><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索...' %></dt>
-              <dd><%= f.submit("検索") %></dd>
-              <% end %>
-            </dl>
             <li>
-              <%= current_client.last_name + current_client.first_name %>
+              <%= search_form_for @search, url: clients_cds_search_path do |f| %>
+              <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40" %></li>
+              <li><%= f.submit("検索") %></li>
+              <% end %>
             </li>
             <li>
               <%= link_to "商品一覧", clients_cds_path %>
@@ -54,33 +58,39 @@
               <%= link_to "ログアウト", destroy_client_session_path, method: :delete %>
             </li>
 
-            <% else %>
-              <dl>
-              <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-              <dt><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '検索するテキストを入力...' %></dt>
-              <dd><%= f.submit("検索") %></dd>
-              <% end %>
-            </dl>
-              <li>
-                <%= link_to "商品一覧", clients_cds_path %>
-              </li>
-              <li>
-                <%= link_to "ログイン", new_client_session_path %>
-              </li>
-              <li>
-                <%= link_to "サインアップ", new_client_registration_path %>
-              </li>
+          <% else %>
+            <li>
+            <%= search_form_for @search, url: clients_cds_search_path do |f| %>
+            <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40" %></li>
+            <li><%= f.submit("検索") %></li>
+            <% end %>
+            </li>
+            <li>
+              <%= link_to "商品一覧", clients_cds_path %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_client_session_path %>
+            </li>
+            <li>
+              <%= link_to "サインアップ", new_client_registration_path %>
+            </li>
 
-              <% end %>
-            </ul>
-          </header>
-
-          <% if flash[:notice] %>
-            <p><%= flash[:notice] %></p>
           <% end %>
+        </ul>
+      </div>
+    </header>
+
+        <div class="container">
+        <% if flash[:notice] %>
+          <div class="flash"><%= flash[:notice] %></div>
+        <% end %>
 
     <%= yield %>
 
+        <footer class="footer">
+          <div class="container">
+            <p class="text-right">CopyRight ながれこ.inc</p>
+          </div>
+        </footer>
   </body>
-
 </html>

@@ -6,7 +6,7 @@ class Clients::ItemsController < ApplicationController
     if client_signed_in?
       cd = Cd.find(params[:item][:cd_id])
       if cd.stock < params[:item][:quantity].to_i
-        flash[:notice] = "在庫が#{cd.stock}枚なので、#{cd.stock}枚以下のご注文をお願いします"
+        flash[:notice] = "#{cd.name}の在庫が#{cd.stock}枚なので、#{cd.stock}枚以下のご注文をお願いします"
         redirect_to clients_cd_path(cd.id)
         return
       end
@@ -37,6 +37,13 @@ class Clients::ItemsController < ApplicationController
   def update
   	item = Item.find(params[:id])
     item.update(item_params)
+
+    if item.cd.stock < item.quantity
+      flash[:notice] = "#{item.cd.name}の在庫が#{item.cd.stock}枚なので、#{item.cd.stock}枚以下のご注文をお願いします"
+      redirect_to clients_items_path
+      return
+    end
+
     redirect_to clients_items_path
   end
 
