@@ -61,7 +61,7 @@
           <% else %>
             <li>
             <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-            <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '検索するテキストを入力...' %></li>
+            <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40" %></li>
             <li><%= f.submit("検索") %></li>
             <% end %>
             </li>
