@@ -13,7 +13,12 @@
     <header class="navbar navbar-default">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <div class="logo_name"><%= image_tag "sample_logo.png" %></div>
+          <div class="logo_name"><%= image_tag "logo2_nagareco.png"%></div>
+          <% if client_signed_in? %>
+            <div class="login_status"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
+          <% elsif admin_signed_in? %>
+            <div class="login_status">管理者でログイン中</div>
+          <% end %>
         </nav>
         <ul class="nav navbar-nav navbar-right">
           <% if admin_signed_in? %>
