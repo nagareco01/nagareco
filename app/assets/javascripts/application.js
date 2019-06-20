@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-  //= require turbolinks
   //= require jquery
   //= require bootstrap-sprockets
   //= require_tree .
@@ -30,5 +29,6 @@ $(document).ready(function(){
 		slideWidth: 250,
 		randomStart: true,
 		autoHover: true,
+		touchEnabled:false
 	});
 });
