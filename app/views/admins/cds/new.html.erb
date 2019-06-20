@@ -1,3 +1,12 @@
 <h2>CD新規登録</h2>
 <h5><strong>※数字は半角英数字で記入して下さい</strong></h5>
+<% if @cd.errors.any? %>
+  <div id="error_explanation" class="alert alert-danger">
+    <ul>
+      <% @cd.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <%= render 'newform', new_cd: @cd  %>

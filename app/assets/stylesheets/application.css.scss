@@ -17,6 +17,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+	margin: 55px 224px 30px;
+	padding: 0px 16px;
+	font-family: 'メイリオ','Hiragino kaku Gothic Pro';
+}
+
 .disc-number{
 	width: 60px;
 }
@@ -32,33 +38,3 @@
 	text-align: center;
 }
 
-.object{
-	text-align:center;
-}
-
-.image{
-	margin:0 auto;
-}
-
-.way{
-	opacity:0;
-	position:relative;
-	transition:all 1s 0s ease;
-	z-index:0;
-}
-.way:before{
-	background:#333;
-	content:"";
-	display: block;
-	position:absolute;
-	transform:translateX(-100%);
-	transition: all 1s 0s ease;
-	width:100%;
-	z-index:1;
-}
-.way.active:before{
-	transform:translateX(100%);
-}
-.way.active{
-	opacity:1;
-}

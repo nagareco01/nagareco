@@ -1,14 +1,15 @@
 <%= form_for new_cd,:url => {:action => :create}  do |f| %>
+
 	<div>
 		<h4>CD名</h4>
 		<%= f.text_field :name, class:"cd-name" %>
 	</div>
 	<div>
-		<h4>アーティスト名</h4>
+		<h4>アーティスト名 / <%= link_to "アーティストの追加", admins_cd_add_path, :style=>"font-size:12px;" %></h4>
 		<%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
 	</div>
 	<div>
-		<h4>価格(税別価格)</span></h4>
+		<h4>価格(税別価格)</h4>
 		<%= f.number_field :price, class:"cd-price" %>
 	</div>
 	<div>
@@ -20,11 +21,11 @@
 		<%= f.attachment_field :image %>
 	</div>
 	<div>
-		<h4>レーベル名</h4>
+		<h4>レーベル名 / <%= link_to "レーベルの追加", admins_cd_add_path, :style=>"font-size:12px;" %></h4>
 		<%= f.collection_select :label_id, Label.all, :id, :label_name %>
 	</div>
 	<div>
-		<h4>ジャンル</h4>
+		<h4>ジャンル / <%= link_to "ジャンルの追加", admins_cd_add_path, :style=>"font-size:12px;" %></h4>
 		<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
 	</div>
 	<div>

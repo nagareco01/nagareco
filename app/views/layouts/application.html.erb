@@ -13,12 +13,7 @@
     <header class="navbar navbar-default">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <div class="logo_name">ながれこ</div>
-          <% if client_signed_in? %>
-            <div class="login_status"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
-          <% elsif admin_signed_in? %>
-            <div class="login_status">管理者でログイン中</div>
-          <% end %>
+          <div class="logo_name"><%= image_tag "sample_logo.png" %></div>
         </nav>
         <ul class="nav navbar-nav navbar-right">
           <% if admin_signed_in? %>
@@ -37,6 +32,7 @@
             <li>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
+            <div class="text-right">管理者でログイン中</div>
 
           <% elsif client_signed_in? %>
             <li>
@@ -57,6 +53,7 @@
             <li>
               <%= link_to "ログアウト", destroy_client_session_path, method: :delete %>
             </li>
+            <div class="text-right"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
 
           <% else %>
             <li>
@@ -79,18 +76,17 @@
         </ul>
       </div>
     </header>
-
-        <div class="container">
-        <% if flash[:notice] %>
-          <div class="flash"><%= flash[:notice] %></div>
-        <% end %>
-
+    <div class="container">
+      <% if flash[:notice] %>
+      <div class="flash"><%= flash[:notice] %></div>
+      <% end %>
+    </div>
     <%= yield %>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-right">CopyRight ながれこ.inc</p>
+      </div>
+    </footer>
 
-        <footer class="footer">
-          <div class="container">
-            <p class="text-right">CopyRight ながれこ.inc</p>
-          </div>
-        </footer>
   </body>
 </html>
