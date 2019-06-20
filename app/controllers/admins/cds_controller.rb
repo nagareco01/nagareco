@@ -39,6 +39,35 @@ class Admins::CdsController < ApplicationController
   end
 
 
+  def add
+    @artist = Artist.new
+    @label = Label.new
+    @genre = Genre.new
+  end
+
+  def add_info
+
+    if params[:artist].present?
+    artist = Artist.new(artist_name: params[:artist][:artist_name])
+    artist.save
+    redirect_to new_admins_cd_path
+
+    elsif params[:label].present?
+    label = Label.new(label_name: params[:label][:label_name])
+    label.save
+    redirect_to new_admins_cd_path
+
+    elsif params[:genre].present?
+    genre = Genre.new(genre_name: params[:genre][:genre_name])
+    genre.save
+    redirect_to new_admins_cd_path
+
+    else
+    redirect_to admins_cd_add_path
+
+    end
+
+  end
 
 
   def cd_params
