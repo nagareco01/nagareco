@@ -59,7 +59,7 @@
 		</td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to "￥"+ (item.cd.price.to_s*1.08).floor, clients_order_show_path %></div>
+				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path %></div>
 			<% end %>
 		</td>
 		<td>￥500</td>

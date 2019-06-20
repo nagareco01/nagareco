@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      cd: CD
+      disc: ディスク
+      song: 曲
+    attributes:
+      cd:
+        name: CD名
+        description: 説明文
+        price: 価格
+        stock: 在庫
+      discs:
+        disc_number: ディスクナンバー
+      discs/songs:
+        song_name: 曲名
+        song_number: 曲順
