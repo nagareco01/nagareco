@@ -20,7 +20,11 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :clients, except: [:new, :create]
+    
+    get 'cds/add' => 'cds#add', as: 'cd_add'
+    post 'cds/add_info' => 'cds#add_info', as: 'cd_add_info'
     resources :cds
+
     resources :orders, only: [:index, :update]
   end
 
