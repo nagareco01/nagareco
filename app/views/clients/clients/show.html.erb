@@ -5,7 +5,10 @@
 <h3>自宅住所　<%= @client.address%></h3>
 <h3>メールアドレス　<%= @client.email%></h3>
 
+<% unless @address == [] %>
+
 <h3>登録住所</h3>
+
 <div class="create-address">
 	<h4><!-- 文字の大きさのため、あとでcssで調整 -->
 		<table>
@@ -29,6 +32,8 @@
 	    </table>
     </h4>
 </div>
+
+<% end %>
 
 
 <%= link_to"注文履歴一覧",clients_order_index_path(@client)%>
