@@ -2,6 +2,7 @@ class Clients::CdsController < ApplicationController
 
   def index
   	@cds = Cd.all
+    @genres = Genre.all
   end
 
   def search

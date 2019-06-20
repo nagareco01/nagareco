@@ -18,7 +18,7 @@
   //= require bxslider
   //= require rails-ujs
 
-$(document).ready(function(){
+jQuery(window).load(function(){
 	$('.bxslider').bxSlider({
 		auto: true,
 		speed: 1000,
@@ -29,6 +29,16 @@ $(document).ready(function(){
 		slideWidth: 250,
 		randomStart: true,
 		autoHover: true,
-		touchEnabled:false
+		touchEnabled: false
+	});
+});
+
+$(function(){
+
+	$("#back a").on("click",function(){
+		$("body, html").animate({
+			scrollTop:0
+		}, 800);
+		return false;
 	});
 });
