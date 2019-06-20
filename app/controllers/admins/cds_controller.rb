@@ -22,14 +22,22 @@ class Admins::CdsController < ApplicationController
 
   def create
     @cd = Cd.new(cd_params)
-    @cd.save
-    redirect_to admins_cds_path
+    if  @cd.save
+        redirect_to admins_cds_path
+
+    else
+        render 'new'
+      end
   end
 
   def update
     @cd = Cd.find(params[:id])
-    @cd.update(cd_params)
-    redirect_to admins_cds_path
+    if  @cd.update(cd_params)
+        redirect_to admins_cds_path
+
+    else
+      render 'edit'
+    end
   end
 
   def destroy
