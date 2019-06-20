@@ -39,10 +39,10 @@
 
 <div>
 	<p>注文内容</p>
-	<p>商品の小計:<%= "￥" + @total_price.to_s %></p>
+	<p>商品の小計:<%= "￥" + (@total_price*1.08).floor.to_s %></p>
 	<p>配送料・手数料:<span>￥500</span></p>
-	<p>注文合計:<%= "￥" + (@total_price + 500).to_s %></p>
-	<p>ご請求額:<%= "￥" + (@total_price + 500).to_s %></p>
+	<p>注文合計:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
+	<p>ご請求額:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
 </div>
 	<%= f.submit "注文を確定する" %>
 	<% end %>

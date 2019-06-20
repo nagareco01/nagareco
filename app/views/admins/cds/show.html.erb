@@ -18,4 +18,5 @@
 <p>レーベル名；<%= @cd.label.label_name %></p>
 <p>在庫：<%= @cd.stock %></p>
 <p>ステータス：<%= @cd.sale_status %></p>
-<p>価格(税込)：<%= @cd.price %></p>
+<p>価格(税込)：<%= (@cd.price.to_i*1.08).floor %></p>
+<%= link_to "商品編集", edit_admins_cd_path %>
