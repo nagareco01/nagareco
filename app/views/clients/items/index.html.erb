@@ -1,24 +1,36 @@
 <h1>カート</h1>
 
-<table>
-	<tr>
-		<% total_price = 0 %>
-		<!-- sumに初期値の設定 -->
-		<% @items.each do |item| %>
-		<td rowspan="2"><%= attachment_image_tag item.cd, :image %></td>
-		<td><%= link_to item.cd.name, clients_cd_path(item.cd.id) %></td>
-		<td><%= form_for item, url: clients_item_path(item.id) do |f| %>
-			<%= f.number_field :quantity, value: item.quantity %>
-			<%= f.submit "変更" %></td>
-			<% end %>
-		<% total_price += item.quantity * item.cd.price %>
-		<!-- total_priceを算出 -->
-	</tr>
-	<tr>
-		<td>価格：¥<%= item.cd.price %></td>
-		<td><%=link_to "削除", clients_item_path(item.id), method: :delete %></td>
-	</tr>
-		<% end %>
-</table>
+<% if @items == [] %>
 
-<p>小計(<%= @total_quantity %>点の商品):¥ <%= total_price %> | <%= link_to "購入手続きへ進む", clients_order_buy_path(current_client.id) %></p>
+	<%= "お客様のショッピングカートに商品はありません" %>
+
+<% else %>
+
+	<table>
+		<tr>
+			<% total_price = 0 %>
+			<!-- sumに初期値の設定 -->
+			<% @items.each do |item| %>
+			<td rowspan="2"><%= attachment_image_tag item.cd, :image %></td>
+			<td><%= link_to item.cd.name, clients_cd_path(item.cd.id) %></td>
+			<td><%= form_for item, url: clients_item_path(item.id) do |f| %>
+				<%= f.number_field :quantity, value: item.quantity, required:true, min:"1"  %>
+				<%= f.submit "変更" %></td>
+				<% end %>
+			<% total_price += item.quantity * item.cd.price %>
+			<!-- total_priceを算出 -->
+		</tr>
+		<tr>
+			<td>価格：¥<%= item.cd.price %></td>
+			<td><%=link_to "削除", clients_item_path(item.id), method: :delete %></td>
+		</tr>
+			<% end %>
+	</table>
+
+	<% unless @itmes == [] %>
+
+	<p>小計(<%= @total_quantity %>点の商品):¥ <%= total_price %> | <%= link_to "購入手続きへ進む", clients_order_buy_path(current_client.id) %></p>
+
+	<% end %>
+
+<% end %>
