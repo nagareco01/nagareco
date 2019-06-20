@@ -17,6 +17,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+	margin: 55px 224px 30px;
+	padding: 0px 16px;
+	font-family: 'メイリオ','Hiragino kaku Gothic Pro';
+}
+
 .disc-number{
 	width: 60px;
 }
@@ -37,11 +43,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-
-h1,h2,h3,h4{
+h1,h2,h3,h4,h5,h6{
 	margin: 0;
 }
 
 .navbar{
 	margin-bottom: 0;
+
+}
+
+.navbar-default{
+	background-color: #FFF;
 }
