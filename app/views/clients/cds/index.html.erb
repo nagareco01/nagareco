@@ -15,6 +15,7 @@
 </ul>
 
 <% @genres.each do |genre| %>
+	<div class="way">
 	<h2><%= genre.genre_name %></h2>
 	<ul class="bxslider">
 		<% genre.cds.each do |cd| %>
@@ -27,6 +28,7 @@
 			</li>
     	<% end %>
 	</ul>
+	</div>
 <% end %>
 
 <span id="back">
