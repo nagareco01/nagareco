@@ -18,12 +18,12 @@
 		<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to item.cd.name, clients_order_show_path %></div>
+				<div><%= link_to item.cd.name, clients_order_show_path(item.id) %></div>
 			<% end %>
 		</td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to item.quantity, clients_order_show_path %></div>
+				<div><%= link_to item.quantity, clients_order_show_path(item.id) %></div>
 			<% end %>
 		</td>
 		<td>
@@ -41,3 +41,9 @@
 
 
 <h2>総計金額      ￥<%= @total_price %></h2>
+
+<span id="back">
+	<a href="#">
+		<%= image_tag "arrow.png"  %>
+	</a>
+</span>
