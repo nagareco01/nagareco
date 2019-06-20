@@ -35,6 +35,7 @@ class Admins::CdsController < ApplicationController
   def destroy
     cd= Cd.find(params[:id])
     cd.destroy
+    redirect_to admins_cds_path
   end
 
 
