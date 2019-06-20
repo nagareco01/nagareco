@@ -1,6 +1,7 @@
 class Admins::CdsController < ApplicationController
   before_action :authenticate_admin!
-  
+  before_action :reject_show, only: :show
+
   def new
     @cd = Cd.new
     @disc = @cd.discs.build
@@ -13,7 +14,7 @@ class Admins::CdsController < ApplicationController
   end
 
   def index
-    @cds = Cd.all
+    @cds = Cd.where(is_deleted: false)
   end
 
   def edit
@@ -32,9 +33,10 @@ class Admins::CdsController < ApplicationController
     redirect_to admins_cds_path
   end
 
-  def destroy
-    cd= Cd.find(params[:id])
-    cd.destroy
+  def hide
+    cd = Cd.find(params[:id])
+    cd.is_deleted = 1
+    cd.save
     redirect_to admins_cds_path
   end
 
@@ -69,10 +71,12 @@ class Admins::CdsController < ApplicationController
 
   end
 
+  private
 
   def cd_params
     params.require(:cd).permit(:name, :artist, :price, :stock, :image, :description, :sale_status, :delete_flag, :artist_id, :label_id, :genre_id,
                         discs_attributes: [:id, :disc_number, :cd_id, :_destroy,
                         songs_attributes: [:id, :song_name, :song_number, :_destroy]])
   end
+
 end

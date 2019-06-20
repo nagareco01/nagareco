@@ -20,10 +20,12 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :clients, except: [:new, :create]
-    
+
+    post 'cds/:id/hide' => 'cds#hide', as: 'cd_hide'
     get 'cds/add' => 'cds#add', as: 'cd_add'
     post 'cds/add_info' => 'cds#add_info', as: 'cd_add_info'
-    resources :cds
+
+    resources :cds, except: [:destroy]
 
     resources :orders, only: [:index, :update]
   end
@@ -40,12 +42,7 @@ Rails.application.routes.draw do
     sessions: 'admins/sessions'
   }
   devise_scope :admin do
-    authenticated :admin do
       root :to => 'admins/cds#index'
-    end
-    unauthenticated :admin do
-      root :to => 'admins/sessions#new'
-    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
