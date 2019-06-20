@@ -2,7 +2,7 @@ class Admins::ClientsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @clients = Client.page(params[:page]).per(3)
+    @clients = Client.page(params[:page]).per(15)
   end
 
   def show

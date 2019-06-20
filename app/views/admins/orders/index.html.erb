@@ -35,7 +35,7 @@
 				<div><%= item.quantity * item.purchased_price %></div>
 			<% end %>
 		</td>
-		<td><%= order.total_price + 500 %></td>
+		<td><%= (order.total_price*1.08).floor + 500 %></td>
 		<td><%= order.shipping_address %></td>
 		<%= form_for order, url: admins_order_path(order.id) do |f| %>
 		<td>
@@ -47,3 +47,8 @@
 
 	<% end %>
 
+<span id="back">
+	<a href="#">
+		<%= image_tag "arrow.png"  %>
+	</a>
+</span>

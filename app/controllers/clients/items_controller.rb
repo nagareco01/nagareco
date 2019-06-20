@@ -6,7 +6,7 @@ class Clients::ItemsController < ApplicationController
     if client_signed_in?
       cd = Cd.find(params[:item][:cd_id])
       if cd.stock < params[:item][:quantity].to_i
-        flash[:notice] = "#{cd.name}の在庫が#{cd.stock}枚なので、#{cd.stock}枚以下のご注文をお願いします"
+        flash[:notice] = "#{cd.name}の在庫が#{cd.stock}枚なので、#{cd.stock}枚以下のご注文をお願いします。"
         redirect_to clients_cd_path(cd.id)
         return
       end
@@ -24,6 +24,7 @@ class Clients::ItemsController < ApplicationController
         redirect_to clients_items_path
 
     else
+      flash[:notice] = "カートに商品を追加するには、ログインが必要です。"
       redirect_to new_client_session_path
     end
 
@@ -39,7 +40,9 @@ class Clients::ItemsController < ApplicationController
     item.update(item_params)
 
     if item.cd.stock < item.quantity
-      flash[:notice] = "#{item.cd.name}の在庫が#{item.cd.stock}枚なので、#{item.cd.stock}枚以下のご注文をお願いします"
+      flash[:notice] = "#{item.cd.name}の在庫が#{item.cd.stock}枚なので、#{item.cd.stock}枚以下のご注文をお願いします。"
+      item.quantity = item.cd.stock
+      item.save
       redirect_to clients_items_path
       return
     end

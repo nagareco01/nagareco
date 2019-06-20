@@ -1,13 +1,9 @@
-<section class="main-visual">
-	<div class="main-text">
-		<p>長野県出身のアーティストを集めたECサイト</p>
-	</div>
-</section>
 
-<div class="genre">
-<h2 class="genre-name">ジャンル</h2>
-	<ul class="bxslider">
-		<% @cds.each do |cd| %>
+
+
+<h2>ジャンル</h2>
+<ul class="bxslider">
+	<% @cds.each do |cd| %>
 		<li class="object">
 			<%= link_to clients_cd_path(cd.id) do %>
 			<div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></div>
@@ -15,5 +11,26 @@
 			<div><%= cd.name %></div>
 			<% end %>
 		</li>
-        <% end %>
-    </ul>
+    <% end %>
+</ul>
+
+<% @genres.each do |genre| %>
+	<h2><%= genre.genre_name %></h2>
+	<ul class="bxslider">
+		<% genre.cds.each do |cd| %>
+			<li class="object">
+				<%= link_to clients_cd_path(cd.id) do %>
+					<div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></div>
+					<div><%= cd.artist.artist_name %></div>
+			    	<div><%= cd.name %></div>
+				<% end %>
+			</li>
+    	<% end %>
+	</ul>
+<% end %>
+
+<span id="back">
+	<a href="#">
+		<%= image_tag "arrow.png"  %>
+	</a>
+</span>
