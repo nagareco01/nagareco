@@ -1,5 +1,7 @@
 class Clients::OrdersController < ApplicationController
 
+  before_action :reject_buy, only: :buy
+
   def index
     @orders = Order.where(client_id: current_client.id)
     @total_price = 0
@@ -13,12 +15,12 @@ class Clients::OrdersController < ApplicationController
     @item = OrderItem.find(params[:id])
   end
 
-  def buy 
+  def buy
     @client = Client.find(current_client.id)
     @order = Order.new
-    items = Item.where(client_id: current_client.id)
+    @items = Item.where(client_id: current_client.id)
     @total_price = 0
-    items.each do |item|
+    @items.each do |item|
       @total_price += item.quantity * item.cd.price
     end
 
@@ -65,7 +67,7 @@ class Clients::OrdersController < ApplicationController
 
     items.each do |i|
       if i.quantity > i.cd.stock
-        flash[:notice] = "カート投入中、他のお客様による同一商品の購入があったため、購入の処理を完了することができませんでした。#{i.cd.name}の在庫数が#{i.cd.stock}枚となっております。お手数ですが#{i.cd.stock}枚以下にご変更の後、再度ご注文をお願いいたします。"
+        flash[:notice] = "カート投入中、他のお客様による同一商品の購入があったため、購入の処理を完了することができませんでした。"
         redirect_to clients_items_path
         return
       end
@@ -100,4 +102,12 @@ class Clients::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment, :client_id)
   end
+
+  def reject_buy
+    if Item.where(client_id: current_client.id).blank?
+      flash[:notice] = "カートに商品が入っておりません。"
+      redirect_to clients_items_path
+    end
+  end
+
 end

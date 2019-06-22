@@ -1,5 +1,8 @@
-
-
+<section class="main-visual">
+	<div class="main-text">
+		<p>長野県出身のアーティストを集めたECサイト</p>
+	</div>
+</section>
 
 <h2>ジャンル</h2>
 <ul class="bxslider">
@@ -15,6 +18,7 @@
 </ul>
 
 <% @genres.each do |genre| %>
+	<div class="way">
 	<h2><%= genre.genre_name %></h2>
 	<ul class="bxslider">
 		<% genre.cds.each do |cd| %>
@@ -27,6 +31,7 @@
 			</li>
     	<% end %>
 	</ul>
+	</div>
 <% end %>
 
 <span id="back">

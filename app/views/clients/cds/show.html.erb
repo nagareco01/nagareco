@@ -1,40 +1,47 @@
-<h1>商品詳細</h1>
-
-<p>画像：</p><%= attachment_image_tag @cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'40x40' %>
-<p>説明文：<%= @cd.description %></p>
-
-<p>アーティスト名：<%= @cd.artist.artist_name %></p>
-<p>CD名：<%= @cd.name %></p>
-<p>曲名：
-	<% @cd.discs.each do |disc| %>
-		 Disc.<%= disc.disc_number %>
-		<% disc.songs.each do |song| %>
+<div class="container-show">
+	<div class="row">
+		<div class="col-lg-3">
+			<h1>商品詳細</h1>
+			<p><%= attachment_image_tag @cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'250x250' %></p>
+	</div>
+	<div class="col-lg-9">
+		<div class="show">
+		<p>説明文：<%= @cd.description %></p>
+		<p>アーティスト名：<%= @cd.artist.artist_name %></p>
+        <p>CD名：<%= @cd.name %></p>
+        <p>曲名：
+        	<% @cd.discs.each do |disc| %>
+		    Disc.<%= disc.disc_number %>
+		    <% disc.songs.each do |song| %>
 			<%= song.song_number %>
 			<%= song.song_name %>
-		<% end %>
-	<% end %>
-</p>
-<p>ジャンル：<%= @cd.genre.genre_name %></p>
-<p>レーベル名；<%= @cd.label.label_name %></p>
-<p>在庫：
-	<% if @cd.stock <= 0 %>
-		<%= "✖" %>
-	<% else %>
-		<%= @cd.stock %>
-	<% end %>
-</p>
-<p>ステータス：
-	<% if @cd.stock <= 0 %>
-		<%= "販売停止" %>
-	<% else %>
-		<%= @cd.sale_status %>
-	<% end %>
-</p>
-<p>価格(税込)：<%= (@cd.price*1.08).floor %></p>
-<p>購入枚数</p>
-	<%= form_for @item, url: clients_items_add_item_path do |f| %>
+			<% end %>
+			<% end %>
+        </p>
+        <p>ジャンル：<%= @cd.genre.genre_name %></p>
+        <p>レーベル名；<%= @cd.label.label_name %></p>
+        <p>在庫：
+        	<% if @cd.stock <= 0 %>
+        	<%= "✖" %>
+        	<% else %>
+        	<%= @cd.stock %>
+        	<% end %>
+        </p>
+        <p>ステータス：
+        	<% if @cd.stock <= 0 %>
+        	<%= "販売停止" %>
+        	<% else %>
+        	<%= @cd.sale_status %>
+        	<% end %>
+        </p>
+        <p>価格(税込)：<%= (@cd.price*1.08).floor %></p>
+        <p>購入枚数</p>
+        <%= form_for @item, url: clients_items_add_item_path do |f| %>
 		<%= f.hidden_field :cd_id, value: params[:id] %>
 		<%= f.number_field :quantity, required:true, min:"1" %>
 		<%= f.submit "カート追加" %>
-	<% end %>
-
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
