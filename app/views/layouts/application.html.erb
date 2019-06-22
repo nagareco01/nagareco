@@ -13,12 +13,7 @@
     <header class="navbar navbar-default">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
-          <div class="logo_name"><%= image_tag "logo2_nagareco.png"%></div>
-          <% if client_signed_in? %>
-            <div class="login_status"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
-          <% elsif admin_signed_in? %>
-            <div class="login_status">管理者でログイン中</div>
-          <% end %>
+          <div class="logo_name"><%= image_tag "logo2_nagareco.png" %></div>
         </nav>
         <ul class="nav navbar-nav navbar-right">
           <% if admin_signed_in? %>
@@ -42,8 +37,7 @@
           <% elsif client_signed_in? %>
             <li>
               <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-              <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %></li>
-              <li><%= f.submit("検索") %></li>
+              <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %><%= f.submit("検索") %></li>
               <% end %>
             </li>
             <li>
@@ -63,8 +57,7 @@
           <% else %>
             <li>
             <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-            <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %></li>
-            <li><%= f.submit("検索") %></li>
+            <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %><%= f.submit("検索") %></li>
             <% end %>
             </li>
             <li>
