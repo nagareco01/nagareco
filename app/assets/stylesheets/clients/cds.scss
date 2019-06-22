@@ -1,3 +1,39 @@
 // Place all the styles related to the clients/cds controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#back{
+	position:fixed;
+	right:20px;
+	bottom:20px;
+}
+#back img{
+	width:50px;
+}
+
+#back{
+	position:fixed;
+	right:20px;
+	bottom:20px;
+}
+#back img{
+	width:50px;
+}
+
+.main-visual{
+	height: 400px;
+	background-image: image_url("yun_1079.jpg");
+	background-position: center;
+	background-size: cover;
+	font-size: 10px;
+}
+
+h2{
+	margin: 55px 224px 30px;
+	padding: 0px 16px;
+}
+
+.bxslider{
+	margin: 55px 224px 30px;
+	padding: 0px 16px;
+}
