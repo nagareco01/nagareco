@@ -18,9 +18,9 @@ class Clients::OrdersController < ApplicationController
   def buy
     @client = Client.find(current_client.id)
     @order = Order.new
-    items = Item.where(client_id: current_client.id)
+    @items = Item.where(client_id: current_client.id)
     @total_price = 0
-    items.each do |item|
+    @items.each do |item|
       @total_price += item.quantity * item.cd.price
     end
 

@@ -49,6 +49,6 @@ $(function(){
 		else{ //scroll up
 			activePoint.removeClass("active");
 		}
-	},{offset : "90%"});
+	},{offset : "95%"});
 });
 
