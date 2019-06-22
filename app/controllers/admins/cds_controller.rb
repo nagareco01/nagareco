@@ -15,6 +15,7 @@ class Admins::CdsController < ApplicationController
 
   def index
     @cds = Cd.where(is_deleted: false)
+    @genres = Genre.all
   end
 
   def edit

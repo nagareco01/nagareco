@@ -17,7 +17,7 @@
 	<ul class="bxslider">
 		<% genre.cds.each do |cd| %>
 			<li class="object">
-				<%= link_to clients_cd_path(cd.id) do %>
+				<%= link_to admins_cd_path(cd.id) do %>
 					<div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></div>
 					<div><%= cd.artist.artist_name %></div>
 			    	<div><%= cd.name %></div>
