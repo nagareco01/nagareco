@@ -10,3 +10,116 @@
 #back img{
 	width:50px;
 }
+
+.disc-number{
+	width: 60px;
+	margin-left: 30px;
+}
+
+.new-cd-info{
+	margin-left: 50px;
+	margin-top: 15px;
+}
+
+.disc-table1{
+	width: 60px;
+	text-align: center;
+}
+
+.disc-table2{
+	width: 400px;
+	margin-right: 30px;
+	text-align: center;
+}
+
+.song-info{
+	margin-left: 50px;
+}
+
+.song-info .nested-song-td{
+	padding-left: 0px;
+}
+
+.nested-song-td{
+	padding-left: 50px;
+}
+
+.disc-num-info{
+	margin-left: 20px;
+	font-size: 18px;
+}
+.cd-info{
+	margin: 10px 20px 30px 10px;
+}
+
+.cd-item{
+	margin-left: 25px;
+}
+
+.new-cd-button{
+	margin-top: 50px;
+}
+
+.new-disc-button{
+	margin-top: 30px;
+}
+
+.song-botton{
+	width: 30%;
+	margin-left: 70px;
+}
+
+.new-song-button{
+	margin-top: 10px;
+	margin-left: 30%;
+}
+
+.disc-botton{
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.price-tax{
+	font-size: 14px;
+}
+
+.cd-info-edit{
+	width: 50%;
+	margin-left: 10%;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.cd-description{
+	height: 100px;
+}
+
+.add-items{
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.add-info-text{
+	margin-left: 30px;
+	margin-bottom: 20px;
+	width: 60%;
+	height: 40px;
+	background-color: #F8F8FF;
+	display: inline-block;
+}
+
+.add-info{
+	width: 20%;
+	margin-left: 20px;
+	display: inline-block;
+}
+
+.info-text{
+	background-color: #F8F8FF;
+}
+
+.add-artist, .add-label, .add-genre{
+	margin: 40px 0;
+}
