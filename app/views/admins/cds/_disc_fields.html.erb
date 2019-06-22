@@ -1,8 +1,8 @@
 <div class="nested-fields">
-  <h4>No.disc</h4>
-    <%= f.text_field :disc_number, class:"disc-number" %>
-    <%= link_to_remove_association "DISC削除", f %>
-  <table>
+  <h4 class="disc-num-info">Disc number</h4>
+    <%= f.text_field :disc_number, class:"disc-number info-text" %>
+    <%= link_to_remove_association "DISC削除", f, class: "btn btn-danger btn-xs" %>
+  <table class="song-info">
       <thead>
         <tr>
           <th class="disc-table1">曲順</th>
@@ -16,7 +16,7 @@
           <% end %>
       </tbody>
   </table>
-  <div>
-    <%= link_to_add_association '曲追加', f, :songs %>
+  <div class="song-botton">
+    <%= link_to_add_association '曲追加', f, :songs, class: "btn btn-success btn-block new-song-button"%>
   </div>
 </div>

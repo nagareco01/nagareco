@@ -1,37 +1,59 @@
 <%= form_for cds,:url => {:action => :update}  do |f| %>
 	<div class="field">
-	    <div>
-	    	<h3>CD名</h3>
-	    	<%= f.text_field :name %>
-	    </div>
-	    <div>
-	    	<h3>価格</h3>
-	    	<%= f.number_field :price %>
+	<div class="cd-info">
+		<h4>・CD名</h4>
+		<div class="cd-item">
+			<%= f.text_field :name, class:"cd-name info-text" %>
 		</div>
-		<div>
-			<h3>在庫</h3>
-	    	<%= f.number_field :stock %>
+	</div>
+	<div class="cd-info">
+		<h4>・アーティスト名 / <%= link_to "アーティストの追加", admins_cd_add_path, :style=>"font-size:12px;" %></h4>
+		<div class="cd-item">
+			<%= f.collection_select :artist_id, Artist.all, :id, :artist_name %>
 		</div>
-		<div>
-			<h3>ジャケット画像</h3>
-		    <%= f.attachment_field :image %>
+	</div>
+	<div class="cd-info">
+		<h4>・価格<span class="price-tax">(税別価格)</span></h4>
+		<div class="cd-item">
+			<%= f.number_field :price, class:"cd-price info-text" %>
 		</div>
-		<div>
-			<h3>レーベル名</h3>
-		    <%= f.collection_select :label_id, Label.all, :id, :label_name %>
+	</div>
+	<div class="cd-info">
+		<h4>・在庫数</h4>
+		<div class="cd-item">
+			<%= f.number_field :stock, class:"cd-stock info-text" %>
 		</div>
-		<div>
-			<h3>ジャンル名</h3>
-		    <%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+	</div>
+	<div class="cd-info">
+		<h4>・ジャケット写真</h4>
+		<div class="cd-item">
+			<%= f.attachment_field :image %>
 		</div>
-		<div>
-			<h3>ステータス</h3>
-		    <%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
+	</div>
+	<div class="cd-info">
+		<h4>・レーベル名 / <%= link_to "レーベルの追加", admins_cd_add_path, :style=>"font-size:12px;" %></h4>
+		<div class="cd-item">
+			<%= f.collection_select :label_id, Label.all, :id, :label_name %>
 		</div>
-		<div>
-			<h3>説明文</h3>
-		    <%= f.text_area :description, class:"cd-description",  size: "80*80" %>
+	</div>
+	<div class="cd-info">
+		<h4>・ジャンル / <%= link_to "ジャンルの追加", admins_cd_add_path, :style=>"font-size:12px;" %></h4>
+		<div class="cd-item">
+			<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
 		</div>
+	</div>
+	<div class="cd-info">
+		<h4>・ステータス</h4>
+		<div class="cd-item">
+			<%= f.select :sale_status, Cd.sale_statuses.keys.to_a, {} %>
+		</div>
+	</div>
+	<div class="cd-info">
+		<h4>・説明文</h4>
+		<div class="cd-item">
+			<%= f.text_area :description, class:"cd-description info-text",  size: "80*80" %>
+		</div>
+	</div>
 		<div>
 		<h4>DISC</h4>
 			<%= f.fields_for :discs do |d| %>
@@ -39,6 +61,13 @@
 			<% end %>
 		</div>
     </div>
-<%= f.submit "更新", class:"btn btn-primary " %>
+    <div class="">
+		<%= link_to_add_association 'DISC追加', f, :discs, class: 'btn btn-warning new-disc-button'%>
+	</div>
+	<div class="cd-info-edit">
+		<%= f.submit "更新", class:"btn btn-primary btn-lg btn-block" %>
+	</div>
 <% end %>
-<%= link_to "削除", admins_cd_path, method: :delete, "data-confirm" => "本当に消しますか?" ,class: "btn btn-danger" %>
+<div class="cd-info-edit">
+	<%= link_to "削除", admins_cd_path, method: :delete, "data-confirm" => "本当に消しますか?" ,class: "btn btn-danger  btn-lg btn-block" %>
+</div>
