@@ -1,6 +1,10 @@
 <h1>商品詳細</h1>
-
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
 <p>画像：</p><%= attachment_image_tag @cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'40x40' %>
+</div>
+<div class="col-lg-9">
 <p>説明文：<%= @cd.description %></p>
 
 <p>アーティスト名：<%= @cd.artist.artist_name %></p>
@@ -37,4 +41,6 @@
 		<%= f.number_field :quantity, required:true, min:"1" %>
 		<%= f.submit "カート追加" %>
 	<% end %>
-
+</div>
+</div>
+</div>
