@@ -44,3 +44,42 @@ body{
 	text-align: center;
 }
 
+.object{
+	text-align:center;
+}
+
+.image{
+	margin:0 auto;
+}
+
+.way{
+	opacity:0;
+	position:relative;
+	transition:all 1s 0.5s ease;
+	z-index:0;
+}
+.way:before{
+	background:#333;
+	content:"";
+	display: block;
+	position:absolute;
+	transform:translateX(-100%);
+	transition: all 1s 0.5s ease;
+	width:100%;
+	z-index:1;
+}
+.way.active:before{
+	transform:translateX(100%);
+}
+.way.active{
+	opacity:1;
+}
+
+#back{
+	position:fixed;
+	right:20px;
+	bottom:20px;
+}
+#back img{
+	width:50px;
+}

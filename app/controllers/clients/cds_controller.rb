@@ -1,7 +1,8 @@
 class Clients::CdsController < ApplicationController
+  before_action :reject_show, only: :show
 
   def index
-  	@cds = Cd.all
+  	@cds = Cd.where(is_deleted: false)
     @genres = Genre.all
   end
 
