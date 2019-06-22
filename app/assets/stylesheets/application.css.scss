@@ -22,7 +22,11 @@ body{
 }
 
 .navbar-default{
+	width: 100%;
 	margin: 0;
+	background-color: #fff;
+	position: fixed;
+	z-index: 100;
 }
 
 .disc-number{
