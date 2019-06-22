@@ -4,7 +4,8 @@
 	</div>
 </section>
 
-<h2>ジャンル</h2>
+<div class="way">
+<h2>おすすめ</h2>
 <ul class="bxslider">
 	<% @cds.each do |cd| %>
 		<li class="object">
@@ -16,9 +17,10 @@
 		</li>
     <% end %>
 </ul>
+</div>
 
 <% @genres.each do |genre| %>
-	<div class="way">
+<div class="way">
 	<h2><%= genre.genre_name %></h2>
 	<ul class="bxslider">
 		<% genre.cds.each do |cd| %>

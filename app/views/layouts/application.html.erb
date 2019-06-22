@@ -35,11 +35,9 @@
             <div class="text-right">管理者でログイン中</div>
 
           <% elsif client_signed_in? %>
-            <li>
-              <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-              <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %><%= f.submit("検索") %></li>
+            <li><%= search_form_for @search, url: clients_cds_search_path do |f| %>
+            <%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %><%= f.submit("検索") %></li>
               <% end %>
-            </li>
             <li>
               <%= link_to "商品一覧", clients_cds_path %>
             </li>
@@ -55,11 +53,9 @@
             <div class="text-right"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
 
           <% else %>
-            <li>
-            <%= search_form_for @search, url: clients_cds_search_path do |f| %>
-            <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %><%= f.submit("検索") %></li>
+            <li><%= search_form_for @search, url: clients_cds_search_path do |f| %>
+            <%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "40*40", required: true %><%= f.submit("検索") %></li>
             <% end %>
-            </li>
             <li>
               <%= link_to "商品一覧", clients_cds_path %>
             </li>
