@@ -1,4 +1,4 @@
-<h2>ジャンル</h2>
+<h2 class="genre_name">ジャンル</h2>
 	<ul class="bxslider">
 		<% @cds.each do |cd| %>
 			<li class="object">
@@ -13,7 +13,7 @@
 
 <% @genres.each do |genre| %>
 	<div class="way">
-	<h2><%= genre.genre_name %></h2>
+	<h2 class="genre_name"><%= genre.genre_name %></h2>
 	<ul class="bxslider">
 		<% genre.cds.each do |cd| %>
 			<li class="object">
@@ -33,3 +33,90 @@
 		<%= image_tag "arrow.png"  %>
 	</a>
 </span>
+
+<script>
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu1.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu2.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu3.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu4.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu5.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu6.png'
+});
+});
+</script>
