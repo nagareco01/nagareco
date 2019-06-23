@@ -20,6 +20,7 @@ class Clients::ClientsController < ApplicationController
   	@client = Client.find(params[:id])
   	if @client.update(client_params)
       sign_in(@client, :bypass => true)
+      flash[:notice] = "ユーザ情報を更新しました"
       redirect_to clients_client_path(params[:id])
     else
       render 'edit'
@@ -31,16 +32,22 @@ class Clients::ClientsController < ApplicationController
   end
 
   def create
-    address = current_client.addresses.new(address_params)
-    address.client_id = current_client.id
-    address.save
-    redirect_to clients_client_path(current_client.id)
+    @address = current_client.addresses.new(address_params)
+    @address.client_id = current_client.id
+      if  @address.save
+          redirect_to clients_client_path(current_client.id)
+          flash[:notice] = "住所新規登録完了しました"
+      else
+          flash[:danger] = "空欄があります！"
+          render 'clients/clients/new'
+      end
   end
 
   def remove_address
     #binding.pry
     address = Address.find(params[:id])
     address.destroy
+    flash[:notice] = "住所を削除しました"
     redirect_to clients_client_path(current_client.id)
   end
 

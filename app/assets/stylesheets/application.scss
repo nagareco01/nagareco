@@ -17,6 +17,20 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+h1, h2, h3, h4, h5, h6, p{
+  margin: 0;
+  padding: 0;
+}
+
+.footer{
+  margin-top: 50px;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 5rem;
+  background: #51e8df;
+}
+
 .navbar-default{
 	width: 100%;
 	margin: 0;
@@ -116,7 +130,7 @@
   transform: scale(1, 1)
 }
 .object{
-  border:1px solid transparent; 
+  border:1px solid transparent;
    -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
   transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
 }
@@ -165,6 +179,7 @@ element.style{
 	height:auto;
 }
 
+
 #loading{
     position: absolute;
     left: 50%;
@@ -172,7 +187,7 @@ element.style{
     margin-top: -25px;
     margin-left: -25px;
   }
-      
+
 #loader-bg {
     position: fixed;
     width: 100%;
