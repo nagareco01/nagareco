@@ -10,3 +10,57 @@
 #back img{
 	width:50px;
 }
+
+.big-box{
+ 	background: -moz-linear-gradient(top, #51e8df, #FFF);
+  	background: -webkit-linear-gradient(top, #67ffb7, #FFF);
+  	background: linear-gradient(to bottom, #51e8ed, #FFF);
+}
+
+.title{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.client-pepple{
+	margin-left: 5%;
+}
+
+.client-man{
+	margin: 25px 0;
+}
+
+table > thead > tr > th {
+  text-align: center;
+}
+
+.client-cd{
+	text-align: center;
+}
+
+.address-info{
+	font-size: 18px;
+}
+
+.client-edit-box{
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+
+.client-edit1{
+	display: inline-block;
+	width: 40%;
+}
+
+.client-edit2{
+	display: inline-block;
+	width: 40%;
+}
+
+.client-show-box{
+	margin-left: 30px;
+}

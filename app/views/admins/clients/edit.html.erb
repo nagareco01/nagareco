@@ -1,17 +1,18 @@
-<h1>顧客編集</h1>
-
-<%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
-<h3>氏名(漢字)
-<%= f.text_field :last_name %> <%= f.text_field :first_name %></h3>
-<h3>氏名(カナ)
-<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana%></h3>
-<h3>メールアドレス
-<%= f.email_field :email %></h3>
-<h3>電話番号
-<%= f.text_field :telephone %></h3>
-<h3>自宅郵便番号
-<%= f.text_field :post_code %></h3>
-<h3>自宅住所
-<%= f.text_field :address %></h3>
-<h3><%= f.submit '編集' %></h3>
-<% end %>
+<div class="title">
+	<h2>顧客編集</h2>
+	<%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
+	<h4>氏名(漢字)
+	<%= f.text_field :last_name %> <%= f.text_field :first_name %></h4>
+	<h4>氏名(カナ)
+	<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana%></h4>
+	<h4>メールアドレス
+	<%= f.email_field :email %></h4>
+	<h4>電話番号
+	<%= f.text_field :telephone %></h4>
+	<h4>自宅郵便番号
+	<%= f.text_field :post_code %></h4>
+	<h4>自宅住所
+	<%= f.text_field :address %></h4>
+	<h4><%= f.submit '編集' %></h4>
+	<% end %>
+</div>
