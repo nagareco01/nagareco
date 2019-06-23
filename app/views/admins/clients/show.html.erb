@@ -1,77 +1,91 @@
-<h1>顧客詳細</h1>
-<h3>氏名 <%= @client.last_name + @client.first_name%></h3>
-<h3>電話番号　<%= @client.telephone%></h3>
-<h3>自宅郵便番号　<%= @client.post_code%></h3>
-<h3>自宅住所　<%= @client.address%></h3>
-<h3>登録住所</h3>
-<div class="create-address">
-	<h4><!-- 文字の大きさのため、あとでcssで調整 -->
-		<table>
-			<thead>
-				<tr>
-					<th>氏名</th>
-				    <th>郵便番号</th>
-				    <th>住所</th>
-			    </tr>
-		    </thead>
-		    <% @client.addresses.each do |address| %>
-		    <tbody>
-		    	<tr>
-		    		<td><%= address.last_name %> <%= address.first_name %></td>
-				    <td><%= address.sub_post_code %></td>
-				    <td><%= address.sub_address %></td>
-			    </tr>
-			<% end %>
-		    </tbody>
-	    </table>
-    </h4>
+<div class="big-box">
+	<div>
+		<div class="title">
+			<div>
+				<h2>顧客詳細</h2>
+				<div class="client-show-box">
+					<h4>氏名 <%= @client.last_name + @client.first_name%></h4>
+					<h4>電話番号　<%= @client.telephone%></h4>
+					<h4>自宅郵便番号　<%= @client.post_code%></h4>
+					<h4>自宅住所　<%= @client.address%></h4>
+					<h4>登録住所</h4>
+					<div class="create-address">
+						<h4><!-- 文字の大きさのため、あとでcssで調整 -->
+							<table>
+								<thead class="client-cd">
+									<tr>
+										<th width="100">氏名</th>
+									    <th width="200">郵便番号</th>
+									    <th width="300">住所</th>
+								    </tr>
+							    </thead>
+							    <% @client.addresses.each do |address| %>
+							    <tbody class="client-cd address-info">
+							    	<tr>
+							    		<td class="adress-info"><%= address.last_name %> <%= address.first_name %></td>
+									    <td><%= address.sub_post_code %></td>
+									    <td><%= address.sub_address %></td>
+								    </tr>
+								<% end %>
+							    </tbody>
+						    </table>
+					    </h4>
+					</div>
+					<h4>メールアドレス　<%= @client.email%></h4>
+					<div class="client-edit-box">
+						<div class="client-edit1">
+							<%= link_to"顧客編集",edit_admins_client_path(@client.id), class: "btn btn-success btn-lg btn-block"%>
+						</div>
+						<div class="client-edit2">
+							<%= link_to"強制退会",admins_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？", class: "btn btn-danger btn-lg btn-block"%>
+						</div>
+					</div>
+
+					<table border = "1">
+						<thead>
+							<tr>
+								<th width="100">購入日</th>
+								<th width="250">CD名</th>
+								<th width="100">購入枚数</th>
+								<th width="100">CD価格</th>
+								<th width="100">送料</th>
+								<th width="100">支払方法</th>
+								<th width="100">ステータス</th>
+							</tr>
+						</thead>
+						<tbody class="client-cd">
+							<% @orders.each do |order| %>
+							<tr>
+								<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+								<td>
+									<% order.order_items.each do |item| %>
+										<div><%= link_to item.cd.name, clients_order_show_path %></div>
+									<% end %>
+								</td>
+								<td>
+									<% order.order_items.each do |item| %>
+										<div><%= link_to item.quantity, clients_order_show_path %></div>
+									<% end %>
+								</td>
+								<td>
+									<% order.order_items.each do |item| %>
+										<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path %></div>
+									<% end %>
+								</td>
+								<td>￥500</td>
+								<td><%= order.payment %></td>
+								<td><%= order.shipment_status %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+					<span id="back">
+						<a href="#">
+							<%= image_tag "arrow.png"  %>
+						</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-<h3>メールアドレス　<%= @client.email%></h3>
-
-<%= link_to"顧客編集",edit_admins_client_path(@client.id)%>
-<%= link_to"退会",admins_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？"%>
-
-<table border = "1">
-
-	<tr>
-		<th>購入日</th>
-		<th>CD名</th>
-		<th>購入枚数</th>
-		<th>CD価格</th>
-		<th>送料</th>
-		<th>支払方法</th>
-		<th>ステータス</th>
-	</tr>
-
-	<% @orders.each do |order| %>
-
-	<tr align = "center">
-		<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-		<td>
-			<% order.order_items.each do |item| %>
-				<div><%= link_to item.cd.name, clients_order_show_path(item.id) %></div>
-			<% end %>
-		</td>
-		<td>
-			<% order.order_items.each do |item| %>
-				<div><%= link_to item.quantity, clients_order_show_path(item.id) %></div>
-			<% end %>
-		</td>
-		<td>
-			<% order.order_items.each do |item| %>
-				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path(item.id) %></div>
-			<% end %>
-		</td>
-		<td>￥500</td>
-		<td><%= order.payment %></td>
-		<td><%= order.shipment_status %></td>
-	</tr>
-
-	<% end %>
-</table>
-
-<span id="back">
-	<a href="#">
-		<%= image_tag "arrow.png"  %>
-	</a>
-</span>

@@ -11,6 +11,12 @@
 	width:50px;
 }
 
+.title{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .disc-number{
 	width: 60px;
 	margin-left: 30px;
@@ -122,4 +128,27 @@
 
 .add-artist, .add-label, .add-genre{
 	margin: 40px 0;
+}
+
+.show-items{
+	margin-left: 30px;
+}
+
+.show-info-item{
+	margin-left: 30px;
+	font-size: 18px;
+	line-height: 25px
+}
+
+.show-song-number{
+	margin-left: 30px;
+}
+
+.edit-botton-box{
+	width: 60%;
+	margin: 0 auto;
+}
+
+.edit-botton{
+	margin-top: 30px;
 }

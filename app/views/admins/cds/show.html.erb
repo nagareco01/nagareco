@@ -1,22 +1,82 @@
-<h1>商品詳細</h1>
+<div class="title">
+	<h2>商品詳細</h2>
+	<div class="show-items">
+		<div class="show-items row">
+			<div class="col-sm-5">
+				<div class="show-item">
+					<%= attachment_image_tag @cd, :image, :fill, 400, 400, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'400x400' %>
+				</div>
+				<div class="show-item">
+					<h4>説明文</h4>
+					<div class="show-info-item">
+						<%= @cd.description %>
+					</div>
+				</div>
+			</div>
 
-<p>画像：</p><%= attachment_image_tag @cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'40x40' %>
-<p>説明文：<%= @cd.description %></p>
-
-<p>アーティスト名：<%= @cd.artist.artist_name %></p>
-<p>CD名：<%= @cd.name %></p>
-<p>曲名：
-	<% @cd.discs.each do |disc| %>
-		 Disc.<%= disc.disc_number %>
-		<% disc.songs.each do |song| %>
-			<%= song.song_number %>
-			<%= song.song_name %>
-		<% end %>
-	<% end %>
-</p>
-<p>ジャンル：<%= @cd.genre.genre_name %></p>
-<p>レーベル名；<%= @cd.label.label_name %></p>
-<p>在庫：<%= @cd.stock %></p>
-<p>ステータス：<%= @cd.sale_status %></p>
-<p>価格(税込)：<%= (@cd.price.to_i*1.08).floor %></p>
-<%= link_to "商品編集", edit_admins_cd_path %>
+			<div class="col-sm-7 show-box2">
+				<div class="show-item">
+					<h4>アーティスト名</h4>
+					<div class="show-info-item">
+						<%= @cd.artist.artist_name %>
+					</div>
+				</div>
+				<div class="show--item">
+					<h4>CD名</h4>
+					<div class="show-info-item">
+						<%= @cd.name %>
+					</div>
+				</div>
+				<div class="show-item">
+					<h4>収録曲</h4>
+					<div class="show-info-item">
+						<% @cd.discs.each do |disc| %>
+							 <div>
+							 	Disc.<%= disc.disc_number %>
+							 </div>
+							<% disc.songs.each do |song| %>
+							<div class="show-song-number">
+								<%= song.song_number %>.
+								<%= song.song_name %>
+							</div>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+				<div class="show-item">
+					<h4>ジャンル</h4>
+					<div class="show-info-item">
+						<%= @cd.genre.genre_name %>
+					</div>
+				</div>
+				<div class="show-item">
+					<h4>レーベル名</h4>
+					<div class="show-info-item">
+						<%= @cd.label.label_name %>
+					</div>
+				</div>
+				<div class="show-item">
+					<h4>在庫</h4>
+					<div class="show-info-item">
+						<%= @cd.stock %>個
+					</div>
+				</div>
+				<div class="show-item">
+					<h4>ステータス</h4>
+					<div class="show-info-item">
+						<%= @cd.sale_status %>
+					</div>
+				</div>
+				<div class="show-item">
+					<h4>税込価格</h4>
+					<div class="show-info-item">
+						¥<%= (@cd.price.to_i*1.08).floor %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="edit-botton-box">
+			<%= link_to "商品編集", edit_admins_cd_path, class: 'btn btn-primary btn-lg  btn-block edit-botton' %>
+		</div>
+	</div>
+</div>
