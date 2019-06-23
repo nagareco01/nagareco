@@ -52,3 +52,23 @@ $(function(){
 	},{offset : "95%"});
 });
 
+window.onload = function(){
+	$(function(){
+		$("#loading").fadeOut();
+	});
+}
+
+$(function(){
+	var h = $(window).height();
+	$("#contents").css("display", "none");
+	$("#loader-bg ,#loader").height(h).css("display","block");
+});
+
+$(window).load(function(){
+	$("#loader-bg").delay(900).fadeOut(800);
+	$("#loader").delay(600).fadeOut(300);
+	$("#contents").css("display", "block");
+});
+$(function(){
+	setTimeout("stopload()",10000);
+});
