@@ -49,17 +49,17 @@
 		<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to item.cd.name, clients_order_show_path %></div>
+				<div><%= link_to item.cd.name, clients_order_show_path(item.id) %></div>
 			<% end %>
 		</td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to item.quantity, clients_order_show_path %></div>
+				<div><%= link_to item.quantity, clients_order_show_path(item.id) %></div>
 			<% end %>
 		</td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path %></div>
+				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path(item.id) %></div>
 			<% end %>
 		</td>
 		<td>￥500</td>

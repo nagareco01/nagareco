@@ -1,61 +1,91 @@
+<div class="all_buy">
+
 <h1>注文内容の確認・編集</h1>
 
 <div class="container">
-	<div class="row">
-		<div class="col-lg-4">
-	<h2>お届け先住所</h2>
+		<div class="row address">
+			<div class="col-lg-8">
+				<h2>お届け先住所</h2>
+				<!--clientの自宅住所選択用のラジオボタンを設置-->
+				<%= form_for Order.new, url: clients_order_purchase_path do |f| %>
+				<div class="btn-group">
+					<label class="btn btn-warning">
+						<%= f.radio_button :client_id,@client.id, id: "one", checked: "checked" %>
+							<% zyusyo1 = @client.last_name + @client.first_name + @client.post_code + @client.address %>
+								<%= zyusyo1 %>
+					</label>
+				</div>
 
-	<!--clientの自宅住所選択用のラジオボタンを設置-->
-	<%= form_for Order.new, url: clients_order_purchase_path do |f| %>
-	<label>
-		<%= f.radio_button :client_id,@client.id, id: "one", checked: "checked" %>
-			<% zyusyo1 = @client.last_name + @client.first_name + @client.post_code + @client.address %>
-				<%= zyusyo1 %>
-	</label>
+				<!--addressesテーブルのレコードの数だけそれぞれのラジオボタンを設置-->
+				<% @client.addresses.each do |t| %>
+					<div class="btn-group">
+						<label>
+						<%= f.radio_button :shipping_address, t.id, class: "two" %>
+						<% zyusyo = t.last_name + t.first_name + t.sub_post_code + t.sub_address %>
+							<%= zyusyo %>
+						</label>
+					</div>
+				<% end %>
 
-		<!--addressesテーブルのレコードの数だけそれぞれのラジオボタンを設置-->
-		<% @client.addresses.each do |t| %>
-			<div>
-				<label>
-				<%= f.radio_button :shipping_address, t.id, class: "two" %>
-				<% zyusyo = t.last_name + t.first_name + t.sub_post_code + t.sub_address %>
-					<%= zyusyo %>
-				</label>
+				<div><%= link_to "新規住所追加登録はこちら", new_clients_client_path, class:"btn btn-success" %></div>
+
+				<!--支払い方法選択用のラジオボタンを設置-->
+				<h2>お支払い方法</h2>
+				<div class="btn-group"  data-toggle="buttons">
+					<label class="btn btn-primary active">
+						<%= f.radio_button :payment, 0, checked: "checked" %>クレジット
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button :payment, 1 %>銀行振込
+					</label>
+					<label class="btn btn-primary">
+						<%= f.radio_button :payment, 2 %>代引き
+					</label>
+				</div>
 			</div>
-		<% end %>
-
-		<%= link_to "新規住所追加登録はこちら", new_clients_client_path, class:"btn btn-success" %>
-
-		<!--支払い方法選択用のラジオボタンを設置-->
-		<h2>お支払い方法</h2>
-		<label>
-			<%= f.radio_button :payment, 0, checked: "checked" %>クレジット
-		</label>
-		<label>
-			<%= f.radio_button :payment, 1 %>銀行振込
-		</label>
-		<label>
-			<%= f.radio_button :payment, 2 %>代引き
-		</label>
-</div>
-<div class="col-lg-4">
-<div>
-	<p>注文内容</p>
-	<p>商品の小計:<%= "￥" + (@total_price*1.08).floor.to_s %></p>
-	<p>配送料・手数料:<span>￥500</span></p>
-	<p>注文合計:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
-	<p>ご請求額:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
-</div>
-	<%= f.submit "注文を確定する", class:"btn btn-info btn-lg" %>
-	<% end %>
-
+			<div class="col-lg-4">
+				<div class="money">
+					<p>注文内容</p>
+					<p>商品の小計:<%= "￥" + (@total_price*1.08).floor.to_s %></p>
+					<p>配送料・手数料:<span>￥500</span></p>
+					<p>注文合計:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
+					<p>ご請求額:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
+				</div>
+					<%= f.submit "注文を確定する", class:"btn btn-info btn-lg" %>
+					<% end %>
+			</div>
+		</div>
 </div>
 
+<div class="container">
 <% @items.each do |item| %>
-<%= attachment_image_tag item.cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %>
+<div class="row item way">
+<div class="col-lg-3">
+<%= attachment_image_tag item.cd, :image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.png" ,:size =>'200x200' %>
+</div>
+<div class="col-lg-3 date">
+<p>CD名：<%= item.cd.name %></p>
+<p>アーティスト名：<%= item.cd.artist.artist_name %></p>
+<p>ジャンル名：<%= item.cd.genre.genre_name %></p>
+<p>レーべル名：<%= item.cd.label.label_name %></p>
+<p>税込価格：<%= item.cd.price*1.08.floor %></p>
+</div>
+<div class="col-lg-3 date">
+	<p>曲名：
+	<% item.cd.discs.each do |disc| %>
+		 Disc.<%= disc.disc_number %>
+		<% disc.songs.each do |song| %>
+			<%= song.song_number %>
+			<%= song.song_name %>
+		<% end %>
+	<% end %>
+	</p>
+</div>
+<div class="col-lg-3 date">
+	<p>説明文：<%= item.cd.description %></p>
+</div>
+</div>
 <% end %>
-
-
 
 <script>
 //idがoneの要素をradio1に代入
@@ -75,4 +105,9 @@ $('.two').on('click', function(){
 
 </script>
 
-</div>
+<span id="back">
+	<a href="#">
+		<%= image_tag "arrow.png"  %>
+	</a>
+</span>
+</div></div>
