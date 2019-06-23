@@ -11,16 +11,31 @@
 	width:50px;
 }
 
-.main-visual{
-	height: 400px;
-	/*background-image: image_url("yun_1079.jpg");*/
-	background-position: center;
-	background-size: cover;
-	font-size: 10px;
+.main{
+	position: relative;
 }
 
-.genre_name{
-	margin: 55px 224px 30px;
+.main p{
+	position: absolute;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-style: italic;
+	top: 65%;
+	left: 60%;
+	font-weight: bold;
+    color: green;
+    opacity: 0.5;
+    font-size: 20px;
+    z-index: 100;
+}
+
+.main img{
+	width: 100%;
+}
+
+
+h2{
+	margin: 55px 100px 30px;
+
 	padding: 0px 16px;
 }
 
@@ -32,8 +47,4 @@
 .container-show{
 	margin: 55px 224px 30px;
 	padding: 0px 16px;
-}
-
-.show{
-	margin: 70px 100px;
 }
