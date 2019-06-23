@@ -1,6 +1,6 @@
 class Clients::ClientsController < ApplicationController
 	before_action :authenticate_client!
-	before_action :correct_client,except: [:create, :remove_address]
+	before_action :correct_client,except: [:create, :remove_address, :new]
 
   def show
   	@client = Client.find(params[:id])

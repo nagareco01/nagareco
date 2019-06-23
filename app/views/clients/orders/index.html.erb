@@ -1,6 +1,8 @@
 <h1>注文履歴一覧</h1>
 
-<table border = "1">
+<div class="container">
+	<div class="row">
+<table border = "1" class="table table-striped">
 
 	<tr>
 		<th class="order-table1">購入日</th>
@@ -28,7 +30,7 @@
 		</td>
 		<td>
 			<% order.order_items.each do |item| %>
-				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path %></div>
+				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path(item.id) %></div>
 			<% end %>
 		</td>
 		<td>￥500</td>
@@ -37,6 +39,9 @@
 	</tr>
 
 	<% end %>
+</table>
+</div>
+</div>
 
 
 
