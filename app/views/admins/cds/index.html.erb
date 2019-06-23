@@ -1,37 +1,124 @@
+
 <div class="title">
-	<h2>ジャンル</h2>
-		<ul class="bxslider">
-			<% @cds.each do |cd| %>
-				<li class="object">
-					<%= link_to admins_cd_path(cd.id) do %>
-					    <div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'60x60' %></div>
-						<div><%= cd.artist.artist_name %></div>
-					    <div><%= cd.name %></div>
-					<% end %>
-				</li>
-		    <% end %>
-	    </ul>
+<h2 class="genre_name">ジャンル</h2>
+	<ul class="bxslider">
+		<% @cds.each do |cd| %>
+			<li class="object">
+				<%= link_to admins_cd_path(cd.id) do %>
+				    <div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'60x60' %></div>
+					<div><%= cd.artist.artist_name %></div>
+				    <div><%= cd.name %></div>
+				<% end %>
+			</li>
+	    <% end %>
+    </ul>
 
-	<% @genres.each do |genre| %>
-		<div class="way">
-		<h2><%= genre.genre_name %></h2>
-		<ul class="bxslider">
-			<% genre.cds.each do |cd| %>
-				<li class="object">
-					<%= link_to admins_cd_path(cd.id) do %>
-						<div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></div>
-						<div><%= cd.artist.artist_name %></div>
-				    	<div><%= cd.name %></div>
-					<% end %>
-				</li>
-	    	<% end %>
-		</ul>
-		</div>
-	<% end %>
+<% @genres.each do |genre| %>
+	<div class="way">
+	<h2 class="genre_name"><%= genre.genre_name %></h2>
+	<ul class="bxslider">
+		<% genre.cds.each do |cd| %>
+			<li class="object">
+				<%= link_to admins_cd_path(cd.id) do %>
+					<div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></div>
+					<div><%= cd.artist.artist_name %></div>
+			    	<div><%= cd.name %></div>
+				<% end %>
+			</li>
+    	<% end %>
+	</ul>
+	</div>
+<% end %>
 
-	<span id="back">
-		<a href="#">
-			<%= image_tag "arrow.png"  %>
-		</a>
-	</span>
-</div>
+<span id="back">
+	<a href="#">
+		<%= image_tag "arrow.png"  %>
+	</a>
+</span>
+
+<script>
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu1.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu2.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu3.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu4.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu5.png'
+});
+});
+$(function(){
+	jQuery(document).snowfall({
+	flakeCount:3,
+	flakeColor:"#fff",
+	flakeIndex:-1,
+	minSize:30,
+	maxSize:50,
+	round:true,
+	shadow:false,
+	image: '/assets/onpu6.png'
+});
+});
+</script>
