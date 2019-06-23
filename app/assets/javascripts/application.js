@@ -54,7 +54,7 @@ $(function(){
 
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,
@@ -66,7 +66,7 @@ $(function(){
 });
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,
@@ -78,7 +78,7 @@ $(function(){
 });
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,
@@ -90,7 +90,7 @@ $(function(){
 });
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,
@@ -102,7 +102,7 @@ $(function(){
 });
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,
@@ -114,7 +114,7 @@ $(function(){
 });
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,
@@ -126,7 +126,7 @@ $(function(){
 });
 $(function(){
 	jQuery(document).snowfall({
-	flakeCount:5,
+	flakeCount:3,
 	flakeColor:"#fff",
 	flakeIndex:-1,
 	minSize:30,

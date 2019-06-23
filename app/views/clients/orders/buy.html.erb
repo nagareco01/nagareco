@@ -1,15 +1,15 @@
 <div class="all_buy">
 
-<h1>注文内容の確認・編集</h1>
+<h2>注文内容の確認・編集</h2>
 
 <div class="container">
 		<div class="row address">
 			<div class="col-lg-8">
-				<h2>お届け先住所</h2>
+				<h4>お届け先住所</h4>
 				<!--clientの自宅住所選択用のラジオボタンを設置-->
 				<%= form_for Order.new, url: clients_order_purchase_path do |f| %>
-				<div class="btn-group">
-					<label class="btn btn-warning">
+				<div>
+					<label>
 						<%= f.radio_button :client_id,@client.id, id: "one", checked: "checked" %>
 							<% zyusyo1 = @client.last_name + @client.first_name + @client.post_code + @client.address %>
 								<%= zyusyo1 %>
@@ -18,7 +18,7 @@
 
 				<!--addressesテーブルのレコードの数だけそれぞれのラジオボタンを設置-->
 				<% @client.addresses.each do |t| %>
-					<div class="btn-group">
+					<div>
 						<label>
 						<%= f.radio_button :shipping_address, t.id, class: "two" %>
 						<% zyusyo = t.last_name + t.first_name + t.sub_post_code + t.sub_address %>
@@ -30,7 +30,7 @@
 				<div><%= link_to "新規住所追加登録はこちら", new_clients_client_path, class:"btn btn-success" %></div>
 
 				<!--支払い方法選択用のラジオボタンを設置-->
-				<h2>お支払い方法</h2>
+				<h4>お支払い方法</h4>
 				<div class="btn-group"  data-toggle="buttons">
 					<label class="btn btn-primary active">
 						<%= f.radio_button :payment, 0, checked: "checked" %>クレジット
@@ -45,7 +45,7 @@
 			</div>
 			<div class="col-lg-4">
 				<div class="money">
-					<p>注文内容</p>
+					<h4>注文内容</h4>
 					<p>商品の小計:<%= "￥" + (@total_price*1.08).floor.to_s %></p>
 					<p>配送料・手数料:<span>￥500</span></p>
 					<p>注文合計:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
