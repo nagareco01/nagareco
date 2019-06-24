@@ -1,18 +1,27 @@
 <div class="title">
 	<h2>顧客編集</h2>
 	<%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
+	<% if @client.errors.any? %>
+	  <div id="error_explanation" class="alert alert-danger">
+	    <ul>
+	      <% @client.errors.full_messages.each do |message| %>
+	        <li><%= message %></li>
+	      <% end %>
+	    </ul>
+	  </div>
+	<% end %>
 	<h4>氏名(漢字)
-	<%= f.text_field :last_name %> <%= f.text_field :first_name %></h4>
+	<%= f.text_field :last_name, class:"info-text" %> <%= f.text_field :first_name, class:"info-text" %></h4>
 	<h4>氏名(カナ)
-	<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana%></h4>
+	<%= f.text_field :last_name_kana, class:"info-text" %> <%= f.text_field :first_name_kana, class:"info-text"%></h4>
 	<h4>メールアドレス
-	<%= f.email_field :email %></h4>
+	<%= f.email_field :email, class:"info-text" %></h4>
 	<h4>電話番号
-	<%= f.text_field :telephone %></h4>
+	<%= f.text_field :telephone, class:"info-text" %></h4>
 	<h4>自宅郵便番号
-	<%= f.text_field :post_code %></h4>
+	<%= f.text_field :post_code, class:"info-text" %></h4>
 	<h4>自宅住所
-	<%= f.text_field :address %></h4>
-	<h4><%= f.submit '編集' %></h4>
+	<%= f.text_field :address, class:"info-text" %></h4>
+	<h4><%= f.submit '編集', class:"btn btn-info" %></h4>
 	<% end %>
 </div>
