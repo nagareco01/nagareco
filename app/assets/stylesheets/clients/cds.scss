@@ -19,23 +19,27 @@
 	position: absolute;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-style: italic;
-	top: 65%;
-	left: 60%;
+	top: 85%;
+	left: 55%;
 	font-weight: bold;
-    color: green;
+    color: #fff;
     opacity: 0.5;
     font-size: 20px;
     z-index: 100;
 }
 
-.main img{
+.slide img{
 	width: 100%;
+	border: none;
+}
+
+script{
+	margin: 0 auto;
 }
 
 
 .genre_name{
 	margin: 55px 100px 30px;
-
 	padding: 0px 16px;
 }
 
@@ -49,9 +53,6 @@
 	padding: 0px 16px;
 }
 
-.wave{
-	width:15px;
-	height:500px;
-	background-color: #000;
-	display:inline-block;
+.bx-wrapper{
+	border: none;
 }
