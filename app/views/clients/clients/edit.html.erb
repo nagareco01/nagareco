@@ -1,23 +1,25 @@
+<div class="title">
 <h1>Mypage編集</h1>
 
 <%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
 <h3>氏名(漢字)
-<%= f.text_field :last_name %> <%= f.text_field :first_name %></h3>
+<%= f.text_field :last_name, class:"info-text" %> <%= f.text_field :first_name, class:"info-text" %></h3>
 <h3>氏名(カナ)
-<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana%></h3>
+<%= f.text_field :last_name_kana, class:"info-text" %> <%= f.text_field :first_name_kana, class:"info-text"%></h3>
 <h3>メールアドレス
-<%= f.email_field :email %></h3>
+<%= f.email_field :email, class:"info-text" %></h3>
 <h3>電話番号
-<%= f.text_field :telephone %></h3>
+<%= f.text_field :telephone, class:"info-text" %></h3>
 <h3>自宅郵便番号
-<%= f.text_field :post_code %></h3>
+<%= f.text_field :post_code, class:"info-text" %></h3>
 <h3>自宅住所
-<%= f.text_field :address %></h3>
+<%= f.text_field :address, class:"info-text" %></h3>
 <h3>パスワード変更(6文字以上のパスワード)</h3>
-<%= f.password_field :password %>
+<%= f.password_field :password, class:"info-text" %>
 <h3>変更パスワード再入力</h3>
-<%= f.password_field :password_confirmation%>
+<%= f.password_field :password_confirmation, class:"info-text"%>
 
-<h3><%= f.submit 'Update Mypage' %></h3>
+<h3><%= f.submit 'Update Mypage', class:"btn btn-info" %></h3>
 <% end %>
 
+</div>
