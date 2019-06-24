@@ -19,7 +19,7 @@
 	position: absolute;
 	font-family: 'Roboto Condensed', sans-serif;
 	font-style: italic;
-	top: 85%;
+	top: 90%;
 	left: 55%;
 	font-weight: bold;
     color: #fff;
@@ -30,10 +30,11 @@
 
 .slide img{
 	width: 100%;
-	border: none;
 }
 
-script{
+.slide{
+	width: 80%;
+	padding-left: 40px;
 	margin: 0 auto;
 }
 
