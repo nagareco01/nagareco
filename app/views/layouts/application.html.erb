@@ -20,6 +20,7 @@
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
           <div class="logo_name"><%= image_tag "logo2_nagareco.png" %></div>
+          <div class="about">長野県出身アーティストを集めたECサイト</div>
         </nav>
         <ul class="nav navbar-nav navbar-right">
           <% if admin_signed_in? %>
@@ -81,12 +82,10 @@
       </div>
     </header>
 
-    <div class="container">
       <div class="box"></div>
       <% if flash[:notice] %>
       <div class="flash"><%= flash[:notice] %></div>
       <% end %>
-    </div>
 
     <%= yield %>
 

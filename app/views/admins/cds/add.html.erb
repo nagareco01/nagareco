@@ -1,10 +1,10 @@
 <div class="title">
-	<h2>アーティスト、レーベル、ジャンル追加</h2>
+	<h2 class="space">アーティスト、レーベル、ジャンル追加</h2>
 	<div class="add-items">
 	<%= form_for @artist, url: admins_cd_add_info_path do |f| %>
 		<div class="add-artist">
 			<div>
-				<h4>・レーベル名</h4>
+				<h4 class="line-height">・アーティスト名</h4>
 				<div class="add-item">
 					<%= f.text_field :artist_name, required:true, size: "50*50", class: "add-info-text" %>
 					<div class="add-info">
@@ -18,7 +18,7 @@
 	<%= form_for @label, url: admins_cd_add_info_path do |f| %>
 		<div class="add-label">
 			<div>
-				<h4>・レーベル名</h4>
+				<h4 class="line-height">・レーベル名</h4>
 				<div class="add-item">
 					<%= f.text_field :label_name, required:true, size: "50*50", class: "add-info-text"  %>
 					<div class="add-info">
@@ -32,7 +32,7 @@
 	<%= form_for @genre, url: admins_cd_add_info_path do |f| %>
 		<div class="add-genre">
 			<div>
-				<h4>・ジャンル名</h4>
+				<h4 class="line-height">・ジャンル名</h4>
 				<div class="add-item">
 					<%= f.text_field :genre_name, required:true, size: "50*50", class: "add-info-text"  %>
 					<div class="add-info">
@@ -42,4 +42,5 @@
 			</div>
 		</div>
 	<% end %>
+</div>
 </div>
