@@ -2,21 +2,21 @@
 	<div>
 		<div class="title">
 			<div>
-				<h2>顧客詳細</h2>
+				<h2 class="space">顧客詳細</h2>
 				<div class="client-show-box">
 
 					<% if @client.deleted? %>
-					<h4>氏名 <%= @client.last_name + @client.first_name + "（退会済み）"%></h4>
+					<h4 class="line-height">氏名 <%= @client.last_name + @client.first_name + "（退会済み）"%></h4>
 					<% else %>
-					<h4>氏名 <%= @client.last_name + @client.first_name %></h4>
+					<h4 class="line-height">氏名 <%= @client.last_name + @client.first_name %></h4>
 					<% end %>
-					<h4>電話番号　<%= @client.telephone%></h4>
-					<h4>自宅郵便番号　<%= @client.post_code%></h4>
-					<h4>自宅住所　<%= @client.address%></h4>
-					<h4>メールアドレス　<%= @client.email%></h4>
+					<h4 class="line-height">電話番号　<%= @client.telephone%></h4>
+					<h4 class="line-height">自宅郵便番号　<%= @client.post_code%></h4>
+					<h4 class="line-height">自宅住所　<%= @client.address%></h4>
+					<h4 class="line-height">メールアドレス　<%= @client.email%></h4>
 
 					<% if @client.addresses.present? %>
-					<h4>登録住所</h4>
+					<h4 class="line-height">登録住所</h4>
 					<div class="create-address">
 						<h4><!-- 文字の大きさのため、あとでcssで調整 -->
 							<table>
