@@ -1,20 +1,14 @@
 <div class="main">
 	<script>
-		jQuery(window).load(function(){
-			$('.slide').bxSlider({
-				mode:"fade",
-				auto: true,
-		        speed: 1000,
-		        moveSlide: 1,
-		        pause: 6000,
-		        minSlides: 1,
-		        maxSlides: 1,
-		        slideWidth: 1000,
-		        pager:false,
-		        randomStart: true,
-		        autoHover: true,
-		        touchEnabled: false
-		    });
+		$(function(){
+			$('.slide').slick({
+				accessibility: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                fade: true,
+                arrows: false,
+                infinite: true,
+            });
 		});
 	</script>
 	<ul class="slide">
@@ -59,90 +53,3 @@
 		<%= image_tag "arrow.png"  %>
 	</a>
 </span>
-
-<script>
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu.png'
-});
-});
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu1.png'
-});
-});
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu2.png'
-});
-});
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu3.png'
-});
-});
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu4.png'
-});
-});
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu5.png'
-});
-});
-$(function(){
-	jQuery(document).snowfall({
-	flakeCount:3,
-	flakeColor:"#fff",
-	flakeIndex:-1,
-	minSize:30,
-	maxSize:50,
-	round:true,
-	shadow:false,
-	image: '/assets/onpu6.png'
-});
-});
-</script>
