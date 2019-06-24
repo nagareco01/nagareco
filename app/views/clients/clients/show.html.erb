@@ -1,5 +1,5 @@
 <div class="show_all">
-<h2>My page</h2>
+<h2>My page<span><h4><%= flash[:client_update] %></h4></span></h2>
 <h4>氏名 <%= @client.last_name %> <%= @client.first_name %></h4>
 <h4>電話番号　<%= @client.telephone%></h4>
 <h4>自宅郵便番号　<%= @client.post_code%></h4>

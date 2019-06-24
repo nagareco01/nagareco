@@ -36,7 +36,7 @@ class Clients::ClientsController < ApplicationController
     @address.client_id = current_client.id
       if  @address.save
           redirect_to clients_client_path(current_client.id)
-          flash[:notice] = "住所新規登録完了しました"
+          flash[:client_update] = "住所新規登録完了しました"
       else
           flash[:danger] = "空欄があります！"
           render 'clients/clients/new'

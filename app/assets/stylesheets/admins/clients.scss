@@ -12,9 +12,6 @@
 }
 
 .big-box{
- 	background: -moz-linear-gradient(top, #51e8df, #FFF);
-  	background: -webkit-linear-gradient(top, #67ffb7, #FFF);
-  	background: linear-gradient(to bottom, #51e8ed, #FFF);
 }
 
 .title{
@@ -23,6 +20,7 @@
 	margin-left: auto;
 }
 
+/* client index */
 .client-pepple{
 	margin-left: 5%;
 }
@@ -39,6 +37,7 @@ table > thead > tr > th {
 	text-align: center;
 }
 
+/* client show */
 .address-info{
 	font-size: 18px;
 }
