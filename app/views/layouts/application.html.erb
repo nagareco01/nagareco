@@ -13,9 +13,9 @@
     <div id="loading">
         <%= image_tag "logo2_nagareco.png" %>
     </div>
-  </div>
+</div>
 
-  <body>
+  <body class="cover-box">
     <header class="navbar navbar-default">
       <div class="container">
         <nav class="nav navbar-nav navbar-left">
@@ -80,16 +80,21 @@
         </ul>
       </div>
     </header>
+
     <div class="container">
       <div class="box"></div>
       <% if flash[:notice] %>
       <div class="flash"><%= flash[:notice] %></div>
       <% end %>
     </div>
+
     <%= yield %>
+
     <footer class="footer">
       <div class="container">
-        <p class="">© ちゃんS.inc</p>
+
+        <p class="nagareco-inc">© ちゃんS.inc</p>
+
       </div>
     </footer>
 
