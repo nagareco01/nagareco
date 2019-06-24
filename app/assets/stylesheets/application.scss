@@ -60,6 +60,7 @@ h1, h2, h3, h4, h5, h6, p{
 
 .navbar-default{
 	width: 100%;
+  height:78px;
 	margin: 0;
 	background-color: #fff;
 	position: fixed;
@@ -98,7 +99,7 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .box{
-	margin-top: 73px;
+	margin-top: 79px;
 }
 
 .object{
@@ -225,4 +226,7 @@ h4.line-height{
 
 td{
   padding: 10px;
+}
+.about{
+  font-size: 15px;
 }
