@@ -214,6 +214,7 @@ element.style{
   width: 80%;
   margin-right: auto;
   margin-left: auto;
+  margin-bottom: 30px;
 }
 
 .title2{
@@ -230,6 +231,7 @@ element.style{
   width: 45%;
 }
 
+
 .in-background{
   background-color: #F5F5F5;
 }
@@ -242,17 +244,18 @@ element.style{
   margin-left: 150px;
 }
 
-h2.space2{
+.space2{
   margin: 3px 0px 3px 0px;
 }
 
-h2.space{
+.space{
   line-height: 1;
   margin-top: 50px;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
-h4.line-height{
+.line-height{
   line-height: 2;
 }
 

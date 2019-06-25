@@ -1,31 +1,35 @@
 <div class="title">
-
-<h2 class="space">注文履歴詳細</h2>
-<%= attachment_image_tag @item.cd, :image, fallback:"no_image.png", size:"300x300" %>
-<table border = "1">
-	<tr>
-		<th>購入日</th>
-		<th>CD名</th>
-		<th>価格総計</th>
-		<th>送付先</th>
-		<th>ステータス</th>
-	</tr>
-	<tr align = "center">
-		<td><%= @item.created_at.strftime("%Y-%m-%d") %></td>
-		<td><%= @item.cd.name %></td>
-		<td><%= "￥" + (@item.purchased_price * @item.quantity).to_s %></td>
-		<td><%= @item.order.shipping_address %></td>
-		<td><%= @item.order.shipment_status %></td>
-	</tr>
-</table>
-
-<div>
-	<h4>アーティスト名:<%= @item.cd.artist.artist_name %></h4>
-	<h4>シングル/アルバム名:<%= @item.cd.name %></h4>
-	<h4>レーベル名:<%= @item.cd.label.label_name %></h4>
-	<h4>ジャンル名:<%= @item.cd.genre.genre_name %></h4>
-	<h4>在庫:<%= @item.cd.stock %></h4>
-	<h4>ステータス(販売中・販売停止中):<%= @item.cd.sale_status %></h4>
-</div>
-
+	<h2 class="space">注文履歴詳細</h2>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4"><%= attachment_image_tag @item.cd, :image, fallback:"no_image.png", size:"300x300" %>
+			</div>
+			<div class="col-lg-8">
+				<table border = "1">
+					<tr>
+						<th>購入日</th>
+		                <th>CD名</th>
+		                <th>価格総計</th>
+		                <th>送付先</th>
+		                <th>ステータス</th>
+	                </tr>
+	                <tr align = "center">
+		            <td><%= @item.created_at.strftime("%Y-%m-%d") %></td>
+		            <td><%= @item.cd.name %></td>
+					<td><%= "￥" + (@item.purchased_price * @item.quantity).to_s %></td>
+					<td><%= @item.order.shipping_address %></td>
+					<td><%= @item.order.shipment_status %></td>
+	                </tr>
+      			</table>
+      			<div class="orders-show">
+      				<h4>アーティスト名:<%= @item.cd.artist.artist_name %></h4>
+					<h4>シングル/アルバム名:<%= @item.cd.name %></h4>
+					<h4>レーベル名:<%= @item.cd.label.label_name %></h4>
+					<h4>ジャンル名:<%= @item.cd.genre.genre_name %></h4>
+					<h4>在庫:<%= @item.cd.stock %></h4>
+					<h4>ステータス:<%= @item.cd.sale_status %></h4>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

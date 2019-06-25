@@ -3,6 +3,7 @@
     <%= flash[:alert] %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="center">
+
       <div class="line-height in-item">
         <h4><%= f.label :メールアドレス %></h4>
         <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"info-text", size:"40x40" %>
@@ -12,6 +13,7 @@
         <%= f.label :パスワード %></h4>
         <%= f.password_field :password,placeholder:"6文字以上のパスワード", autocomplete: "current-password",class:"info-text",size:"40x40" %>
       </div>
+
 
       <% if devise_mapping.rememberable? %>
         <div class="field">
