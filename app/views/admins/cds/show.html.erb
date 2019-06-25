@@ -3,11 +3,9 @@
 	<div class="show-items">
 		<div class="show-items row">
 			<div class="col-sm-5">
-				<div class="show-item">
 					<%= attachment_image_tag @cd, :image, :fill, 400, 400, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'400x400' %>
-				</div>
 				<div class="show-item">
-					<h4>説明文</h4>
+					<h4 class="subject-bar">説明文</h4>
 					<div class="show-info-item">
 						<%= @cd.description %>
 					</div>
@@ -16,19 +14,19 @@
 
 			<div class="col-sm-7 show-box2">
 				<div class="show-item">
-					<h4>アーティスト名</h4>
+					<h4 class="subject-bar">アーティスト名</h4>
 					<div class="show-info-item">
 						<%= @cd.artist.artist_name %>
 					</div>
 				</div>
-				<div class="show--item">
-					<h4>CD名</h4>
+				<div class="show-item">
+					<h4 class="subject-bar">CD名</h4>
 					<div class="show-info-item">
 						<%= @cd.name %>
 					</div>
 				</div>
 				<div class="show-item">
-					<h4>収録曲</h4>
+					<h4 class="subject-bar">収録曲</h4>
 					<div class="show-info-item">
 						<% @cd.discs.each do |disc| %>
 							 <div>
@@ -44,31 +42,31 @@
 					</div>
 				</div>
 				<div class="show-item">
-					<h4>ジャンル</h4>
+					<h4 class="subject-bar">ジャンル</h4>
 					<div class="show-info-item">
 						<%= @cd.genre.genre_name %>
 					</div>
 				</div>
 				<div class="show-item">
-					<h4>レーベル名</h4>
+					<h4 class="subject-bar">レーベル名</h4>
 					<div class="show-info-item">
 						<%= @cd.label.label_name %>
 					</div>
 				</div>
 				<div class="show-item">
-					<h4>在庫</h4>
+					<h4 class="subject-bar">在庫</h4>
 					<div class="show-info-item">
 						<%= @cd.stock %>個
 					</div>
 				</div>
 				<div class="show-item">
-					<h4>ステータス</h4>
+					<h4 class="subject-bar">ステータス</h4>
 					<div class="show-info-item">
 						<%= @cd.sale_status %>
 					</div>
 				</div>
 				<div class="show-item">
-					<h4>税込価格</h4>
+					<h4 class="subject-bar">税込価格</h4>
 					<div class="show-info-item">
 						¥<%= (@cd.price.to_i*1.08).floor %>
 					</div>
