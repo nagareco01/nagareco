@@ -124,15 +124,21 @@
 .add-artist, .add-label, .add-genre{
 	margin: 40px 0;
 }
-
 .show-items{
 	margin-left: 30px;
 }
+.show-item{
+	margin: 10px 0 30px 30px;
+	/*border-style: solid;
+	border-width: thin;
+	border-radius: 5px;
+	width: 300px;*/
+}
 
 .show-info-item{
-	margin-left: 30px;
+	padding-left: 30px;
 	font-size: 18px;
-	line-height: 25px
+	line-height: 25px;
 }
 
 .show-song-number{
@@ -140,10 +146,17 @@
 }
 
 .edit-botton-box{
-	width: 60%;
+	width: 40%;
 	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 20px;
 }
 
 .edit-botton{
 	margin-top: 30px;
+}
+.subject-bar{
+	color: #333;
+	font-size: 22px;
+	font-weight: bold;
 }

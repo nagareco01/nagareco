@@ -11,17 +11,17 @@
 				<!-- sumに初期値の設定 -->
 				<% @items.each do |item| %>
 					<td rowspan="2" class="col-lg-1"><%= attachment_image_tag item.cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></td>
-					<td><%= link_to item.cd.name, clients_cd_path(item.cd.id) %></td>
+					<td><%= link_to item.cd.name, clients_cd_path(item.cd.id),size:"20x20" %></td>
 					<td><%= form_for item, url: clients_item_path(item.id) do |f| %>
-						<%= f.number_field :quantity, value: item.quantity, required:true, min:"1", class:"number_field"  %>
+						<%= f.number_field :quantity, value: item.quantity, required:true, min:"1",max:"50", class:"number_field", size: "10"  %>
 						<%= f.submit "変更" %></td>
+					<td class="button btn btn-danger"><%=link_to "削除", clients_item_path(item.id), method: :delete, class:"link" %></td>
 				<% end %>
 				<% total_price += item.quantity * item.cd.price %>
 				<!-- total_priceを算出 -->
 			</tr>
 			<tr class="tab_bottom">
 				<td>価格：¥<%= (item.cd.price*1.08).floor %></td>
-				<td class="btn btn-danger"><%=link_to "削除", clients_item_path(item.id), method: :delete, class:"link" %></td>
 			</tr>
 				<% end %>
 		</table>
