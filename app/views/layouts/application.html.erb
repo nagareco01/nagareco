@@ -39,11 +39,12 @@
             <li>
               <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
-            <div class="text-right">管理者でログイン中</div>
+            <div class="text-right login-status">管理者でログイン中</div>
 
           <% elsif client_signed_in? %>
             <li>
               <%= search_form_for @search, url: clients_cds_search_path do |f| %>
+
               <li><%= f.text_field :name_or_artist_artist_name_cont ,placeholder: '商品名、アーティスト名で検索', size: "30*30", required: true, class:"info-text search-text" %><%= f.submit "検索", class:"search-text" %></li>
               <% end %>
             </li>
@@ -59,7 +60,7 @@
             <li>
               <%= link_to "ログアウト", destroy_client_session_path, method: :delete %>
             </li>
-            <div class="text-right"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
+            <div class="text-right login-status"><%= current_client.last_name + current_client.first_name %>でログイン中</div>
 
           <% else %>
             <li>
@@ -84,7 +85,7 @@
 
       <div class="box"></div>
       <% if flash[:notice] %>
-      <div class="flash"><%= flash[:notice] %></div>
+      <div class="flash title"><%= flash[:notice] %></div>
       <% end %>
 
     <%= yield %>
