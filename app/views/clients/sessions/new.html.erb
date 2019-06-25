@@ -1,17 +1,15 @@
-<div class="big-box">
-  <div class="title">
-    <h2>ログイン</h2>
+<div class="title2">
+    <h2 class="space2">ログイン</h2>
     <%= flash[:alert] %>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :メールアドレス %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+    <div class="center">
+      <h4 class="line-height">
+      <%= f.label :メールアドレス %></h4>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"info-text", size:"30x30" %>
 
-      <div class="field">
-        <%= f.label :パスワード %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
+      <h4 class="line-height">
+      <%= f.label :パスワード %></h4>
+      <%= f.password_field :password,placeholder:"6文字以上のパスワード", autocomplete: "current-password",class:"info-text",size:"30x30" %>
 
       <% if devise_mapping.rememberable? %>
         <div class="field">
@@ -21,7 +19,7 @@
       <% end %>
 
       <div class="actions">
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class:"btn btn-warning"  %>
       </div>
     <% end %>
   </div>

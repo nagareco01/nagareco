@@ -1,32 +1,23 @@
-<div class="big-box">
-  <div class="title">
-    <div class="login-box">
-      <h2>ログイン管理者用</h2>
-      <%= flash[:alert] %>
-      <div>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="field">
-            <%= f.label :メールアドレス %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-          </div>
-
-          <div class="field">
-            <%= f.label :パスワード %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
-          </div>
-
-          <% if devise_mapping.rememberable? %>
-            <div class="field">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-            </div>
-          <% end %>
-
-          <div class="actions">
-            <%= f.submit "ログイン" %>
-          </div>
-        <% end %>
-      </div>
+<div class="title2">
+  <h2 class="space2">管理者用</h2>
+  <%= flash[:alert] %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="center">
+    <h4 class="line-height">
+      <%= f.label :メールアドレス %></h4>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"info-text", size:"30x30" %>
+    <h4 class="line-height">
+      <%= f.label :パスワード %></h4>
+      <%= f.password_field :password, autocomplete: "current-password",placeholder:"6文字以上のパスワード",class:"info-text", size:"30x30" %>
+    <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
     </div>
-  </div>
+      <% end %>
+      <div class="actions">
+        <%= f.submit "ログイン" %>
+      </div>
+        <% end %>
+    </div>
 </div>
