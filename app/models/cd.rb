@@ -3,7 +3,7 @@ class Cd < ApplicationRecord
 	enum sale_status: { 販売中: 0, 販売停止中: 1 }
 
 	validates :name, presence: true
-	validates :description, presence: true, length: { maximum: 300 }
+	validates :description, presence: true, length: { maximum: 5000 }
 	validates :price, presence: true
 	validates :stock, presence: true
 
