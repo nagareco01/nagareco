@@ -1,5 +1,5 @@
 <div class="title">
-	<h2>顧客編集</h2>
+	<h2 class="space">顧客編集</h2>
 	<%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
 	<% if @client.errors.any? %>
 	  <div id="error_explanation" class="alert alert-danger">

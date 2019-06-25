@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6, p{
   background: -moz-radial-gradient(#51e8df, #51e8df);
   background: -webkit-radial-gradient(#67ffb7, #51e8df);
   background: radial-gradient(#51e864, #51e8df);
-  margin-top: 50px;
+  margin-top: auto;
 }
 
 .cover-box{
@@ -255,10 +255,13 @@ h4.line-height{
 td{
   padding: 10px;
 }
+
 .about{
   font-size: 15px;
 }
 
-.center-sign{
-  margin-left: 150px;
+.search-text{
+  font-size: 14px;
+  line-height: 25px;
+  margin-top: 20px;
 }

@@ -1,48 +1,88 @@
 <div class="title">
-	<h2 class="space">My page
-		<span>
-			<h4 class="line-height"><%= flash[:client_update] %></h4>
-		</span>
-    </h2>
-    <h4 class="line-height">氏名 <%= @client.last_name %> <%= @client.first_name %></h4>
-    <h4 class="line-height">電話番号　<%= @client.telephone%></h4>
-    <h4 class="line-height">自宅郵便番号　<%= @client.post_code%></h4>
-    <h4 class="line-height">自宅住所　<%= @client.address%></h4>
-    <h4 class="line-height">メールアドレス　<%= @client.email%></h4>
 
-    <% unless @address == [] %>
-    <h4 class="line-height">登録住所</h4>
-    <div class="create-address"><!-- 文字の大きさのため、あとでcssで調整 -->
-    		<div class="container">
-    			<div class="row">
-    				<table class="col-lg-6 table table-striped">
-    					<thead class="row">
-    						<tr>
-    							<th>氏名</th>
-    							<th>郵便番号</th>
-    							<th>住所</th>
-			                </tr>
-		                </thead>
-		                <% @address.each do |address| %>
-		                <tbody>
-		                	<tr align="center">
-		                		<td class="address-info"><%= address.last_name %> <%= address.first_name %></td>
-				                <td><%= address.sub_post_code %></td>
-				                <td><%= address.sub_address %></td>
-				                <td><%= link_to"削除", clients_remove_address_path(address.id), method: :delete,  "data-confirm" => "削除しますか？", class:"btn btn-danger"%></td>
-			                </tr>
-			            <% end %>
-		                </tbody>
-	                </table>
-		        </div>
-		    </div>
+	<h2 class="space">マイページ<%= flash[:client_update] %></h2>
+		<%= flash[:client_update] %>
+	<div class="info-items">
+		<h4>・氏名</h4>
+		<div class="text-fields-box">
+			<%= @client.last_name %> <%= @client.first_name %>
 		</div>
-	<%end%>
+	</div>
+	<div class="info-items">
+		<h4>・電話番号</h4>
+		<div class="text-fields-box">
+			　<%= @client.telephone%>
+		</div>
+	</div>
+	<div class="info-items">
+		<h4>・自宅郵便番号</h4>
+		<div class="text-fields-box">
+		　	<%= @client.post_code%>
+		</div>
+	</div>
+	<div class="info-items">
+		<h4>・自宅住所</h4>
+		<div class="text-fields-box">
+			<%= @client.address%>
+		</div>
+	</div>
+	<div class="info-items">
+		<h4>・メールアドレス</h4>
+		<div class="text-fields-box">
+		　	<%= @client.email%>
+		</div>
+	</div>
+	<% unless @address == [] %>
 
 
-<%= link_to"注文履歴一覧",clients_order_index_path(@client), class:'btn btn-success'%>
-<%= link_to"Mypage編集",edit_clients_client_path(@client), class:'btn btn-success'%>
-<%= link_to"住所新規登録",new_clients_client_path(id: @client.id), class:'btn btn-success'%>
+	<div>
+		<h4 class="add-address-info">-登録住所-</h4>
+		<div class="create-address">
+			<h4><!-- 文字の大きさのため、あとでcssで調整 -->
+				<div class="container">
+				<div class="row">
+				<table class="col-lg-6 table table-striped">
+					<thead class="row">
+						<tr>
+							<th width="150px">氏名</th>
+						    <th width="150px">郵便番号</th>
+						    <th width="300px">住所</th>
+						    <th width="100px"></th>
+					    </tr>
+				    </thead>
+				    <% @address.each do |address| %>
+				    <tbody>
+				    	<tr>
+				    		<td><%= address.last_name %> <%= address.first_name %></td>
+						    <td><%= address.sub_post_code %></td>
+						    <td><%= address.sub_address %></td>
+						    <td><%= link_to"削除", clients_remove_address_path(address.id), method: :delete,  "data-confirm" => "削除しますか？", class:"btn btn-danger"%></td>
+					    </tr>
+					<% end %>
+				    </tbody>
+			    </table>
+				</div>
+				</div>
+		    </h4>
+		</div>
+	</div>
 
-<%= link_to"退会",clients_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？", class:'btn btn-danger'%>
+
+	<% end %>
+
+	<div class="select-box">
+		<div class="client-select">
+			<%= link_to"注文履歴一覧",clients_order_index_path(@client), class: "btn btn-default btn-lg" %>
+		</div>
+		<div class="client-select">
+			<%= link_to"ユーザ情報編集",edit_clients_client_path(@client), class: "btn btn-default btn-lg" %>
+		</div>
+		<div class="client-select">
+			<%= link_to"住所新規登録",new_clients_client_path(id: @client.id), class: "btn btn-default btn-lg" %>
+		</div>
+		<div class="client-select">
+			<%= link_to"退会",clients_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？", class: "btn btn-danger btn-lg"%>
+		</div>
+	</div>
+
 </div>

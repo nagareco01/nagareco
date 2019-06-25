@@ -2,16 +2,28 @@
 	<h2 class="space">住所新規登録</h2>
 	<%= flash[:danger] %>
 	<%= form_for @address, :url => {:action => :create} do |f| %>
-	<h4 class="line-height">氏名</h4>
-	<h4 class="line-height">
-		<%= f.text_field :last_name, class:"info-text" %>
-		<%= f.text_field :first_name, class:"info-text" %></h4>
-	<h4 class="line-height">郵便番号(半角英数字 ハイフンあり)</h4>
-	<h4 class="line-height">
-		<%= f.text_field :sub_post_code, class:"info-text" %></h4>
-	<h4 class="line-height">住所</h4>
-	<h4 class="line-height">
-		<%= f.text_area :sub_address, class:"info-text" %>
-		<%= f.submit "追加", class:'btn btn-warning active' %>
-		<% end %></h4>
+		<div class="info-items">
+			<h4>・氏名</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :last_name, :size=>"10", class: "text-field name"  %><%= f.text_field :first_name, :size=>"10", class: "text-field name"  %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・郵便番号(半角英数字 ハイフンあり)</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :sub_post_code, :size=>"20", class: "text-field"  %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・住所</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :sub_address, :size=>"60", class: "text-field"  %>
+			</div>
+		</div>
+		<div class="client-update-botton">
+			<%= f.submit "追加", class: "btn btn-primary btn-lg btn-block" %>
+		</div>
+	</div>
+	<% end %>
+
 </div>

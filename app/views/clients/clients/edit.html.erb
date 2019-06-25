@@ -1,34 +1,58 @@
 <div class="title">
-<h1>Mypage編集</h1>
 
-<%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
-	<% if @client.errors.any? %>
-	  <div id="error_explanation" class="alert alert-danger">
-	    <ul>
-	      <% @client.errors.full_messages.each do |message| %>
-	        <li><%= message %></li>
-	      <% end %>
-	    </ul>
-	  </div>
+	<h2 class="space">ユーザ情報編集</h2>
+	<%= form_for @client, :url => {:controller => :clients, :action => :update } do |f| %>
+		<div class="info-items">
+			<h4>・氏名(漢字)</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :last_name, :size=>"10", class: "text-field" %> <%= f.text_field :first_name, :size=>"10", class: "text-field" %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・氏名(カナ)</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :last_name_kana, class: "text-field" %><%= f.text_field :first_name_kana, class: "text-field"%>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・メールアドレス</h4>
+			<div class="text-fields-box">
+				<%= f.email_field :email, :size=>"60", class: "text-field" %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・電話番号</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :telephone, :size=>"40", class: "text-field" %>
+			</div>
+		</div>
+		<div class="info-items">
+		<h4>・自宅郵便番号</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :post_code, :size=>"20", class: "text-field" %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・自宅住所</h4>
+			<div class="text-fields-box">
+				<%= f.text_field :address, :size=>"60", class: "text-field" %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・パスワード変更(6文字以上のパスワード)</h4>
+			<div class="text-fields-box">
+				<%= f.password_field :password, class: "text-field" %>
+			</div>
+		</div>
+		<div class="info-items">
+			<h4>・変更パスワード再入力</h4>
+			<div class="text-fields-box">
+				<%= f.password_field :password_confirmation, class: "text-field"%>
+			</div>
+		</div>
+		<div class="client-update-botton">
+			<%= f.submit '更新', class: "btn btn-primary btn-lg btn-block"  %>
+		</div>
 	<% end %>
-<h3>氏名(漢字)
-<%= f.text_field :last_name, class:"info-text" %> <%= f.text_field :first_name, class:"info-text" %></h3>
-<h3>氏名(カナ)
-<%= f.text_field :last_name_kana, class:"info-text" %> <%= f.text_field :first_name_kana, class:"info-text"%></h3>
-<h3>メールアドレス
-<%= f.email_field :email, class:"info-text" %></h3>
-<h3>電話番号
-<%= f.text_field :telephone, class:"info-text" %></h3>
-<h3>自宅郵便番号
-<%= f.text_field :post_code, class:"info-text" %></h3>
-<h3>自宅住所
-<%= f.text_field :address, class:"info-text" %></h3>
-<h3>パスワード変更(6文字以上のパスワード)</h3>
-<%= f.password_field :password, class:"info-text" %>
-<h3>変更パスワード再入力</h3>
-<%= f.password_field :password_confirmation, class:"info-text"%>
-
-<h3><%= f.submit 'Update Mypage', class:"btn btn-info" %></h3>
-<% end %>
-
 </div>
+
