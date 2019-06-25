@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_06_20_105604) do
   create_table "cds", force: :cascade do |t|
     t.string "name", null: false
     t.string "image_id"
-    t.text "description", null: false
+    t.text "description"
     t.integer "price", null: false
     t.integer "stock", null: false
     t.integer "sale_status", null: false
