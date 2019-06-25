@@ -47,7 +47,7 @@ class Clients::ClientsController < ApplicationController
     #binding.pry
     address = Address.find(params[:id])
     address.destroy
-    flash[:notice] = "住所を削除しました"
+    flash[:client_update] = "住所を削除しました"
     redirect_to clients_client_path(current_client.id)
   end
 

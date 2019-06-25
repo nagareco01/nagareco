@@ -1,16 +1,21 @@
 <div class="title">
 	<h2 class="space">検索結果</h2>
-	<% @search_cds.each do |cd| %>
-	<%= link_to clients_cd_path(cd.id) do %>
-	<%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'100x100' %>
-    <% end %>
-    <div class="show-info">
-    	<%= link_to cd.name, clients_cd_path(cd.id) %>
-    	<%= cd.artist.artist_name %>
-    	¥<%= cd.price %>
-    <% end %>
-    <%= paginate @search_cds %>
-    </div>
+	<table>
+		<% @search_cds.each do |cd| %>
+		<thead>
+			<tr>
+				<td><%= link_to clients_cd_path(cd.id) do %>
+				<%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg' ,fallback: "noimage.jpg" ,:size =>'100x100' %>
+				<% end %>
+			    </td>
+			    <td><%= link_to cd.name, clients_cd_path(cd.id) %></td>
+			    <td><%= cd.artist.artist_name %></td>
+			    <td>¥<%= cd.price %></td>
+			</tr>
+		</thead>
+		<% end %>
+	</table>
+	<%= paginate @search_cds %>
     <span id="back">
     	<a href="#">
     		<%= image_tag "arrow.png"  %>
