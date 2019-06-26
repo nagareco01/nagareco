@@ -3,10 +3,9 @@ class Clients::OrdersController < ApplicationController
   before_action :reject_buy, only: :buy
 
   def index
-    @orders = Order.where(client_id: current_client.id)
+    @orders = Order.where(client_id: current_client.id).page(params[:page]).per(20)
     @total_price = 0
     orders = Order.where(client_id: current_client.id)
-    @orders = Order.page(params[:page]).per(20)
     orders.each do |order|
       @total_price += order.total_price
     end
