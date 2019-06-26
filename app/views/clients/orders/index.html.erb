@@ -36,12 +36,15 @@
 					</tr>
 				<% end %>
 			</table>
-		<h2 class="space">総計金額 ￥<%= @total_prices %></h2>
-		<span id="back">
-			<a href="#">
-				<%= image_tag "arrow.png"  %>
-			</a>
-		</span>
+			<div class="kaminari-page">
+				<%= paginate @orders %>
+			</div>
+			<h2 class="space">総計金額 ￥<%= @total_price %></h2>
+			<span id="back">
+				<a href="#">
+					<%= image_tag "arrow.png"  %>
+				</a>
+			</span>
 		</div>
 	</div>
 </div>

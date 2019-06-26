@@ -6,6 +6,7 @@ class Clients::OrdersController < ApplicationController
     @orders = Order.where(client_id: current_client.id)
     @total_price = 0
     orders = Order.where(client_id: current_client.id)
+    @orders = Order.page(params[:page]).per(20)
     orders.each do |order|
       @total_price += order.total_price
     end

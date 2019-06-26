@@ -2,12 +2,13 @@ class Admins::ClientsController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @clients = Client.page(params[:page]).per(15)
+    @clients = Client.page(params[:page]).per(10)
   end
 
   def show
     @client = Client.with_deleted.find(params[:id])
     @orders = Order.where(client_id: params[:id])
+    @orders = Order.page(params[:page]).per(20)
   end
 
   def edit

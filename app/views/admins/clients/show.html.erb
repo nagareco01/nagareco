@@ -1,99 +1,105 @@
 <div class="big-box">
 	<div>
 		<div class="title">
-				<h2 class="space">顧客詳細</h2>
-				<div class="client-show-box">
+			<h2 class="space">顧客詳細</h2>
+			<div class="client-show-box">
+				<% if @client.deleted? %>
+				<h4 class="line-height">氏名 <%= @client.last_name + @client.first_name + "（退会済み）"%></h4>
+				<% else %>
+				<h4 class="line-height">氏名 <%= @client.last_name + @client.first_name %></h4>
+				<% end %>
+				<h4 class="line-height">電話番号　<%= @client.telephone%></h4>
+				<h4 class="line-height">自宅郵便番号　<%= @client.post_code%></h4>
+				<h4 class="line-height">自宅住所　<%= @client.address%></h4>
+				<h4 class="line-height">メールアドレス　<%= @client.email%></h4>
 
-					<% if @client.deleted? %>
-					<h4 class="line-height">氏名 <%= @client.last_name + @client.first_name + "（退会済み）"%></h4>
-					<% else %>
-					<h4 class="line-height">氏名 <%= @client.last_name + @client.first_name %></h4>
-					<% end %>
-					<h4 class="line-height">電話番号　<%= @client.telephone%></h4>
-					<h4 class="line-height">自宅郵便番号　<%= @client.post_code%></h4>
-					<h4 class="line-height">自宅住所　<%= @client.address%></h4>
-					<h4 class="line-height">メールアドレス　<%= @client.email%></h4>
+				<% if @client.addresses.present? %>
+				<h4 class="add-address-info">-登録住所-</h4>
+				<div class="create-address">
+					<h4><!-- 文字の大きさのため、あとでcssで調整 -->
+						<div class="container">
+							<div class="row">
+								<table class="col-lg-6 table table-striped">
+									<thead class="row">
+										<tr>
+											<th width="150px">氏名</th>
+										    <th width="150px">郵便番号</th>
+										    <th width="300px">住所</th>
+									    </tr>
+								    </thead>
+								    <% @client.addresses.each do |address| %>
+								    <tbody class="client-cd address-info">
+								    	<tr>
+								    		<td class="adress-info"><%= address.last_name %> <%= address.first_name %></td>
+										    <td><%= address.sub_post_code %></td>
+										    <td><%= address.sub_address %></td>
+									    </tr>
+									<% end %>
+								    </tbody>
+							    </table>
+							</div>
+						</div>
+				    </h4>
+				</div>
+				<% end %>
 
-					<% if @client.addresses.present? %>
-					<h4 class="line-height">登録住所</h4>
-					<div class="create-address">
-						<h4><!-- 文字の大きさのため、あとでcssで調整 -->
-							<table>
-								<thead class="client-cd">
-									<tr>
-										<th width="100">氏名</th>
-									    <th width="200">郵便番号</th>
-									    <th width="300">住所</th>
-								    </tr>
-							    </thead>
-							    <% @client.addresses.each do |address| %>
-							    <tbody class="client-cd address-info">
-							    	<tr>
-							    		<td class="adress-info"><%= address.last_name %> <%= address.first_name %></td>
-									    <td><%= address.sub_post_code %></td>
-									    <td><%= address.sub_address %></td>
-								    </tr>
+				<% unless @client.deleted? %>
+				<div class="client-edit-box">
+					<div class="client-edit1">
+						<%= link_to"顧客編集",edit_admins_client_path(@client.id), class: "btn btn-success btn-lg btn-block"%>
+					</div>
+					<div class="client-edit2">
+						<%= link_to"強制退会",admins_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？", class: "btn btn-danger btn-lg btn-block"%>
+					</div>
+				</div>
+				<% end %>
+
+				<table border = "1">
+					<thead>
+						<tr>
+							<th width="100">購入日</th>
+							<th width="250">CD名</th>
+							<th width="100">購入枚数</th>
+							<th width="100">CD価格</th>
+							<th width="100">送料</th>
+							<th width="100">支払方法</th>
+							<th width="100">ステータス</th>
+						</tr>
+					</thead>
+					<tbody class="client-cd">
+						<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+							<td>
+								<% order.order_items.each do |item| %>
+									<div><%= item.cd.name %></div>
 								<% end %>
-							    </tbody>
-						    </table>
-					    </h4>
-					</div>
-					<% end %>
-
-					<% unless @client.deleted? %>
-					<div class="client-edit-box">
-						<div class="client-edit1">
-							<%= link_to"顧客編集",edit_admins_client_path(@client.id), class: "btn btn-success btn-lg btn-block"%>
-						</div>
-						<div class="client-edit2">
-							<%= link_to"強制退会",admins_client_path(@client.id),method: :delete, "data-confirm" => "退会しますか？", class: "btn btn-danger btn-lg btn-block"%>
-						</div>
-					</div>
-					<% end %>
-
-					<table border = "1">
-						<thead>
-							<tr>
-								<th width="100">購入日</th>
-								<th width="250">CD名</th>
-								<th width="100">購入枚数</th>
-								<th width="100">CD価格</th>
-								<th width="100">送料</th>
-								<th width="100">支払方法</th>
-								<th width="100">ステータス</th>
-							</tr>
-						</thead>
-						<tbody class="client-cd">
-							<% @orders.each do |order| %>
-							<tr>
-								<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-								<td>
-									<% order.order_items.each do |item| %>
-										<div><%= item.cd.name %></div>
-									<% end %>
-								</td>
-								<td>
-									<% order.order_items.each do |item| %>
-										<div><%= item.quantity %></div>
-									<% end %>
-								</td>
-								<td>
-									<% order.order_items.each do |item| %>
-										<div><%= "￥"+ (item.cd.price*1.08).floor.to_s %></div>
-									<% end %>
-								</td>
-								<td>￥500</td>
-								<td><%= order.payment %></td>
-								<td><%= order.shipment_status %></td>
-							</tr>
-							<% end %>
-						</tbody>
-					</table>
-					<span id="back">
-						<a href="#">
-							<%= image_tag "arrow.png"  %>
-						</a>
-					</span>
+							</td>
+							<td>
+								<% order.order_items.each do |item| %>
+									<div><%= item.quantity %></div>
+								<% end %>
+							</td>
+							<td>
+								<% order.order_items.each do |item| %>
+									<div><%= "￥"+ (item.cd.price*1.08).floor.to_s %></div>
+								<% end %>
+							</td>
+							<td>￥500</td>
+							<td><%= order.payment %></td>
+							<td><%= order.shipment_status %></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<div class="kaminari-page">
+					<%= paginate @orders %>
+				</div>
+				<span id="back">
+					<a href="#">
+						<%= image_tag "arrow.png"  %>
+					</a>
+				</span>
 			</div>
 		</div>
 	</div>

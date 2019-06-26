@@ -40,28 +40,28 @@
 		<div class="create-address">
 			<h4><!-- 文字の大きさのため、あとでcssで調整 -->
 				<div class="container">
-				<div class="row">
-				<table class="col-lg-6 table table-striped">
-					<thead class="row">
-						<tr>
-							<th width="150px">氏名</th>
-						    <th width="150px">郵便番号</th>
-						    <th width="300px">住所</th>
-						    <th width="100px"></th>
-					    </tr>
-				    </thead>
-				    <% @address.each do |address| %>
-				    <tbody>
-				    	<tr>
-				    		<td><%= address.last_name %> <%= address.first_name %></td>
-						    <td><%= address.sub_post_code %></td>
-						    <td><%= address.sub_address %></td>
-						    <td><%= link_to"削除", clients_remove_address_path(address.id), method: :delete,  "data-confirm" => "削除しますか？", class:"btn btn-danger"%></td>
-					    </tr>
-					<% end %>
-				    </tbody>
-			    </table>
-				</div>
+					<div class="row">
+					<table class="col-lg-6 table table-striped">
+						<thead class="row">
+							<tr>
+								<th width="150px">氏名</th>
+							    <th width="150px">郵便番号</th>
+							    <th width="300px">住所</th>
+							    <th width="100px"></th>
+						    </tr>
+					    </thead>
+					    <% @address.each do |address| %>
+					    <tbody>
+					    	<tr>
+					    		<td><%= address.last_name %> <%= address.first_name %></td>
+							    <td><%= address.sub_post_code %></td>
+							    <td><%= address.sub_address %></td>
+							    <td><%= link_to"削除", clients_remove_address_path(address.id), method: :delete,  "data-confirm" => "削除しますか？", class:"btn btn-danger"%></td>
+						    </tr>
+						<% end %>
+					    </tbody>
+				    </table>
+					</div>
 				</div>
 		    </h4>
 		</div>
