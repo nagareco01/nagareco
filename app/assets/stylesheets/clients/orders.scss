@@ -37,17 +37,40 @@
 .orders-show{
 	margin-top: 10px;
 }
-@-webkit-keyframes typing { from { width: 0; } }
+body{
+	position:relative;
+}
+@-webkit-keyframes typing {
+							 0% { width:2em; }
+							 7%{width:3.1em;}
+							 14%{width:4.1em;}
+							 21%{width:5.1em;}
+							 28%{width:6.1em;}
+							 35%{width:7em;}
+							 42%{width:8.1em;}
+							 49%{width:9.1em;}
+							 56%{width:10.1em;}
+							 63%{width:11.1em;}
+							 70%{width:12.1em;}
+							 77%{width:13.1em;}
+							 84%{width:14.1em;}
+							 90%{width:15.1em;}
+							 97%{width:16.5em;}
+							  }
 @-webkit-keyframes blink-caret { 50% { border-color: transparent; } }
 
 .hit-the-floor{
+	position:absolute;
+	top:100px;
+	left:100px;
 	font: bold 300% Consolas, Monaco, monospace;
 	border-right: .1em solid black;
-	width: 14.5em;
+	width: 16.5em;
 	margin: 2em 1em;
+	line-height: 180px;
 	white-space: nowrap;
 	overflow: hidden;
-	-webkit-animation: typing 7s steps(21, end),
+	-webkit-animation: typing 9s step-end,
 	  blink-caret .5s step-end infinite alternate;
 	margin-top: 50px;
   font-size: 70px;
