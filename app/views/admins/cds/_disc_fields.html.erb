@@ -1,6 +1,6 @@
 <div class="nested-fields">
   <h4 class="disc-num-info">Disc number</h4>
-    <%= f.text_field :disc_number, class:"disc-number info-text" %>
+    <%= f.number_field :disc_number, class:"disc-number info-text", min:"1",max:"30" %>
     <%= link_to_remove_association "DISC削除", f, class: "btn btn-danger btn-xs" %>
   <table class="song-info">
       <thead>

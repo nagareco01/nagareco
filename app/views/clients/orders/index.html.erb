@@ -1,58 +1,47 @@
 <div class="title">
-
-<h2 class="space">注文履歴一覧</h2>
-
-<div class="container">
-	<div class="row">
-<table border = "1" class="table table-striped">
-
-	<tr>
-		<th class="order-table1">購入日</th>
-		<th class="order-table2">CD名</th>
-		<th class="order-table3">購入枚数</th>
-		<th class="order-table4">CD価格</th>
-		<th class="order-table5">送料</th>
-		<th class="order-table6">支払方法</th>
-		<th class="order-table7">ステータス</th>
-	</tr>
-
-	<% @orders.each do |order| %>
-
-	<tr align = "center">
-		<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
-		<td>
-			<% order.order_items.each do |item| %>
-				<div><%= link_to item.cd.name, clients_order_show_path(item.id) %></div>
-			<% end %>
-		</td>
-		<td>
-			<% order.order_items.each do |item| %>
-				<div><%= link_to item.quantity, clients_order_show_path(item.id) %></div>
-			<% end %>
-		</td>
-		<td>
-			<% order.order_items.each do |item| %>
-				<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path(item.id) %></div>
-			<% end %>
-		</td>
-		<td>￥500</td>
-		<td><%= order.payment %></td>
-		<td><%= order.shipment_status %></td>
-	</tr>
-
-	<% end %>
-</table>
-
-
-
-<h2 class="space">総計金額 ￥<%= @total_price %></h2>
-
-<span id="back">
-	<a href="#">
-		<%= image_tag "arrow.png"  %>
-	</a>
-</span>
-
-</div>
-</div>
+	<h2 class="space">注文履歴一覧</h2>
+	<div class="">
+		<div class="row">
+			<table border = "1" class="table table-striped">
+				<tr>
+					<th class="order-table-th">購入日</th>
+					<th class="order-table-th">CD名</th>
+					<th class="order-table-th">購入枚数</th>
+					<th class="order-table-th">CD価格</th>
+					<th class="order-table-th">送料</th>
+					<th class="order-table-th">支払方法</th>
+					<th class="order-table-th">ステータス</th>
+				</tr>
+				<% @orders.each do |order| %>
+					<tr align = "center">
+						<td><%= order.created_at.strftime("%Y-%m-%d") %></td>
+						<td>
+							<% order.order_items.each do |item| %>
+								<div><%= link_to item.cd.name, clients_order_show_path(item.id) %></div>
+							<% end %>
+						</td>
+						<td>
+							<% order.order_items.each do |item| %>
+								<div><%= link_to item.quantity, clients_order_show_path(item.id) %></div>
+							<% end %>
+						</td>
+						<td>
+							<% order.order_items.each do |item| %>
+								<div><%= link_to "￥"+ (item.cd.price*1.08).floor.to_s, clients_order_show_path(item.id) %></div>
+							<% end %>
+						</td>
+						<td>￥500</td>
+						<td><%= order.payment %></td>
+						<td><%= order.shipment_status %></td>
+					</tr>
+				<% end %>
+			</table>
+		<h2 class="space">総計金額 ￥<%= @total_prices %></h2>
+		<span id="back">
+			<a href="#">
+				<%= image_tag "arrow.png"  %>
+			</a>
+		</span>
+		</div>
+	</div>
 </div>
