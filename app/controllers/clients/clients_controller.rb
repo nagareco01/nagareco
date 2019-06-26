@@ -23,6 +23,7 @@ class Clients::ClientsController < ApplicationController
       flash[:notice] = "ユーザ情報を更新しました"
       redirect_to clients_client_path(params[:id])
     else
+      flash[:notice] = "ユーザ情報の入力が正しくありません"
       render 'edit'
     end
   end
