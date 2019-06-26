@@ -3,6 +3,7 @@ class Admins::OrdersController < ApplicationController
   
   def index
   	@orders = Order.all.order(created_at: :desc)
+    @orders = Order.page(params[:page]).per(20)
   end
 
   def update
