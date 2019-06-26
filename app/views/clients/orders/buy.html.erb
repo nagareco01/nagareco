@@ -9,7 +9,7 @@
 				<!--clientの自宅住所選択用のラジオボタンを設置-->
 				<%= form_for Order.new, url: clients_order_purchase_path do |f| %>
 				<div>
-					<label>
+					<label class="label-buy">
 						<%= f.radio_button :client_id,@client.id, id: "one", checked: "checked" %>
 							<% zyusyo1 = @client.last_name + @client.first_name + @client.post_code + @client.address %>
 								<%= zyusyo1 %>
@@ -19,7 +19,7 @@
 				<!--addressesテーブルのレコードの数だけそれぞれのラジオボタンを設置-->
 				<% @client.addresses.each do |t| %>
 					<div>
-						<label>
+						<label class="label-buy">
 						<%= f.radio_button :shipping_address, t.id, class: "two" %>
 						<% zyusyo = t.last_name + t.first_name + t.sub_post_code + t.sub_address %>
 							<%= zyusyo %>
@@ -46,10 +46,9 @@
 			<div class="col-lg-4 select-right">
 				<div class="money">
 					<h4>注文内容</h4>
-					<p>商品の小計:<%= "￥" + (@total_price*1.08).floor.to_s %></p>
-					<p>配送料・手数料:<span>￥500</span></p>
-					<p>注文合計:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
-					<p>ご請求額:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
+					<p class="line-buy">商品の小計:<%= "￥" + (@total_price*1.08).floor.to_s %></p>
+					<p class="line-buy">配送料・手数料:<span>￥500</span></p>
+					<p class="line-buy">ご請求額:<%= "￥" + (@total_price*1.08 + 500).floor.to_s %></p>
 				</div>
 					<%= f.submit "注文を確定する", class:"btn btn-info" %>
 					<% end %>
@@ -66,21 +65,22 @@
 <p>アーティスト名：<%= item.cd.artist.artist_name %></p>
 <p>ジャンル名：<%= item.cd.genre.genre_name %></p>
 <p>レーべル名：<%= item.cd.label.label_name %></p>
-<p>税込価格：<%= item.cd.price*1.08.floor %></p>
+<p>税込価格：<%= (item.cd.price*1.08).floor %></p>
 </div>
 <div class="col-lg-3 date">
-	<p>曲名：
+	<p>収録曲
 	<% item.cd.discs.each do |disc| %>
+	<div class="disc-numnum">
 		 Disc.<%= disc.disc_number %>
-		<% disc.songs.each do |song| %>
+	</div>
+			<% disc.songs.each do |song| %>
+			<div class="disc-song">
 			<%= song.song_number %>
 			<%= song.song_name %>
+		    </div>
 		<% end %>
 	<% end %>
 	</p>
-</div>
-<div class="col-lg-3 date">
-	<p>説明文：<%= item.cd.description %></p>
 </div>
 </div>
 <% end %>
