@@ -15,13 +15,13 @@
 	<div class="cd-info">
 		<h4>・価格<span class="price-tax">(税別価格)</span></h4>
 		<div class="cd-item">
-			<%= f.number_field :price, class:"cd-price info-text" %>
+			<%= f.number_field :price, class:"cd-price info-text", min:"0",max:"50000" %>
 		</div>
 	</div>
 	<div class="cd-info">
 		<h4>・在庫数</h4>
 		<div class="cd-item">
-			<%= f.number_field :stock, class:"cd-stock info-text" %>
+			<%= f.number_field :stock, class:"cd-stock info-text", min:"0",max:"200" %>
 		</div>
 	</div>
 	<div class="cd-info">

@@ -2,14 +2,14 @@
 	<h2 class="space">購入履歴一覧(全顧客)</h2>
 	<table border = "1">
 		<tr align = "center">
-			<td width="100">購入者</td>
-		    <td>購入日</td>
-		    <td width="200">CD名</td>
-		    <td>購入枚数</td>
-		    <td width="90">小計</td>
-		    <td>購入価格総計</td>
-		    <td width="300">送付先</td>
-		    <td>ステータス</td>
+			<td class="order-table-th",width="100">購入者</td>
+		    <td class="order-table-th",>購入日</td>
+		    <td class="order-table-th", width="200">CD名</td>
+		    <td class="order-table-th",>購入枚数</td>
+		    <td class="order-table-th", width="90">小計</td>
+		    <td class="order-table-th",>価格総計</td>
+		    <td class="order-table-th", width="300">送付先</td>
+		    <td class="order-table-th", width="120">ステータス</td>
 	    </tr>
 
 	    <% @orders.each do |order| %>
@@ -31,15 +31,15 @@
 		    </td>
 		    <td>
 		    	<% order.order_items.each do |item| %>
-				<div><%= item.quantity * item.purchased_price %></div>
+				<div><%= item.quantity * (item.purchased_price*1.08).floor %></div>
 			    <% end %>
 		    </td>
 		    <td><%= (order.total_price*1.08).floor + 500 %></td>
 		    <td><%= order.shipping_address %></td>
 		    <%= form_for order, url: admins_order_path(order.id) do |f| %>
 		    <td>
-			<%= f.select :shipment_status, Order.shipment_statuses.keys %>
-			<%= f.submit "変更" %>
+				<%= f.select :shipment_status, Order.shipment_statuses.keys %>
+				<%= f.submit "変更",class: "btn btn-primary btn-xs change-botton" %>
 		    </td>
 		    <% end %>
 		</tr>
