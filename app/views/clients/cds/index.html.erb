@@ -121,4 +121,23 @@
 		image:"/assets/onpu6.png"
 	});
 	});
+
+$(function(){
+
+	$("#back a").on("click",function(){
+		$("body, html").animate({
+			scrollTop:0
+		}, 800);
+		return false;
+	});
+	$(".way").waypoint(function(direction){
+		var activePoint = $(this.element);
+		if (direction === "down"){ //scroll down
+			activePoint.addClass("active");
+		}
+		else{ //scroll up
+			activePoint.removeClass("active");
+		}
+	},{offset : "95%"});
+});
 </script>
