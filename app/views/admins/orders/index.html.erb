@@ -31,10 +31,10 @@
 		    </td>
 		    <td>
 		    	<% order.order_items.each do |item| %>
-				<div><%= item.quantity * (item.purchased_price*1.08).floor %></div>
+				<div>¥<%= item.quantity * (item.purchased_price*1.08).floor %></div>
 			    <% end %>
 		    </td>
-		    <td><%= (order.total_price*1.08).floor + 500 %></td>
+		    <td>¥<%= (order.total_price*1.08).floor + 500 %></td>
 		    <td><%= order.shipping_address %></td>
 		    <%= form_for order, url: admins_order_path(order.id) do |f| %>
 		    <td>

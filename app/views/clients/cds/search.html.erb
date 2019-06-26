@@ -10,12 +10,14 @@
 			    </td>
 			    <td><%= link_to cd.name, clients_cd_path(cd.id) %></td>
 			    <td><%= cd.artist.artist_name %></td>
-			    <td>¥<%= cd.price %></td>
+			    <td>¥<%= (cd.price*1.08).floor %></td>
 			</tr>
 		</thead>
 		<% end %>
 	</table>
-	<%= paginate @search_cds %>
+	<div class="kaminari-page">
+		<%= paginate @search_cds %>
+    </div>
     <span id="back">
     	<a href="#">
     		<%= image_tag "arrow.png"  %>
