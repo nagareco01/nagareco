@@ -288,23 +288,3 @@ td{
   margin-right: auto;
   margin-left: auto;
 }
-
-header{
-  position:relative;
-  transition-duration: 1s;
-}
-header:active{
-  
-}
-.login-status{
-  position:absolute;
-  top:50px;
-  right:100px;
-  z-index: 1;
-}
-.head-back{
-  height:75px;
-  width:160px;
-  line-height:20px;
-  transition-duration: 1s;
-}

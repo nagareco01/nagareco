@@ -71,12 +71,8 @@ class Clients::OrdersController < ApplicationController
         flash[:notice] = "カート投入中、他のお客様による同一商品の購入があったため、購入の処理を完了することができませんでした。"
         redirect_to clients_items_path
         return
-      end
-    end
-
-    item.each do |s|
-      if s.cd.sale_status == 1
-        flash[:notice] = "カート投入後、#{s.cd.name}の販売が停止されてしまったため、購入の処理を完了することができませんでした。"
+      elsif i.cd.sale_status == "販売停止中"
+        flash[:notice] = "カート投入後、#{i.cd.name}の販売が停止されてしまったため、購入の処理を完了することができませんでした。"
         redirect_to clients_items_path
         return
       end
