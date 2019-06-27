@@ -74,6 +74,14 @@ class Clients::OrdersController < ApplicationController
       end
     end
 
+    item.each do |s|
+      if s.cd.sale_status == 1
+        flash[:notice] = "カート投入後、#{s.cd.name}の販売が停止されてしまったため、購入の処理を完了することができませんでした。"
+        redirect_to clients_items_path
+        return
+      end
+    end
+
     if post.save
 
       post.order_items.each do |t|

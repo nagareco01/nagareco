@@ -289,14 +289,22 @@ td{
   margin-left: auto;
 }
 
-.kaminari-page{
-  font-size: 30px;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-left: auto;
-  max-width: 60%;
+header{
+  position:relative;
+  transition-duration: 1s;
 }
-
-
-
-
+header:active{
+  
+}
+.login-status{
+  position:absolute;
+  top:50px;
+  right:100px;
+  z-index: 1;
+}
+.head-back{
+  height:75px;
+  width:160px;
+  line-height:20px;
+  transition-duration: 1s;
+}

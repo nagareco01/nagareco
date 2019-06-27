@@ -72,3 +72,14 @@ $(window).load(function(){
 $(function(){
 	setTimeout("stopload()",10000);
 });
+
+$(function(){
+	$(".head-back").mouseover(function(){
+		$("header").css({"background": "#fff"},);
+		$(this).siblings().addClass("active");
+	});
+	$(".head-back").mouseout(function(){
+		$("header").css({"background": "radial-gradient(#51e864, #51e8df)"});
+		$(this).siblings().removeClass("active");
+	});
+});
