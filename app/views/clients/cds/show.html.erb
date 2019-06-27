@@ -78,6 +78,8 @@
                                                 ¥<%= (@cd.price*1.08).floor %>
                                         </div>
                                 </div>
+
+                                <% if @cd.sale_status == "販売中" %>
                                 <div class="show-item">
                                         <h4 class="subject-bar">購入枚数</h4>
                                         <div class="show-info-item">
@@ -88,6 +90,7 @@
                                                 <% end %>
                                         </div>
                                 </div>
+                                <% end %>
                         </div>
                 </div>
         </div>
