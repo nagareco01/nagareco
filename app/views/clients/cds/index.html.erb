@@ -8,13 +8,14 @@
                 fade: true,
                 arrows: false,
                 infinite: true,
+                adaptiveHeight:true,
             });
 		});
 	</script>
 	<ul class="slide">
-		<li><%= image_tag 'nagano15.jpg', :size => '500x500'%></li>
-		<li><%= image_tag 'nagano12.jpg', :size => '500x500'%></li>
-		<li><%= image_tag 'nagano7.jpg', :size => '500x500'%></li>
+		<li><%= image_tag 'nagano15.jpg', :size => '300x300'%></li>
+		<li><%= image_tag 'nagano12.jpg', :size => '300x300'%></li>
+		<li><%= image_tag 'nagano7.jpg', :size => '300x300'%></li>
 		<li><%= image_tag 'nagano8.jpg', :size => '500x500'%></li>
 		<li><%= image_tag 'nagano14.jpg', :size => '500x500'%></li>
 		<li><%= image_tag 'nagano10.jpg', :size => '500x500'%></li>
@@ -138,6 +139,6 @@ $(function(){
 		else{ //scroll up
 			activePoint.removeClass("active");
 		}
-	},{offset : "95%"});
+	},{offset : "90%"});
 });
 </script>
