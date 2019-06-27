@@ -1,51 +1,52 @@
-<div class="title3">
+<div class="title3 in-background">
   <div class="center-sign">
     <h2 class="space">新規登録</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="sing-in">
+        <div class=" in-item">
+          <h4 class="line-height">
+            <%= f.label :氏名 %></h4>
+            <%= f.text_field :last_name, autofocus: true, placeholder:"姓", class:"info-text"%>
+            <%= f.text_field :first_name, autofocus: true, placeholder:"名", class:"info-text"%>
+          <h4 class="line-height">
+             <%= f.label :カナ %></h4>
+             <%= f.text_field :last_name_kana, autofocus: true, placeholder:"セイ", class:"info-text"%>
+             <%= f.text_field :first_name_kana, autofocus: true, placeholder:"メイ", class:"info-text"%>
+          <h4 class="line-height">
+            <%= f.label :メールアドレス %></h4>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:'半角英数字',size:"30x30", class:"info-text"%>
 
-    <h4 class="line-height">
-      <%= f.label :氏名 %></h4>
-      <%= f.text_field :last_name, autofocus: true, placeholder:"姓", class:"info-text"%>
-      <%= f.text_field :first_name, autofocus: true, placeholder:"名", class:"info-text"%>
+          <h4 class="line-height">
+            <%= f.label :電話番号 %></h4>
+            <%= f.text_field :telephone, autofocus: true,placeholder:'半角英数字　ハイフンあり',size:"30x30", class:"info-text"%>
 
-    <h4 class="line-height">
-       <%= f.label :カナ %></h4>
-       <%= f.text_field :last_name_kana, autofocus: true, placeholder:"セイ", class:"info-text"%>
-       <%= f.text_field :first_name_kana, autofocus: true, placeholder:"メイ", class:"info-text"%>
-    <h4 class="line-height">
-      <%= f.label :メールアドレス %></h4>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder:'半角英数字',size:"30x30", class:"info-text"%>
+          <h4 class="line-height">
+            <%= f.label :郵便番号 %></h4>
+            <%= f.text_field :post_code, autofocus: true,placeholder:'半角英数字　ハイフンあり',size:"30x30", class:"info-text"%>
 
-    <h4 class="line-height">
-      <%= f.label :電話番号 %></h4>
-      <%= f.text_field :telephone, autofocus: true,placeholder:'半角英数字　ハイフンあり',size:"30x30", class:"info-text"%>
+          <h4 class="line-height">
+            <%= f.label :住所 %></h4>
+            <%= f.text_field :address, autofocus: true,placeholder:'例:東京都渋谷区神南町x-x-x',size:"50x50", class:"info-text"%>
 
-    <h4 class="line-height">
-      <%= f.label :郵便番号 %></h4>
-      <%= f.text_field :post_code, autofocus: true,placeholder:'半角英数字　ハイフンあり',size:"30x30", class:"info-text"%>
-
-    <h4 class="line-height">
-      <%= f.label :住所 %></h4>
-      <%= f.text_field :address, autofocus: true,placeholder:'例:東京都渋谷区神南町x-x-x',size:"50x50", class:"info-text"%>
-
-
-    <h4 class="line-height">
-      <%= f.label :パスワード %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 文字以上のパスワード)</em>
-      <% end %><br />
-    </h4>
-    <%= f.password_field :password, autocomplete: "new-password", class:"info-text"%>
-    <h4 class="line-height">
-      <%= f.label :確認用パスワード %>
-    </h4>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"info-text" %>
-      <div class="container">
-        <div class="row">
-          <%= f.submit "登録", class:"add col-lg-2 btn btn-warning" %>
+          <h4 class="line-height">
+            <%= f.label :パスワード %>
+            <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上のパスワード)</em>
+            <% end %><br />
+          </h4>
+          <%= f.password_field :password, autocomplete: "new-password", class:"info-text"%>
+          <h4 class="line-height">
+            <%= f.label :確認用パスワード %>
+          </h4>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"info-text" %>
         </div>
       </div>
-      <% end %>
-    </div>
+      <div class="container sing-in-botton">
+        <div class="row">
+          <%= f.submit "登録", class:"add col-lg-2 btn btn-warning btn-block" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
