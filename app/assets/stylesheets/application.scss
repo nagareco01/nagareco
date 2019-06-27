@@ -228,7 +228,13 @@ element.style{
 
 .title3{
   margin: auto;
-  width: 45%;
+  width: 40%;
+  border-style: solid;
+  border-width: thin;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
@@ -241,7 +247,18 @@ element.style{
 }
 
 .center-sign{
-  margin-left: 150px;
+  width: 80%;
+  margin-left: 80px;
+}
+
+.sing-in-botton{
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sing-in{
+  margin-left: 30px;
 }
 
 .space2{
@@ -260,7 +277,8 @@ element.style{
 }
 
 .add{
-  margin: 20px 0 20px 100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 td{
