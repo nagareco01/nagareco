@@ -11,8 +11,7 @@ class Clients::ItemsController < ApplicationController
         return
       end
 
-      if
-        Item.exists?(cd_id: params[:item][:cd_id], client_id: current_client.id)
+      if Item.exists?(cd_id: params[:item][:cd_id], client_id: current_client.id)
         item = Item.find_by(cd_id: params[:item][:cd_id], client_id: current_client.id)
         item.quantity += params[:item][:quantity].to_i
         item.save
