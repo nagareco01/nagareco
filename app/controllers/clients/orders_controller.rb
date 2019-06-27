@@ -3,7 +3,7 @@ class Clients::OrdersController < ApplicationController
   before_action :reject_buy, only: :buy
 
   def index
-    @orders = Order.where(client_id: current_client.id).page(params[:page]).per(20)
+    @orders = Order.where(client_id: current_client.id).page(params[:page]).per(5)
     @total_price = 0
     orders = Order.where(client_id: current_client.id)
     orders.each do |order|

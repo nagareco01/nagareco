@@ -7,7 +7,7 @@ class Admins::ClientsController < ApplicationController
 
   def show
     @client = Client.with_deleted.find(params[:id])
-    @orders = Order.where(client_id: params[:id]).page(params[:page]).per(20)
+    @orders = Order.where(client_id: params[:id]).page(params[:page]).per(5)
   end
 
   def edit
