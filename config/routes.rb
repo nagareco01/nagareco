@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :admins, controllers: {
-    sessions: 'admins/sessions'
+    sessions: 'admins/sessions',
+    registrations: 'admins/sessions'
   }
   devise_scope :admin do
       root :to => 'admins/cds#index'
