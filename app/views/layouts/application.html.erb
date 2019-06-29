@@ -25,19 +25,19 @@
         <ul class="nav navbar-nav navbar-right">
           <% if admin_signed_in? %>
             <li>
-              <div class="head-back"><%= link_to "商品一覧", admins_cds_path %></div>
+              <%= link_to "商品一覧", admins_cds_path %>
             </li>
             <li>
-              <div class="head-back"><%= link_to "商品追加", new_admins_cd_path %></div>
+              <%= link_to "商品追加", new_admins_cd_path %>
             </li>
             <li>
-              <div class="head-back"><%= link_to "顧客一覧", admins_clients_path %></div>
+              <%= link_to "顧客一覧", admins_clients_path %>
             </li>
             <li>
-              <div class="head-back"><%= link_to "顧客購入履歴", admins_orders_path %></div>
+              <%= link_to "顧客購入履歴", admins_orders_path %>
             </li>
             <li>
-              <div class="head-back"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></div>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
             <div class="text-right login-status">管理者でログイン中</div>
 
