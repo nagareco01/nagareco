@@ -38,7 +38,7 @@
 	<div class="way">
 	<h2 class="genre_name"><%= genre.genre_name %></h2>
 	<ul class="bxslider">
-		<% genre.cds.each do |cd| %>
+		<% genre.cds.where(is_deleted: false).each do |cd| %>
 			<li class="object">
 				<%= link_to admins_cd_path(cd.id) do %>
 					<div class="image"><%= attachment_image_tag cd, :image, :fill, 40, 40, format: 'jpeg', fallback: "noimage.jpg" ,:size =>'60x60' %></div>
