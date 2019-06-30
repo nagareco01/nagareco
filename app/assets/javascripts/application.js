@@ -73,11 +73,30 @@ $(function(){
 	setTimeout("stopload()",10000);
 });
 
+// $(function(){
+// 	$(".head-li").mouseover(function(){
+// 		$(this).find(".head-t").css("color","#fff");
+// 	});
+// 	$(".head-li").mouseout(function(){
+// 		$(this).find(".head-t").css("color","#6c6b6b");
+// 	});
+// });
+
 $(function(){
 	$(".head-li").mouseover(function(){
-		$(this).find(".head-t").css("color","#fff");
+		var p = $(this).find(".head-t");
+		$(".navbar").addClass("active");
+		$(this).addClass("active");
+		$(".login-status").addClass("active");
+		$(".about").addClass("active");
+		$(".head-t").not(p).addClass("active");
 	});
 	$(".head-li").mouseout(function(){
-		$(this).find(".head-t").css("color","#6c6b6b");
+		var p = $(this).find(".head-t");
+		$(".navbar").removeClass("active");
+		$(this).removeClass("active");
+		$(".login-status").removeClass("active");
+		$(".about").removeClass("active");
+		$(".head-t").not(p).removeClass("active");
 	});
 });

@@ -295,25 +295,46 @@ header{
 .navbar{
   background:#fff;
   border:none;
+  transition-duration: 0.3s;
+}
+
+.navbar.active{
+  background:#67ffb7;
 }
 .login-status{
   position: absolute;
   top:50px;
   right:100px;
 }
+.head-li{
+  transition-duration: 0.3s;
+}
+.head-li.active{
+  background-color: #fff;
+}
 .head-back{
-  height:73px;
+  height:77.99px;
   margin: 0 10px;
   padding-top: 20px;
 }
 .head-t{
   color:#6c6b6b;
+  transition-duration: 0.3s;
 }
-/*.head-t:hover{
-  color:#f0fff6;
-}*/
-.head-li:hover{
-  background:#67ffb7;
+.head-t.active{
+  color:#fff;
+}
+.login-status{
+  transition-duration: 0.3s;
+}
+.login-status.active{
+  color:#fff;
+}
+.about{
+  transition-duration: 0.3s;
+}
+.about.active{
+  color:#fff;
 }
 
 footer{
